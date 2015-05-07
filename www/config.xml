@@ -5,9 +5,17 @@
 		versionCode="1.0"
 		version   = "1.0">
 		<name>MisterTod</name>
+<<<<<<< HEAD
 		<description>MisterTod, e sei un cliente di serie A</description>
 		<author href="http://www.mistertod.it" email="info@mistertod.it">
 PokerParade sas
+=======
+		<description>
+			Nuova applicazione di lancio
+		</description>
+		<author href="http://www.betaapp.it" email="info@betaapp.it">
+			Salvatore sas
+>>>>>>> origin/master
 		</author>
 		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
