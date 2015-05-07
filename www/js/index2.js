@@ -1,21 +1,4 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -102,7 +85,6 @@ var app = {
 		var ciao = "";
 		var ciao1 = "";
 		var distanza = "";
-		openFB.init({appId: '410848245732219'});
 		var Categoria="";
 		var Provincia="";
 		var model = device.model;
@@ -164,7 +146,9 @@ var app = {
 			
 			checkPos();
 			$(".spinner").hide();
-			buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),1);
+			
+			//buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),1);
+			
 		}
 		else{
 			$('#noconn').show();
@@ -200,11 +184,27 @@ var app = {
 			
 			
 			$(".spinner").hide();
+			$(this).find('a[data-rel=back]').buttonMarkup({
+					iconpos: 'notext'
+			});
 			
 		}
     }
 	
 };
+
+function pagina22() {
+	$(document).on('pagebeforeshow', function () {
+		$(this).find('a[data-rel=back]').buttonMarkup({
+		iconpos: 'notext'
+	});
+				   
+				   setTimeout(function() {
+						//alert();
+					}, 1000);
+				   
+	 });
+}
 
 function verificawifi(){
 	$("#verifica").click();
@@ -220,7 +220,7 @@ function onResume() {
 
 function checkPos() {
 	
-	navigator.geolocation.getCurrentPosition(onSuccess, onError, {maximumAge:600000, timeout:80000, enableHighAccuracy: true });
+	navigator.geolocation.getCurrentPosition(onSuccess, onError, {timeout: 10000, enableHighAccuracy: false, maximumAge: 0 });
 	
 	function onSuccess(position) {
 		ciao = position.coords.latitude;
@@ -288,6 +288,7 @@ function GoBack() {
 function prodotto(idProdotto) {
 
 //$(window).off("scroll");
+
 	
 $(document).on('pagebeforeshow', function () {
 	$(this).find('a[data-rel=back]').buttonMarkup({
@@ -562,7 +563,7 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=yes');
+				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -715,7 +716,7 @@ function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,Em
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				   var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=yes');
+				   var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -860,9 +861,9 @@ function LoginVera(email,pin){
 				  }
 				}
 				else{
-					navigator.notification.alert(
+				  navigator.notification.alert(
 											   'Credenziali non corrette',  // message
-											    alertDismissed,         // callback
+											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@
 											   );
@@ -1143,6 +1144,7 @@ function onPrompt(results) {
 		//Recupera la Password
 		//alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 		
+		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
 			   url:"http://www.mistertod.it/www/Check_RecPassword.asp",
@@ -1205,6 +1207,7 @@ function errorHandler(error) {
 								 );
 }
 
+
 function getKey(key){
 	if ( key == null ) {
 		keycode = event.keyCode;
@@ -1218,6 +1221,7 @@ function getKey(key){
 		document.activeElement.blur();
 		$("input").blur()
 		return false;
+		
 	}
 	
 }
@@ -1328,7 +1332,6 @@ function step1() {
 	localStorage.setItem("ProvSte1", document.getElementById("ProvStep1").value)
 	
 	localStorage.setItem("Provincia", localStorage.getItem("ProvSte1"))
-
 
 }
 
