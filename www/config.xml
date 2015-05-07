@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.betaapp.com"
+		id        = "it.betaapp.app"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>BetaApp</name>
-		<description>Beta Applicazione di test</description>
-		<author href="http://www.pokeranswer.it" email="info@pokeranswer.it">
-Anna Movchan
+		<name>MisterTod</name>
+		<description>Nuova applicazione di lancio</description>
+		<author href="http://www.mistertod.it" email="info@mistertod.it">
+PokerParade sas
 		</author>
-		<preference name="phonegap-version" value="3.7.0" />
+		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="universal" />
