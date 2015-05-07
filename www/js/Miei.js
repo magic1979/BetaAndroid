@@ -1,74 +1,15 @@
-
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 	document.addEventListener("resume", onResume, false);
-	
-	var db;
-	var dbCreated = false;
-	
 
+	var id_Utente = 20;
+	
+	contenuto(id_Utente);
+	
 	$(".spinner").hide();
-	agg();
 
 }
-
-function agg(){
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	var msg;
-	var test;
-	var P1 = '110';
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES (1, 1, 1, "Pizza", "Salvatore")');
-	});
-	
-	$('#badde').removeClass('badge1').addClass('badge2');
-	
-}
-
-
-function seleziona() {
-	$("#badde").attr("data-badge", 1+1);
-	$('#badde').removeClass('badge2').addClass('badge1');
-	
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
-					 var len = results.rows.length, i;
-					 
-					 for (i = 0; i < len; i++){
-					 
-					 msg = results.rows.item(i).IdProdotto + "," + results.rows.item(i).Qta + "," + results.rows.item(i).Descrizione + "," + results.rows.item(i).Nome;
-					 
-					 //miaVariabile = msg.split(",");
-					 
-					 //document.write(miaVariabile[0] + "<br>");
-					 //document.write(miaVariabile[1] + "<br>");
-
-					 //$('#esempio').html(miaVariabile[0] + miaVariabile[1]);
-					 $('#classifica').html(results.rows.item(i).IdProdotto + results.rows.item(i).Qta + results.rows.item(i).Descrizione + results.rows.item(i).Nome);
-					 
-					 }
-					 }, null);
-				   });
-}
-
-
-function upd() {
-	
-	db.transaction(function (tx) {
-				   tx.executeSql('UPDATE Ordine set Qta=3+1 where id=1', [], function (tx, results) {
-								 }, null);
-				   });
-	
-}
-
-
-function sel() {
-	$('#classifica').html("Ciao");
-}
-
 
 function alertDismissed() {
 	
@@ -264,7 +205,7 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
+				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=yes');
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -355,7 +296,7 @@ function vendoCC(idProdotto,nome,amount,transazioneprodotto,item_number,email,Em
 		   
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
-				  var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+				  var ref = window.open('http://www.mistertod.it/wbssella.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=yes');
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -438,61 +379,3 @@ function contenuto(id_utente) {
 		   dataType:"jsonp"});
 	
 }
-
-
-
-
-function transaction_error(tx, error) {
-	alert("Database Error: " + error);
-}
-
-function populateDB_success() {
-	dbCreated = true;
-	db.transaction(getEmployees, transaction_error);
-}
-
-function getEmployees(tx) {
-	var sql = "select e.id, e.firstName, e.lastName, e.title, e.picture, count(r.id) reportCount " +
-	"from employee e left join employee r on r.managerId = e.id " +
-	"group by e.id order by e.lastName, e.firstName";
-	tx.executeSql(sql, [], getEmployees_success);
-}
-
-function getEmployees_success(tx, results) {
-	//$('#busy').hide();
-	alert('funge');
-	var len = results.rows.length;
-	for (var i=0; i<len; i++) {
-		var employee = results.rows.item(i);
-		$('#esempio').append('<li><a href="#">' +
-							 '<p class="line1">' + employee.firstName + ' ' + employee.lastName + '</p>' +
-							 '<p class="line2">' + employee.title + '</p>' +
-							 '<span class="bubble">' + employee.reportCount + '</span></a></li>');
-	}
-	setTimeout(function(){
-			   //scroll.refresh();
-			   },100);
-	db = null;
-}
-
-function populateDB(tx) {
-	$('#busy').show();
-	tx.executeSql('DROP TABLE IF EXISTS employee');
-	var sql =
-	"CREATE TABLE IF NOT EXISTS employee ( "+
-	"id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-	"firstName VARCHAR(50), " +
-	"lastName VARCHAR(50), " +
-	"title VARCHAR(50), " +
-	"department VARCHAR(50), " +
-	"managerId INTEGER, " +
-	"city VARCHAR(50), " +
-	"officePhone VARCHAR(30), " +
-	"cellPhone VARCHAR(30), " +
-	"email VARCHAR(30), " +
-	"picture VARCHAR(200))";
-	tx.executeSql(sql);
-	
-	tx.executeSql("INSERT INTO employee (id,firstName,lastName,managerId,title,department,officePhone,cellPhone,email,city,picture) VALUES (12,'Steven','Wells',4,'Software Architect','Engineering','617-000-0012','781-000-0012','swells@fakemail.com','Boston, MA','steven_wells.jpg')");
-}
-
