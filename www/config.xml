@@ -8,8 +8,8 @@
 		<description>
 			Nuova applicazione di lancio
 		</description>
-		<author href="http://www.mistertod.it" email="info@mistertod.it">
-			PokerParade sas
+		<author href="http://www.betaapp.it" email="info@betaapp.it">
+			Salvatore sas
 		</author>
 		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
