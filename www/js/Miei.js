@@ -37,6 +37,8 @@ function seleziona() {
        tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
 					 var len = results.rows.length, i;
 					 
+					 alert(len);
+					 
 					 for (i = 0; i < len; i++){
 					 
 					 msg = results.rows.item(i).IdProdotto + "," + results.rows.item(i).Qta + "," + results.rows.item(i).Descrizione + "," + results.rows.item(i).Nome;
@@ -58,9 +60,9 @@ function seleziona() {
 function upd() {
 	
 	db.transaction(function (tx) {
-				   tx.executeSql('UPDATE Ordine set Qta=3+1 where id=1', [], function (tx, results) {
-								 }, null);
-				   });
+			tx.executeSql('UPDATE Ordine set Qta=3+1 where id=1', [], function (tx, results) {
+			}, null);
+	});
 	
 }
 

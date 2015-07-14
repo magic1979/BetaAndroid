@@ -81,7 +81,6 @@ var app = {
 		});
 		
 		var email = localStorage.getItem("email");
-		var loginvera = localStorage.getItem("loginvera");
 		var ciao = "";
 		var ciao1 = "";
 		var distanza = "";
@@ -91,6 +90,9 @@ var app = {
 		var Badge10 = localStorage.getItem("Badge10");
 		var db;
 		var dbCreated = false;
+		
+		var IDProd = getParameterByName('prod');
+		
 		
 		//alert(Badge10)
 		
@@ -116,7 +118,6 @@ var app = {
 			$("#badde2").html('<img src="img/CartW.png" width="20px">');
 		}
 			
-
 		
 		/*var filtro = '<table id="filtroTB" width="320px" align="center"><tr><td width="160px"><select id="Categoria" name="Categoria" data-theme="b"><option value="All" selected>Schegli Tra</option><option value="Ristoranti">Ristoranti</option><option value="Hotel">Hotel e Spa</option><option value="Eventi">Eventi</option><option value="Sport">Sport</option><option value="Salute">Bellezza</option><option value="Corsi">Corsi</option></select></td><td width="160px"><select id="Provincia" name="Provincia" data-theme="b"><option value="Tutte" selected>Provincia</option><option value="Roma">Roma</option><option value="Napoli">Napoli</option><option value="Agrigento">Agrigento</option></select></td><td width="80px" align="left"></td></tr></table>';
 		
@@ -167,10 +168,9 @@ var app = {
 			
 			checkPos();
 			agg();
-			mostrapunti()
 			$(".spinner").hide();
 			
-			buildprodotto('Pizza','Roma',1);
+			buildprodotto(IDProd);
 			
 		}
 		else{
@@ -211,6 +211,25 @@ var app = {
     }
 	
 }
+
+function getParameterByName(name) {
+	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+						  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+						  results = regex.exec(location.search);
+						  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+						  }
+						  
+						  function undor() {
+						  
+						  document.execCommand('undo', false, null);
+						  
+						  }
+						  
+						  function redor() {
+						  
+						  document.execCommand('redo', false, null);
+						  
+						  }
 
 function pagina22() {
 	
@@ -314,18 +333,45 @@ function AggProd(prod) {
 	var test;
 	var P1 = '110';
 	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
+						  $(".spinner").show();
+						  $.ajax({
+								 type:"GET",
+								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 contentType: "application/json",
+								 data: {id:prod},
+								 timeout: 7000,
+								 jsonp: 'callback',
+								 crossDomain: true,
+								 success:function(result){
+								 
+								 $.each(result, function(i,item){
+										msg=item.Nome;
+										prezzo=item.Deal;
+								 });
+								 
+								 db.transaction(function (tx) {
+												tx.executeSql('UPDATE Ordine set Qta=Qta+1, Descrizione=Descrizione + '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
+															  aggiornamento = 1;
+															  //alert("Prod:" + prod);
+															  }, null);
+												});
+								 
+								 $(".spinner").hide();
+								 
+								 
+								 },
+								 error: function(){
+								 $(".spinner").hide();
+								 
+								 navigator.notification.alert(
+															  'Possibile errore di rete, riprova tra qualche minuto 2',  // message
+															  alertDismissed,         // callback
+															  'Attenzione',            // title
+															  'Done'                  // buttonName@
+															  );
+								 
+								 },
+								 dataType:"jsonp"});
 
 	
 	localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))+1)
@@ -348,18 +394,10 @@ function AggProd(prod) {
 	
 	$( "#carro2" ).effect( "bounce", "slow" );
 	
-	db.transaction(function (tx) {
-		tx.executeSql('UPDATE Ordine set Qta=Qta+1, Descrizione=Descrizione + '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
-			aggiornamento = 1;
-			//alert("Prod:" + prod);
-		}, null);
-	});
-
-	if(aggiornamento==0){
+	 if(aggiornamento==0){
 		agg2(prod)
-		//alert("Prod:" + prod);
+		 //alert("Prod:" + prod);
 	}
-	
 	
 }
 
@@ -371,18 +409,37 @@ function SottProd(prod) {
 	var test;
 	var P1 = '110';
 	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
+						  $(".spinner").show();
+						  $.ajax({
+								 type:"GET",
+								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 contentType: "application/json",
+								 data: {id:prod},
+								 timeout: 7000,
+								 jsonp: 'callback',
+								 crossDomain: true,
+								 success:function(result){
+								 
+								 $.each(result, function(i,item){
+										msg=item.Nome;
+										prezzo=item.Deal;
+										
+										});
+								 
+								 
+								 },
+								 error: function(){
+								 $(".spinner").hide();
+								 
+								 navigator.notification.alert(
+															  'Possibile errore di rete, riprova tra qualche minuto 2',  // message
+															  alertDismissed,         // callback
+															  'Attenzione',            // title
+															  'Done'                  // buttonName@
+															  );
+								 
+								 },
+								 dataType:"jsonp"});
 	
 	var Badge10;
 	/*if (parseInt(localStorage.getItem("Badge10")) > 0){
@@ -481,24 +538,44 @@ function agg2(prod){
 	var test;
 	var P1 = '110';
 	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-		}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES ('+ prod +', 1, 1, "'+ prezzo +'", "'+ msg +'")');
-				   });
-	
+						  $(".spinner").show();
+						  $.ajax({
+								 type:"GET",
+								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 contentType: "application/json",
+								 data: {id:prod},
+								 timeout: 7000,
+								 jsonp: 'callback',
+								 crossDomain: true,
+								 success:function(result){
+								 
+								 $.each(result, function(i,item){
+										msg=item.Nome;
+										prezzo=item.Deal;
+										
+								 });
+								 
+								 db.transaction(function (tx) {
+									tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
+									tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES ('+ prod +', 1, 1, "'+ prezzo +'", "'+ msg +'")');
+								  });
+								 
+								 $(".spinner").hide();
+								 
+								 },
+								 error: function(){
+								 $(".spinner").hide();
+								 
+								 navigator.notification.alert(
+															  'Possibile errore di rete, riprova tra qualche minuto 2',  // message
+															  alertDismissed,         // callback
+															  'Attenzione',            // title
+															  'Done'                  // buttonName@
+															  );
+								 
+								 },
+								 dataType:"jsonp"});
+						  
 	seleziona();
 }
 
@@ -1330,7 +1407,7 @@ function NextPage(Pagina) {
 	buildprodotto(localStorage.getItem("Categoria"),localStorage.getItem("Provincia"),Pagina);
 }
 
-function buildprodotto(Categoria,Provincia,Pagina) {
+function buildprodotto(IDProd) {
 	
 	localStorage.setItem("Categoria", "");
 	localStorage.setItem("Provincia", "");
@@ -1339,8 +1416,8 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	var landmark2="";
 	$(".spinner").show();
 	var model = device.model;
-	var MeseScadenza = "06";
-	var GiornoScadenza = "14";
+	//var MeseScadenza = "06";
+	//var GiornoScadenza = "14";
 	var OraScadenza = "15";
 	var MinutiScadenza = "00";
 	
@@ -1349,10 +1426,10 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/Check_Home.asp",
+		   url:"http://www.gtechplay.com/www/Check_Prodotto.asp",
+		   //url:"http://www.mistertod.it/www/Check_Prodotto.asp",
 		   contentType: "application/json",
-		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
-		   data: {Categoria:"offerte"},
+		   data: {id:IDProd},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -1360,7 +1437,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 		   
 		   $.each(result, function(i,item){
 				if (item.ID != 0){
-				   distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
+				   //distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
 				  
 				   //alert(distanza);javascript:AggProd(3);
 				  
@@ -1368,7 +1445,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>Aquistati:</font><font size='2' color='#B40431'> 7</font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> -10%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' style='display:none' class='visione'><a href='javascript:AggProd(3)' onclick='#' data-role='button' class='custom-btn3' data-theme='b'></a></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index2.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#' class='btn'><font color='#fff'>Aggiungi</font></a><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 				  }
 				  
 				  idProdotto = idProdotto+1;
@@ -1377,12 +1454,11 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 				  <font size='2' color='#454545'>Scade tra 14 giorni</font>
 				  <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 				  
-
+				  //alert(idProdotto);
 				  
-				  
-				  //$("#getting-started").countdown("2015/"+ MeseScadenza +"/"+ GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
-						//$(this).html(event.strftime('%D giorni %H:%M:%S'));
-					//});
+				  $("#getting-started").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
+						$(this).html(event.strftime('%D giorni %H:%M:%S'));
+					});
 				  
 				  
 				}
@@ -1948,79 +2024,10 @@ function initscroll() {
 
 
 function saldopunti(){
-	var loggato = localStorage.getItem("loginvera")
-	
-	
-	if((loggato=="")||(!loggato)){
-		//alert("No")
-		window.location.href = "Login.html";
-	}else{
-		//window.location.href = "profilo.html";
-		//window.location.href = "Login.html";
-		
-		/*localStorage.getItem("Nome")
-		localStorage.getItem("Cognome")
-		localStorage.getItem("Punti")
-		localStorage.getItem("Indirizzo")
-		localStorage.getItem("Citta")
-		localStorage.getItem("Telefono")
-		localStorage.getItem("email")*/
-		
-		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
-		
-		$("#profile").html(tblProfile)
-		$("#profile").show()
-		
-	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
+	navigator.notification.alert(
 								 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
 								 alertDismissed,         // callback
 								 'Saldo Punti',            // title
 								 'Chiudi'                  // buttonName
-								 );*/
-	
+								 );
 }
-
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	if((loggato=="")||(!loggato)){
-		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
-	}else{
-		
-		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
-	
-	}
-	
-	$("#profile").html(tblProfile)
-	$("#profile").show()
-	
-}
-
-
-function uscire(){
-localStorage.setItem("loginvera", "")
-localStorage.setItem("email", "")
-	
-window.location.href = "index2.html";
-}
-
-
-function goprofilo(){
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	if((loggato=="")||(!loggato)){
-		window.location.href = "Login.html";
-	}else{
-		
-		window.location.href = "Profilo.html";
-	}
-}
-

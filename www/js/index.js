@@ -43,7 +43,7 @@ var app = {
 		
 		// Facebook Conncet ------------------------------------------
 		/*var fbLoginSuccess = function (userData) {
-			alert("UserInfo: " + JSON.stringify(userData)); 
+			alert("UserInfo: " + JSON.stringify(userData));
 		}
 		
 		facebookConnectPlugin.login(["public_profile"],

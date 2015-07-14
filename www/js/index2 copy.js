@@ -50,9 +50,10 @@ var app = {
 		}
 		
 		
-		//if(localStorage.getItem("step1")!="GO" && localStorage.getItem("step2")!="GO"){
-			//window.location.href = "#page7";
-		//}
+		if(localStorage.getItem("step1")!="GO" && localStorage.getItem("step2")!="GO"){
+			window.location.href = "#page7";
+		}
+		
 
 		
     },
@@ -70,18 +71,17 @@ var app = {
 		.on('blur', function (e) {
 			$('header, footer').css('position', 'fixed');
 			//force page redraw to fix incorrectly positioned fixed elements
-			//setTimeout( function() {
-			//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
-			//		   }, 20 );
+			setTimeout( function() {
+        window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
+					   }, 20 );
 			});
 	
-	
+		
 		$(document).keydown(function (eventObj){
 			getKey(eventObj);
 		});
 		
 		var email = localStorage.getItem("email");
-		var loginvera = localStorage.getItem("loginvera");
 		var ciao = "";
 		var ciao1 = "";
 		var distanza = "";
@@ -89,10 +89,6 @@ var app = {
 		var Provincia="";
 		var model = device.model;
 		var Badge10 = localStorage.getItem("Badge10");
-		var db;
-		var dbCreated = false;
-		
-		//alert(Badge10)
 		
 		if((email=="")||(!email)){
 			$("#btnprofilo").attr("href", "#page4");
@@ -102,18 +98,16 @@ var app = {
 			$("#btnprofilo").attr("onclick", "#");
 		}
 		
-		if((Badge10=="")||(!Badge10)||(Badge10==0)){
+		if((Badge10=="")||(!Badge10)){
 			localStorage.setItem("Badge10", 0)
-			$('#badde').removeClass('badge1').addClass('badge2');
-			
 		}else{
 			$('#badde').removeClass('badge2').addClass('badge1');
 			$("#badde").attr("data-badge", Badge10);
-			$("#badde").html('<img src="img/CartW.png" width="20px">');
+			$("#badde").html('<img src="img/upload.png" width="18px">');
 			
 			$('#badde2').removeClass('badge2').addClass('badge1');
 			$("#badde2").attr("data-badge", Badge10);
-			$("#badde2").html('<img src="img/CartW.png" width="20px">');
+			$("#badde2").html('<img src="img/upload.png" width="18px">');
 		}
 			
 
@@ -166,8 +160,6 @@ var app = {
 			$('#noconn2').hide();
 			
 			checkPos();
-			agg();
-			mostrapunti()
 			$(".spinner").hide();
 			
 			buildprodotto('Pizza','Roma',1);
@@ -207,24 +199,16 @@ var app = {
 			
 			
 			$(".spinner").hide();
+			$(this).find('a[data-rel=back]').buttonMarkup({
+					iconpos: 'notext'
+			});
+			
 		}
     }
 	
-}
+};
 
 function pagina22() {
-	
-	$(document).on('pagebeforeshow', function () {
-		$(this).find('a[data-rel=back]').buttonMarkup({
-			iconpos: 'notext'
-			});
-				   
-		//setTimeout(function() {
-		//	$(window).scrollTop($(window).scrollTop()+1);
-			//window.scrollTo(0,0);
-		//}, 500);
-				   
-	});
 	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
@@ -236,400 +220,57 @@ function pagina22() {
 		$("#btnprofilo2").attr("href", "#mypanel");
 		$("#btnprofilo2").attr("onclick", "#");
 	}
-}
-
-function pagina23() {
-	
-	$(document).on('pagebeforeshow', function () {
-		$(this).find('a[data-rel=back]').buttonMarkup({
-		 iconpos: 'notext'
-		 });
-				   
-			//setTimeout(function() {
-			//$(window).scrollTop($(window).scrollTop()+1);
-				//window.scrollTo(0,0);
-			//}, 500);
-				   
-	});
-	
-	var email = localStorage.getItem("email");
-	var Badge10 = localStorage.getItem("Badge10");
-	
-	
-	if((email=="")||(!email)){
-		//alert();
-		$("#btnprofilo5").attr("href", "#page4");
-		$("#btnprofilo5").attr("onclick", "javascript:checklogin();");
-		
-	}else{
-		$("#btnprofilo4").attr("href", "#mypanel");
-		$("#btnprofilo4").attr("onclick", "#");
-	}
-}
-
-function gocart() {
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 	
 	$(document).on('pagebeforeshow', function () {
 		$(this).find('a[data-rel=back]').buttonMarkup({
 		iconpos: 'notext'
 	});
 				   
-	//setTimeout(function() {
-		//$(window).scrollTop($(window).scrollTop()+1);
-		//window.scrollTo(0,0);
-	//}, 500);
+				   setTimeout(function() {
+							  $(window).scrollTop($(window).scrollTop()+1);
+							  //window.scrollTo(0,0);
+							  }, 1000);
+			
+				   setTimeout(function() {
+						//alert();
+					}, 1000);
 				   
- });
-	
-	var email = localStorage.getItem("email");
-	var Badge10 = localStorage.getItem("Badge10");
-	$("#badde3").attr("data-badge", Badge10);
-	
-	if (Badge10 > 0){
-		$('#badde3').removeClass('badge2').addClass('badge3');
-	}
-
-	
-	if((email=="")||(!email)){
-		$("#btnprofilo3").attr("href", "#page4");
-		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
-	}else{
-		$("#btnprofilo3").attr("href", "#mypanel");
-		$("#btnprofilo3").attr("onclick", "#");
-	}
-	
-	//$("#riepilogo9").html("");
-	
-
-	//$('#contenutoCart').html(landmark);
-	seleziona();
+	 });
 }
 
-function AggProd(prod) {
-	
-	var aggiornamento = 0;
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-
-	
+function AggProd() {
 	localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))+1)
 	var Badge10 = localStorage.getItem("Badge10");
 
 	$('#badde').removeClass('badge2').addClass('badge1');
 	$("#badde").attr("data-badge", Badge10);
-	$("#badde").html('<img src="img/CartW.png" width="20px">');
+	$("#badde").html('<img src="img/upload.png" width="18px">');
 	
 	$('#badde2').removeClass('badge2').addClass('badge1');
 	$("#badde2").attr("data-badge", Badge10);
-	$("#badde2").html('<img id="carro2" src="img/CartW.png" width="20px">');
-	
-	$('#badde3').removeClass('badge2').addClass('badge1');
-	$("#badde3").attr("data-badge", Badge10);
-	
-	$('#badde4').removeClass('badge2').addClass('badge1');
-	$("#badde4").attr("data-badge", Badge10);
-	$("#badde4").html('<img src="img/CartW.png" width="20px">');
-	
-	$( "#carro2" ).effect( "bounce", "slow" );
-	
-	db.transaction(function (tx) {
-		tx.executeSql('UPDATE Ordine set Qta=Qta+1, Descrizione=Descrizione + '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
-			aggiornamento = 1;
-			//alert("Prod:" + prod);
-		}, null);
-	});
-
-	if(aggiornamento==0){
-		agg2(prod)
-		//alert("Prod:" + prod);
-	}
-	
-	
+	$("#badde2").html('<img src="img/upload.png" width="18px">');
 }
 
-function SottProd(prod) {
-	var aggiornamento = 0;
-	var azione=0;
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-	
-	var Badge10;
-	/*if (parseInt(localStorage.getItem("Badge10")) > 0){
+function SottProd() {
+	if (parseInt(localStorage.getItem("Badge10")) > 0){
 		localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
 	
-		Badge10 = localStorage.getItem("Badge10");
+		var Badge10 = localStorage.getItem("Badge10");
 	
+		$('#badde').removeClass('badge2').addClass('badge1');
 		$("#badde").attr("data-badge", Badge10);
-		$("#badde").html('<img src="img/CartW.png" width="20px">');
+		$("#badde").html('<img src="img/upload.png" width="18px">');
 	
+		$('#badde2').removeClass('badge2').addClass('badge1');
 		$("#badde2").attr("data-badge", Badge10);
-		$("#badde2").html('<img src="img/CartW.png" width="20px">');
-		
+		$("#badde2").html('<img src="img/upload.png" width="18px">');
 	}
-	else {
-		Badge10 = 0;
-		
-		$("#badde").attr("data-badge", Badge10);
-		$("#badde").html('<img src="img/CartW.png" width="20px">');
-		
-		$("#badde2").attr("data-badge", Badge10);
-		$("#badde2").html('<img src="img/CartW.png" width="20px">');
-
-	}*/
-	
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT * FROM Ordine where id='+ prod +'', [], function (tx, results) {
-					 var len = results.rows.length, i;
-
-						for (i = 0; i < len; i++){
-							if (parseInt(results.rows.item(i).Qta) > 1){
-								tx.executeSql('UPDATE Ordine set Qta=Qta-1, Descrizione=Descrizione - '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
-										//alert("UPD");
-										
-											  localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
-											  
-											  Badge10 = localStorage.getItem("Badge10");
-											  
-											  $("#badde").attr("data-badge", Badge10);
-											  $("#badde").html('<img src="img/CartW.png" width="20px">');
-											  
-											  $("#badde2").attr("data-badge", Badge10);
-											  $("#badde2").html('<img src="img/CartW.png" width="20px">');
-											  
-											  $("#badde3").attr("data-badge", Badge10);
-											  
-											  $("#badde4").attr("data-badge", Badge10);
-
-								   }, null);
-							}
-							else{
-									tx.executeSql('DELETE FROM Ordine where id='+ prod +'', [], function (tx, results) {
-										//alert("DEL");
-										$(".buttonOrdine").hide();
-												  
-												  localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
-												  Badge10 = localStorage.getItem("Badge10");
-												  
-												  $("#badde").attr("data-badge", Badge10);
-												  $("#badde").html('<img src="img/CartW.png" width="20px">');
-												  
-												  $("#badde2").attr("data-badge", Badge10);
-												  $("#badde2").html('<img src="img/CartW.png" width="20px">');
-												  
-												  $("#badde3").attr("data-badge", Badge10);
-												  
-												  $("#badde4").attr("data-badge", Badge10);
-												  
-								   }, null);
-							}
-						}
-
-					 }, null);
-				   });
-	
-	seleziona();
-}
-
-function agg(){
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	var msg;
-	var test;
-	var P1 = '110';
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       //tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES (1, 1, 1, "Omaggio", "Omaggio")');
-	});
-	
-}
-
-function agg2(prod){
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-		}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES ('+ prod +', 1, 1, "'+ prezzo +'", "'+ msg +'")');
-				   });
-	
-	seleziona();
-}
-
-
-
-function seleziona() {
-	var Badge10 = localStorage.getItem("Badge10");
-	$("#badde3").attr("data-badge", Badge10);
-	var TOT = localStorage.getItem("TOT");
-	
-	var landmark = '<table id="myTable" class="tablesorter"><thead><tr><th><font color="white" size="2">ORDINE</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2">QTA</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2">COSTO</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2"></font></th><th><font color="white" size="2"></font></th></tr></thead><tbody id="contenutoCart">';
-	
-	
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
-					 var len = results.rows.length, i;
-					 
-					 //alert(len);
-					 
-					 for (i = 0; i < len; i++){
-					 
-					 msg = results.rows.item(i).IdProdotto + "," + results.rows.item(i).Qta + "," + results.rows.item(i).Descrizione + "," + results.rows.item(i).Nome;
-					 
-					 landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'</font></td><td><font size="3">'+ results.rows.item(i).Descrizione +'</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
-					 
-					  //TOT = (Number(TOT) + Number(results.rows.item(i).Descrizione));
-					 
-					 //$("#buttonOrdine").show();
-					 
-					 //miaVariabile = msg.split(",");
-					 
-					 //document.write(miaVariabile[0] + "<br>");
-					 //document.write(miaVariabile[1] + "<br>");
-					 
-					 //$('#esempio').html(miaVariabile[0] + miaVariabile[1]);
-					 //$('#contenutoCart').html(msg);
-					 
-					 }
-					 
-					 landmark = landmark + '</tbody></table>';
-					 $('#contenutoCart').html(landmark);
-					 
-					 selPrezzo();
-					 //$('#TOTPrezzo').html(TOT.toFixed(2));
-					 //localStorage.setItem("TOT", TOT.toFixed(2))
-					 
-					 
-					 }, null);
-				   });
-
-}
-
-function dlt(){
-	db.transaction(function (tx) {
-		tx.executeSql('DELETE FROM Ordine', [], function (tx, results) {
-	}, null);
-	});
-	
-	
-	localStorage.setItem("Badge10", 0)
-	
-	Badge10 = localStorage.getItem("Badge10");
-	
-	$("#badde").attr("data-badge", Badge10);
-	
-	$("#badde2").attr("data-badge", Badge10);
-
-	$('#badde3').removeClass('badge3').addClass('badge2');
-	
-	$('#badde4').removeClass('badge3').addClass('badge2');
-	
-	localStorage.setItem("TOT", 0)
-
-	seleziona();
-}
-
-function selPrezzo(){
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT SUM(Descrizione) as TOT FROM Ordine', [], function (tx, results) {
-					 var len = results.rows.length, i;
-					 
-					 //alert(len);
-					 
-					 for (i = 0; i < len; i++){
-						$('#TOTPrezzo').html(Number(results.rows.item(i).TOT).toFixed(2));
-					 }
-
-					 
-					 }, null);
-				   });
-	
-	document.removeEventListener('touchmove', handleTouch, false);
-
-}
-
-function compraConsegna(){
-	navigator.notification.alert(
-								 'Riceverai la conferma e i tempi di consegna entro pochi minuti, grazie.',  // message
-								 alertDismissed,         // callback
-								 'Ordine Spedito',            // title
-								 'Chiudi'                  // buttonName
-								 );
-}
-
-function paco(){
-	
-	$.ajax({
-		   type:"GET",
-		   url:"http://5.249.157.197:9000/jsonp",
-		   data: {ID:1},
-		   contentType: "application/json; charset=utf-8",
-		   json: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-			alert(result.Slogan);
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-			alert("Errore");
-		   
-		   },
-		   dataType:"json"});
-
 }
 
 function verificawifi(){
 	$("#verifica").click();
 }
+
 
 
 function onResume() {
@@ -649,23 +290,13 @@ function checkPos() {
 		
 		localStorage.setItem("geostory", "SI")
 		
-		$("#radio").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		
 		//alert('Lat' + ciao + 'Lng' + ciao1);
-		/*$("#radio").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		$("#radio2").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		$("#radio9").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");*/
 	}
 	
 	
 	function onError(error) {
 		
 		localStorage.setItem("geostory", "NO")
-		
-		/*$("#radio").attr("maps:q=Via di Acilia, 17,Roma");
-		$("#radio2").attr("maps:q=Via di Acilia, 17,Roma");
-		$("#radio9").attr("maps:q=Via di Acilia, 17,Roma");*/
-
 	}
 	
 }
@@ -714,23 +345,21 @@ function GoBack() {
 	}
 
 function prodotto(idProdotto) {
-	
-	//loaded();
-	//$(window).off("scroll");
-	
-	$(document).on('pagebeforeshow', function () {
-				   $(this).find('a[data-rel=back]').buttonMarkup({
-																 iconpos: 'notext'
-																 });
 
-
-				   setTimeout (function(){
-						myScroll.refresh();
-					}, 1000);
-
-				   });
+//$(window).off("scroll");
 
 	
+$(document).on('pagebeforeshow', function () {
+	$(this).find('a[data-rel=back]').buttonMarkup({
+	  iconpos: 'notext'
+	});
+	
+		setTimeout(function() {
+			$(window).scrollTop($(window).scrollTop()+1);
+			//window.scrollTo(0,0);
+        }, 1000);
+			   
+});
 	
 	var landmark2 ="";
 	$(".spinner").show();
@@ -750,49 +379,47 @@ function prodotto(idProdotto) {
 		   
 		   $.each(result, function(i,item){
 				  
-				  $("#idheader").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>"+ item.Nome +"</font></td><td width='50px' align='center' valign='middle'></td></tr></table>");
+				  	$("#idheader").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>"+ item.Nome +"</font></td><td width='50px' align='center' valign='middle'><img src='Tod10.png' width='22'></td></tr></table>");
 				  
 				  if((item.TitRecensione=="")||(!item.TitRecensione)){
-				  var Recensione = "";
+					var Recensione = "";
 				  }
 				  else{
-				  Recensione = "<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>"+ item.TitRecensione +"<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Recensione +"</font></td></tr>";
+					Recensione = "<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>"+ item.TitRecensione +"<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Recensione +"</font></td></tr>";
 				  }
 				  
-				  
-				  if (model.indexOf('iPad') >= 0) {
+					
+				if (model.indexOf('iPad') >= 0) {
 				  $("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='440px' class='arrotondamento'><table width='90%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dove Siamo<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'><img src='img/pin.png' height='24px'> "+ item.Indirizzo +"<br>"+ item.Cap +", "+ item.Citta +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
 				  }
 				  else{
-				  $("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dove Siamo<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'><img src='img/pin.png' height='24px'> "+ item.Indirizzo +"<br>"+ item.Cap +", "+ item.Citta +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
+					$("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dove Siamo<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'><img src='img/pin.png' height='24px'> "+ item.Indirizzo +"<br>"+ item.Cap +", "+ item.Citta +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
 				  }
 				  
-				  //$("#clock").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ item.OraScadenza +":"+ item.MinutiScadenza +":00", function(event) {
-										//$(this).html(event.strftime('%D giorni %H:%M:%S'));
-										//});
+					$("#clock").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ item.OraScadenza +":"+ item.MinutiScadenza +":00", function(event) {
+							$(this).html(event.strftime('%D giorni %H:%M:%S'));
+					});
 				  
 				  });
 		   
 		   $(".spinner").hide();
-		   
 		   
 		   },
 		   error: function(){
 		   $(".spinner").hide();
 		   
 		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
+			'Possibile errore di rete, riprova tra qualche minuto',  // message
+			 alertDismissed,         // callback
+			 'Attenzione',            // title
+			 'Done'                  // buttonName
+			);
 		   
 		   },
 		   dataType:"jsonp"});
-	
+
 	
 	$("#idfooter").html("<table id='idfooter' border='1'><tr><td width='200px' align='center'><span id='clock'></span></td><td width='120px' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",0);' data-transition='slide' class='ui-btn ui-shadow ui-corner-all'>Acquista!</a></td></tr></table>");
-	
 	
 }
 
@@ -1025,13 +652,6 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 		   dataType:"jsonp"});
 }
 
-function compraDemo() {
-	var ref = window.open('http://www.mistertod.it/CCDemo.asp?Transprodotto=3643144&Nome=Pizza', '_blank', 'location=no');
-}
-
-function compraccDemo() {
-	 var ref = window.open('http://www.mistertod.it/PPDemo.asp?Transprodotto=3643144', '_blank', 'location=no');
-}
 
 function compracc(idProdotto) {
 	var num1 = Math.floor((Math.random() * 20) + 1);
@@ -1193,10 +813,10 @@ function checklogin() {
 		iconpos: 'notext'
 	});
 				   
-	//setTimeout(function() {
-		//$(window).scrollTop($(window).scrollTop()+1);
+	setTimeout(function() {
+		$(window).scrollTop($(window).scrollTop()+1);
 		//window.scrollTo(0,0);
-	//}, 1000);
+	}, 1000);
 });
 	
 	$("#idheader4").html("<table id='idheader' height='50'><tr><td width='320px' align='center' valign='middle'><font class='fontsforweb_fontid_2802' color='#FFFFFF' size='5.5'>Mister Tod</font></span></td></tr></table>");
@@ -1339,20 +959,13 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	var landmark2="";
 	$(".spinner").show();
 	var model = device.model;
-	var MeseScadenza = "06";
-	var GiornoScadenza = "14";
-	var OraScadenza = "15";
-	var MinutiScadenza = "00";
-	
-	// inserire nel WS le date di scadenza
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/Check_Home.asp",
+		   url:"http://www.mistertod.it/www/Check_Home4.asp",
 		   contentType: "application/json",
-		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
-		   data: {Categoria:"offerte"},
+		   data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -1360,50 +973,46 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 		   
 		   $.each(result, function(i,item){
 				if (item.ID != 0){
-				   distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
+				  distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
 				  
-				   //alert(distanza);javascript:AggProd(3);
+				  //landmark2 = landmark2 + item.Cod_Prodotto + item.IMG + item.Descrizione + item.Provincia + item.Valore + distanza + item.Deal;
 				  
 				  if (model.indexOf('iPad') >= 0) {
-					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:prodotto("+ item.Cod_Prodotto +");' data-transition='slide'><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#FF8000'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>Aquistati:</font><font size='2' color='#B40431'> 7</font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> -10%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' style='display:none' class='visione'><a href='javascript:AggProd(3)' onclick='#' data-role='button' class='custom-btn3' data-theme='b'></a></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' data-transition='slide'><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#FF8000'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  
-				  idProdotto = idProdotto+1;
-				  /*<font size='4' color='#B40431'>"+ item.Deal +"&euro;</font>
-				  <font size='3' color='#454545'>"+ item.Descrizione +"</font>
-				  <font size='2' color='#454545'>Scade tra 14 giorni</font>
-				  <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
-				  
-
-				  
-				  
-				  //$("#getting-started").countdown("2015/"+ MeseScadenza +"/"+ GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
-						//$(this).html(event.strftime('%D giorni %H:%M:%S'));
-					//});
-				  
+				  if(item.Conteggio>18){
+					$("#NextPagina2").show();
+				  }
+				  else{
+					$("#NextPagina2").hide();
+				  }
 				  
 				}
 				else{
 				  landmark2 ="Nessun risultato trovato";
 				}
-				  
 				
 			});
 		   
 		   $(".spinner").hide();
 		   $("#classifica").html(landmark2);
 		   
-		    myScroll.refresh();
-		   //myScroll = new IScroll('#wrapper', { click: true });
+		   if(Pagina==1){
+			$("#NextPagina").attr("href", "javascript:NextPage(2)");
+		   }
+		   else{
+		   $("#NextPagina").attr("href", "javascript:NextPage(1)");
+		   }
+		   
+		   //window.scrollTo(0, 0);
 		   
 		   },
 		   error: function(){
 		   $(".spinner").hide();
-		   
-		   
 		   
 		   navigator.notification.alert(
 										'Possibile errore di rete, riprova tra qualche minuto',  // message
@@ -1414,67 +1023,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 		   
 		   },
 		   dataType:"jsonp"});
-	
-			//$('#getting-started').countdown('2015/06/30', function(event) {
-				//$(this).html(event.strftime('%w sett. %d giorni %H:%M:%S'));
-			//});
 
-}
-
-function vedi(prod) {
-	
-	//alert("vedi" + prod);
-	
-	//var elementHeight = element.height();
-	var windowHeight  = $(window).height();
-	
-	var altezza= windowHeight;
-	//alert(altezza);
-	
-	if (prod!=4){
-		myScroll.scrollTo(0, -altezza, 0);
-	}
-	else
-	{
-		myScroll.scrollTo(0, 0, 0);
-	}
-	
-	// chiamare prodotto e costruire una nuova pagina solo con uno tutto aperto.
-	
-	setTimeout(function() {
-			   $("#vis1"+ prod +"").toggle( "slide" );
-			   $("#vis2"+ prod +"").toggle( "slide" );
-			   $("#deallo"+ prod +"").attr("colspan", "1");
-			   $("#linkdettagli"+ prod +"").attr("href", "javascript:NOvedi("+ prod +")");
-			   
-			   
-			   setTimeout(function() {
-						  myScroll.refresh();
-			   }, 300);
-	}, 300);
-	
-
-	
-	//myScroll.refresh();
-}
-
-function NOvedi(prod) {
-	//alert("Novedi" + prod);
-	
-	setTimeout(function() {
-	$("#vis1"+ prod +"").hide();
-	$("#vis2"+ prod +"").hide();
-	$("#deallo"+ prod +"").attr("colspan", "2");
-	$("#linkdettagli"+ prod +"").attr("href", "javascript:vedi("+ prod +")");
-	
-	myScroll.refresh();
-	}, 300);
-
-}
-
-function compraoff(id) {
-	//alert(id);
-	$("#compraofferta"+ id +"").show();
 }
 
 function condividi(idProdotto) {
@@ -1926,101 +1475,3 @@ function step2bis() {
 	localStorage.setItem("step2", "GO");
 	localStorage.setItem("Categoria", "All");
 }
-
-function alertDismissed() {
-	
-}
-
-function rati() {
-	$('#rati1').raty({ score: 3 });
-}
-
-function initscroll() {
-	
-	myScroll = new IScroll('#wrapper', { click: true });
-				   
-	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-				   
-	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-
-}
-
-
-
-function saldopunti(){
-	var loggato = localStorage.getItem("loginvera")
-	
-	
-	if((loggato=="")||(!loggato)){
-		//alert("No")
-		window.location.href = "Login.html";
-	}else{
-		//window.location.href = "profilo.html";
-		//window.location.href = "Login.html";
-		
-		/*localStorage.getItem("Nome")
-		localStorage.getItem("Cognome")
-		localStorage.getItem("Punti")
-		localStorage.getItem("Indirizzo")
-		localStorage.getItem("Citta")
-		localStorage.getItem("Telefono")
-		localStorage.getItem("email")*/
-		
-		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
-		
-		$("#profile").html(tblProfile)
-		$("#profile").show()
-		
-	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
-								 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
-								 alertDismissed,         // callback
-								 'Saldo Punti',            // title
-								 'Chiudi'                  // buttonName
-								 );*/
-	
-}
-
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	if((loggato=="")||(!loggato)){
-		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
-	}else{
-		
-		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
-	
-	}
-	
-	$("#profile").html(tblProfile)
-	$("#profile").show()
-	
-}
-
-
-function uscire(){
-localStorage.setItem("loginvera", "")
-localStorage.setItem("email", "")
-	
-window.location.href = "index2.html";
-}
-
-
-function goprofilo(){
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	if((loggato=="")||(!loggato)){
-		window.location.href = "Login.html";
-	}else{
-		
-		window.location.href = "Profilo.html";
-	}
-}
-

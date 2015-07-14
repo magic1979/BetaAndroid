@@ -477,10 +477,37 @@ a {text-decoration:none;}
 			text-shadow:0 0 0;
 		}
 		.someClass2 {
-			font-weight: normal;
+			color: #000;
+			font-size: 20px;
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		.btn {
+			background: #9f1e24;
+			background-image: -webkit-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -moz-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -ms-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -o-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: linear-gradient(to bottom, #9f1e24, ##9f1e24);
+			-webkit-border-radius: 21;
+			-moz-border-radius: 21;
+			border-radius: 21px;
+			font-family: Arial;
+			color: #ffffff;
+			font-size: 24px;
+			padding: 10px 20px 10px 20px;
 			text-decoration: none;
-			text-shadow:0 0 0;
-			font-size: 18px;
+		}
+		
+		.btn:hover {
+			background: #000000;
+			background-image: -webkit-linear-gradient(top, #000000, #9f1e24);
+			background-image: -moz-linear-gradient(top, #000000, #9f1e24);
+			background-image: -ms-linear-gradient(top, #000000, #9f1e24);
+			background-image: -o-linear-gradient(top, #000000, #9f1e24);
+			background-image: linear-gradient(to bottom, #000000, #9f1e24);
+			text-decoration: none;
 		}
 		
 		</style>
@@ -509,7 +536,7 @@ a {text-decoration:none;}
 			<div id="wrapper">
 				<div id="scroller">
 					<center>
-					<div id="classifica" align="center"></div><br><br><br>
+						<div id="classifica" align="center"></div><br><br>Scade tra:
 					<div id="getting-started" class="someClass2"></div>
 					</center>
 				</div>
@@ -518,7 +545,7 @@ a {text-decoration:none;}
 			<div id="footer" data-role="footer" data-theme="b" data-tap-toggle="false" class="div1">
 				<div data-role="navbar" class="nav" data-grid="d" data-theme="c" class="div1">
 				<ul>
-					<li><a href="#" id="programas" data-icon="homehome" rel="external" ><font size="1">Promo</font></a></li>
+					<li><a href="index2.html" id="programas" data-icon="homehome" rel="external" ><font size="1">Promo</font></a></li>
 					<li><a href="menu.html" onclick="#" id="menuR" data-icon="ristohome" rel="external"><font size="1">Menu</font></a></li>
 					<li><a href="cart.html" onclick="#" id="badde2" class="badge2" data-badge="1" data-icon="taifun" rel="external"><font size="1">Carrello</font></a></li>
 					<li><a id="btnprofilo7" href="rating.html" onclick="#" data-icon="userhome" rel="external"><font size="1">Recensioni</font></a></li>
@@ -551,19 +578,12 @@ a {text-decoration:none;}
 					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Food App</font>
 						<br><font color="#000000" size="2">Via di Acilia 17, 00125 Roma</font><br><br>
 						<ul data-role="listview" data-inset="true">
-							<li><a href="javascript:goprofilo()" rel="external">Profilo</a></li>
+							<li><a href="javascript:saldopunti()">Profilo</a></li>
 							<li><a href="#">Chi Siamo</a></li>
 							<li><a id="radio" href="#">Dove Siamo</a></li>
 							<li><a href="tel:+393476121058">Contattaci</a></li>
 						</ul>
-				</center>
-				<br>
-				
-				<table id="profile" border="0">
-					
-				
-				
-				</table>
+						</center>
 			</div>
 
 		</div><!-- /page -->
@@ -993,7 +1013,7 @@ a {text-decoration:none;}
 		</div>
 		
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index2.js"></script>
+        <script type="text/javascript" src="js/index3.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
