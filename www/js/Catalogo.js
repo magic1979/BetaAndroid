@@ -2,6 +2,10 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
+	
+	window.addEventListener('load', function() {
+		FastClick.attach(document.body);
+	}, false);
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -131,7 +135,7 @@ function buildcatalogo(Catalogo) {
 					window.location.href = "menu.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='img/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ item.Deal +"0&euro;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='img/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"&euro;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -508,7 +512,7 @@ function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
 	
-	window.location.href = "index2.html";
+	window.location.href = "index.html";
 }
 
 function goprofilo(){

@@ -42,6 +42,13 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
+	var loggato = localStorage.getItem("loginvera")
+	
+	if((loggato=="")||(!loggato)){
+		window.location.href = "Login.html";
+	}
+	
+	
 	$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
 	var email = localStorage.getItem("email");
@@ -66,6 +73,20 @@ function onDeviceReady() {
 	$('#rati1').raty({
 				  click: function(score, evt) {
 				  //alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt);
+					 
+				  var recensione = self.document.formia.recensione.value;
+					 
+				  if (recensione == "") {
+					 navigator.notification.alert(
+												  'inserisci una recensione e poi tocca le stelle',  // message
+												  alertDismissed,         // callback
+												  'Recensione',            // title
+												  'OK'                  // buttonName
+												  );
+					 return;
+					}
+					 
+				  scriviRec(recensione, score);
 			}
 	});
 
@@ -126,7 +147,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.mistertod.it/www/Check_PrendiRecensioni.asp",
+		   url:"http://www.gtechplay.com/www/check_rating.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -446,7 +467,7 @@ function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
 	
-	window.location.href = "index2.html";
+	window.location.href = "index.html";
 }
 
 function goprofilo(){
@@ -461,4 +482,46 @@ function goprofilo(){
 	}
 }
 
+function scriviRec(rec,score){
+	var loggato = localStorage.getItem("loginvera")
+	
+	if((loggato=="")||(!loggato)){
+		window.location.href = "Login.html";
+	}else{
+		
+		$(".spinner").show();
+		$.ajax({
+			   type:"GET",
+			   url:"http://www.gtechplay.com/www/check_rating.asp",
+			   contentType: "application/json",
+			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
+			   timeout: 7000,
+			   jsonp: 'callback',
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+					alert("OK")
+					window.location.href = "reting.html";
+				});
+
+			   $(".spinner").hide();
+			   
+			   },error: function(){
+			   
+			   $(".spinner").hide();
+			   
+			   navigator.notification.alert(
+											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											alertDismissed,         // callback
+											'Attenzione',            // title
+											'Done'                  // buttonName
+											);
+			   
+			   },
+			   dataType:"jsonp"});
+	}
+	
+	
+}
 

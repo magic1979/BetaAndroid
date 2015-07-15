@@ -497,7 +497,7 @@ function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
 	
-	window.location.href = "index2.html";
+	window.location.href = "index.html";
 }
 
 function goprofilo(){

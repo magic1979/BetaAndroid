@@ -128,7 +128,7 @@ function LoginVera(email,pin){
 
 				    localStorage.setItem("email", email);
 
-				    window.location.href = "index2.html";
+				    window.location.href = "index.html";
 				  }
 				  else{
 					navigator.notification.alert(

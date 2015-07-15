@@ -2,6 +2,11 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
+	
+	window.addEventListener('load', function() {
+		FastClick.attach(document.body);
+	}, false);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -107,6 +112,10 @@ function onDeviceReady() {
 
 }
 
+function someFunctionOnDblClick(){
+	e.preventDefault();
+}
+
 function seleziona() {
 	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 	
@@ -129,7 +138,7 @@ function seleziona() {
 					 
 					 Punita = (Number(results.rows.item(i).Descrizione).toFixed(2) / Number(results.rows.item(i).Qta).toFixed(2))
 					 
-					 landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'<font color="#000" size="1"> x('+ Punita +'&euro;)</font></td><td><font size="3">'+ results.rows.item(i).Descrizione +'&euro;</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
+					 landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'<font color="#000" size="1"> x('+ Number(Punita).toFixed(2) +'&euro;)</font></td><td><font size="3">'+ Number(results.rows.item(i).Descrizione).toFixed(2) +'&euro;</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
 					 
 					 }
 					 
@@ -648,8 +657,10 @@ function compraCarta() {
 	var num4 = Math.floor((Math.random() * 20) + 1);
 	var num5 = Math.floor((Math.random() * 20) + 1);
 	var num6 = Math.floor((Math.random() * 20) + 1);
+	var num7 = Math.floor((Math.random() * 20) + 1);
+	var num8 = Math.floor((Math.random() * 20) + 1);
 	
-	transazioneprodotto = num1+""+num2+""+num3+""+num4+""+num5+""+num6;
+	transazioneprodotto = num1+""+num2+""+num3+""+num4+""+num5+""+num6+""+num7+""+num8;
 	
 	var item_number= transazioneprodotto;
 	//prendere il nome prodotto e il prezzo con WS per passare al pagina di pagamento
@@ -746,7 +757,9 @@ function compraCarta() {
 								   
 								   localStorage.setItem("Punti", item.Punti);
 								   
-								   var ref = window.open('http://www.gtechplay.com/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome=Ordine AppPiu', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   
+								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
 								   }
 								   else{
@@ -799,6 +812,11 @@ function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,emai
 		   $.each(result, function(i,item){
 				  if (item.Token == "1024"){
 				  var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
+				  
+				  //var ref = window.open(encodeURI(url), '_blank', options);
+				  ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
+
+
 				  }
 				  else{
 				  navigator.notification.alert(
@@ -894,7 +912,7 @@ function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
 	
-	window.location.href = "index2.html";
+	window.location.href = "index.html";
 }
 
 function goprofilo(){
