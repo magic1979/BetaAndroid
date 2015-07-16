@@ -2,10 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
-	
-	window.addEventListener('load', function() {
-		FastClick.attach(document.body);
-	}, false);
+
 	
 	last_click_time = new Date().getTime(); 
 document.addEventListener('click', function (e) { 
