@@ -2,6 +2,25 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
+	
+	last_click_time = new Date().getTime();
+
+document.addEventListener('click', function (e) {
+
+  click_time = e['timeStamp'];
+
+  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+
+  e.preventDefault();
+
+  return false;
+
+  }
+
+  last_click_time = click_time;
+
+  }, true);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -42,12 +61,13 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
-	$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
+	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde5").attr("data-badge", Badge10);
+	$("#badde5").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
@@ -72,35 +92,12 @@ function onDeviceReady() {
     else{
         $('#noconn').show();
         
-        var tabella = '<table align="center" border="0" width="310px" height="60px" class="conn">';
-        tabella = tabella + '<tr><td align="center" width="50px"><img src="img/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
-        tabella = tabella + '</table>';
-        
-        $('#noconn').html(tabella);
-        
-        $("#verifica").bind ("click", function (event)
-             {
-               var connectionStatus = false;
-               connectionStatus = navigator.onLine ? 'online' : 'offline';
-                             
-              if(connectionStatus=='online'){
-                 onDeviceReady();
-              }
-              else{
-                   $(".spinner").hide();
-                             
-                   navigator.notification.alert(
-                   'Nessuna connessione ad internet rilevata',  // message
-                   alertDismissed,         // callback
-                   'Attenzione',            // title
-                   'OK'                  // buttonName
-                 );
-             }
-                             
-                             
-       });
-
-        
+		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
+		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
+		tabella = tabella + "</table>";
+		
+		$('#noconn').html(tabella);
+		
         $(".spinner").hide();
         
     }
@@ -114,7 +111,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -125,7 +122,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
+				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
 				  
 				 //alert(tabella)
 			});
@@ -133,6 +130,8 @@ function buildmenu() {
 		   tabella = tabella + "</table>";
 		   
 		   $(".spinner").hide();
+		    $("#noconn").hide();
+		   
 		   $("#menuL").html(tabella);
 		   
 		   myScroll.refresh();
@@ -510,4 +509,18 @@ function goprofilo(){
 		
 		window.location.href = "Profilo.html";
 	}
+}
+
+function gomappa(){
+	var addressLongLat = '41.862321,12.692804';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
+}
+
+function riparti(){
+	onDeviceReady();
 }

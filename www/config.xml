@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.BetaAndroid.it"
+		id        = "it.app-piu.pxt"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>BetaAndroid</name>
-		<description>MisterTod, e sei un cliente di serie A</description>
-		<author href="http://www.betaandroid.it" email="info@betaandroid.it">
+		<name>pizzaxte</name>
+		<description>Pizza Per Te App+</description>
+		<author href="http://www.app-piu.it" email="info@app-piu.it">
 Salvatore sas
 		</author>
 		<preference name="phonegap-version" value="3.5.0" />

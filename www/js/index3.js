@@ -3,53 +3,24 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	document.addEventListener("resume", onResume, false);
 	
-	window.addEventListener('load', function() {
-			FastClick.attach(document.body);
-	}, false);
-	
-	last_click_time = new Date().getTime(); 
-	document.addEventListener('click', function (e) { 
-		click_time = e['timeStamp']; 
-			if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation(); 
-				e.preventDefault(); 
-				return false; 
-			} 
-		last_click_time = click_time; 
-	}, true);
+	last_click_time = new Date().getTime();
 
-	
-	
-	var loginfacebook = localStorage.getItem("loginfacebook");
-	//alert(loginfacebook);
-	
-	if (loginfacebook == "SI") {
-		//alert('http://graph.facebook.com/' + localStorage.getItem("pics") + '/picture?type=small');
-		if(!localStorage.getItem("pics")||localStorage.getItem("pics")==""){
-			document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
-		}
-		else{
-			document.getElementById("userPic").src = 'http://graph.facebook.com/' + localStorage.getItem("pics") + '/picture?type=small';
-		}
-		
-		$("#Nome").html(localStorage.getItem("nome"));
-		//$("#EmailCliente").html(localStorage.getItem("email"));
-		
-	}
-	else{
-		var loginvera = localStorage.getItem("loginvera");
-		//alert(localStorage.getItem("nome"));
-		
-		if (loginvera == "SI") {
-			$("#Nome").html(localStorage.getItem("nome"));
-			document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
-			//document.getElementById("userPic").src = 'http://www.mistertod.it/Tod10.png';
-			//localStorage.setItem("idfacebook", "")@
-			//alert("exit");
-			//$(document).FaceGap('logout');
-		}
-	}
+document.addEventListener('click', function (e) {
 
-	
+  click_time = e['timeStamp'];
+
+  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+
+  e.preventDefault();
+
+  return false;
+
+  }
+
+  last_click_time = click_time;
+
+  }, true);
+
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
 	.on('focus', function (e) {
@@ -105,8 +76,6 @@ function onDeviceReady() {
 	connectionStatus = navigator.onLine ? 'online' : 'offline';
 	
 	if(connectionStatus=='online'){
-		$('#noconn').hide();
-		$('#noconn2').hide();
 		
 		checkPos();
 		agg();
@@ -117,36 +86,14 @@ function onDeviceReady() {
 	}
 	else{
 		$('#noconn').show();
-		$('#noconn2').show();
+
 		
-		var tabella = '<table align="center" border="0" width="100%" height="60px" class="conn">';
-		tabella = tabella + '<tr><td align="center" width="50px"><img src="img/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
-		tabella = tabella + '</table>';
+		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
+		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
+		tabella = tabella + "</table>";
+
 		
 		$('#noconn').html(tabella);
-		$('#noconn2').html(tabella);
-		
-		$("#verifica").bind ("click", function (event)
-							 {
-							 var connectionStatus = false;
-							 connectionStatus = navigator.onLine ? 'online' : 'offline';
-							 
-							 if(connectionStatus=='online'){
-							 app.initialize();
-							 }
-							 else{
-							 $(".spinner").hide();
-							 
-							 navigator.notification.alert(
-														  'Nessuna connessione ad internet rilevata',  // message
-														  alertDismissed,         // callback
-														  'Attenzione',            // title
-														  'OK'                  // buttonName
-														  );
-							 }
-							 
-							 });
-		
 		
 		$(".spinner").hide();
 	}
@@ -277,7 +224,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -354,7 +301,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -485,7 +432,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -656,7 +603,7 @@ function getParameterByName(name) {
 						  
 						  
 						  function onResume() {
-						  app.initialize();
+						    onDeviceReady();
 						  }
 						  
 						  function checkPos() {
@@ -1372,7 +1319,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/Check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/Check_Prodotto.asp",
 								 //url:"http://www.mistertod.it/www/Check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:IDProd},
@@ -1391,7 +1338,7 @@ function getParameterByName(name) {
 										landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 										}
 										else{
-										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#' class='btn'><font color='#fff'>Aggiungi</font></a><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='330px' height='180px'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' class='btn'><font color='#fff'>Aggiungi</font></a><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='2' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 										}
 										
 										idProdotto = idProdotto+1;
@@ -1416,7 +1363,11 @@ function getParameterByName(name) {
 										});
 								 
 								 $(".spinner").hide();
+								 $("#noconn").hide();
+								 
 								 $("#classifica").html(landmark2);
+								 
+								 $("#noconn").hide();
 								 
 								 myScroll.refresh();
 								 //myScroll = new IScroll('#wrapper', { click: true });
@@ -1984,7 +1935,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:1},
 								 jsonp: 'callback',
@@ -2013,7 +1964,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/pizzaxte/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:2},
 								 jsonp: 'callback',
@@ -2037,4 +1988,16 @@ function getParameterByName(name) {
 						  
 						  }
 
+						  function gomappa(){
+						  var addressLongLat = localStorage.getItem("lat")+','+localStorage.getItem("lng");
+						  
+						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
+						  
+						  //var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+						  
+						  }
 
+						  function riparti(){
+						  onDeviceReady();
+						  }

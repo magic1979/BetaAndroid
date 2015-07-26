@@ -3,6 +3,26 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	document.addEventListener("resume", onResume, false);
 	
+	last_click_time = new Date().getTime();
+
+document.addEventListener('click', function (e) {
+
+  click_time = e['timeStamp'];
+
+  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+
+  e.preventDefault();
+
+  return false;
+
+  }
+
+  last_click_time = click_time;
+
+  }, true);
+	
+
+	
 		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
 		document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 		
@@ -204,11 +224,73 @@ function iscriviti(){
 		navigator.notification.alert(
 									 'inserire il Nome',  // message
 									 alertDismissed,         // callback
-									 'Email',            // title
+									 'Nome',            // title
 									 'OK'                  // buttonName
 									 );
 		return;
 	}
+	
+	if (cognome == "") {
+		navigator.notification.alert(
+									 'inserire il cognome',  // message
+									 alertDismissed,         // callback
+									 'Cognome',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (indirizzo == "") {
+		navigator.notification.alert(
+									 'inserire un indirizzo',  // message
+									 alertDismissed,         // callback
+									 'Indirizzo',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (cap == "") {
+		navigator.notification.alert(
+									 'inserire un cap',  // message
+									 alertDismissed,         // callback
+									 'Cap',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (civico == "") {
+		navigator.notification.alert(
+									 'inserire un numero civico',  // message
+									 alertDismissed,         // callback
+									 'Civico',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (citta == "") {
+		navigator.notification.alert(
+									 'inserire una citta',  // message
+									 alertDismissed,         // callback
+									 'Citta',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (telefono == "") {
+		navigator.notification.alert(
+									 'inserire un telefono',  // message
+									 alertDismissed,         // callback
+									 'Telefono',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+
+
 	
 	EmailAddr = self.document.formia.emailreg.value;
 	Filtro = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
@@ -245,11 +327,13 @@ function iscriviti(){
 				  if (item.Token == '1024'){
 				  
 				  navigator.notification.alert(
-											   'controlla la tua email per attivare il tuo profilo',  // message
+											   'Registrazione effettuata correttamente.',  // message
 											    alertDismissed,         // callback
 											   'Registrazione Eseguita',            // title
 											   'Done'                  // buttonName
 											   );
+				  
+				  window.location.href = "#page.html";
 				  
 				  }
 				  else{
@@ -357,7 +441,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.mistertod.it/www/Check_RecPassword.asp",
+			   url:"http://www.gtechplay.com/pizzaxte/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
@@ -405,5 +489,15 @@ function onPrompt(results) {
 		
 		
 	}
+	
+}
+
+function gomappa(){
+	var addressLongLat = '41.862321,12.692804';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
 	
 }

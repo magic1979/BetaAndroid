@@ -3,22 +3,25 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
 	
-	window.addEventListener('load', function() {
-		FastClick.attach(document.body);
-	}, false);
-	
-	last_click_time = new Date().getTime(); 
-document.addEventListener('click', function (e) { 
-click_time = e['timeStamp']; 
-if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation(); 
-e.preventDefault(); 
-return false; 
-} 
-last_click_time = click_time; 
-}, true);
+	last_click_time = new Date().getTime();
 
+document.addEventListener('click', function (e) {
+
+  click_time = e['timeStamp'];
+
+  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+
+  e.preventDefault();
+
+  return false;
+
+  }
+
+  last_click_time = click_time;
+
+  }, true);
 	
-    
+
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
@@ -58,7 +61,7 @@ last_click_time = click_time;
 	var db;
 	var dbCreated = false;
 	
-	$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
+	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
@@ -88,36 +91,15 @@ last_click_time = click_time;
     else{
         $('#noconn').show();
         
-        var tabella = '<table align="center" border="0" width="310px" height="60px" class="conn">';
-        tabella = tabella + '<tr><td align="center" width="50px"><img src="img/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
-        tabella = tabella + '</table>';
-        
-        $('#noconn').html(tabella);
-        
-        $("#verifica").bind ("click", function (event)
-             {
-               var connectionStatus = false;
-               connectionStatus = navigator.onLine ? 'online' : 'offline';
-                             
-              if(connectionStatus=='online'){
-                 onDeviceReady();
-              }
-              else{
-                   $(".spinner").hide();
-                             
-                   navigator.notification.alert(
-                   'Nessuna connessione ad internet rilevata',  // message
-                   alertDismissed,         // callback
-                   'Attenzione',            // title
-                   'OK'                  // buttonName
-                 );
-             }
-                             
-                             
-       });
+		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
+		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
+		tabella = tabella + "</table>";
+		
+		$('#noconn').html(tabella);
+		
+		
+		$(".spinner").hide();
 
-        
-        $(".spinner").hide();
         
     }
 
@@ -176,6 +158,7 @@ function selPrezzo(){
 					 }, null);
 				   });
 	
+	$("#noconn").hide();
 }
 
 function dlt(){
@@ -209,7 +192,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -276,7 +259,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -324,7 +307,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -602,9 +585,9 @@ function compra() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/www/Check_Transaction.asp",
+							url:"http://www.gtechplay.com/pizzaxte/www/Check_Transaction.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -622,6 +605,8 @@ function compra() {
 																);
 								   
 								   localStorage.setItem("Punti", item.Punti);
+								   
+								   window.location.href = "Profilo.html";
 								   
 								   }
 								   else{
@@ -755,9 +740,9 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/www/Check_Transaction.asp",
+							url:"http://www.gtechplay.com/pizzaxte/www/Check_Transaction.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -768,7 +753,7 @@ function compraCarta() {
 								   
 								   localStorage.setItem("Punti", item.Punti);
 								   
-								   var ref = window.open('http://www.gtechplay.com/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/PizzaxTe/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -938,6 +923,19 @@ function goprofilo(){
 	}
 }
 
+function gomappa(){
+	var addressLongLat = '41.862321,12.692804';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
+}
+
+function riparti(){
+	onDeviceReady();
+}
 
 
 

@@ -2,6 +2,25 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     document.addEventListener("resume", onResume, false);
+	
+	last_click_time = new Date().getTime();
+
+document.addEventListener('click', function (e) {
+
+  click_time = e['timeStamp'];
+
+  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+
+  e.preventDefault();
+
+  return false;
+
+  }
+
+  last_click_time = click_time;
+
+  }, true);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -49,12 +68,13 @@ function onDeviceReady() {
 	}
 	
 	
-	$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
+	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
+	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
@@ -78,7 +98,7 @@ function onDeviceReady() {
 					 
 				  if (recensione == "") {
 					 navigator.notification.alert(
-												  'inserisci una recensione e poi tocca le stelle',  // message
+												  'inserisci prima una recensione e poi tocca le stelle',  // message
 												  alertDismissed,         // callback
 												  'Recensione',            // title
 												  'OK'                  // buttonName
@@ -102,34 +122,12 @@ function onDeviceReady() {
     else{
         $('#noconn').show();
         
-        var tabella = '<table align="center" border="0" width="310px" height="60px" class="conn">';
-        tabella = tabella + '<tr><td align="center" width="50px"><img src="img/wire.png" width="32px"></td><td align="left"><font color="white" size="2">Nessuna connessione attiva</font></td><td><a href="javascript:verificawifi()"><div width="40px" class="home"></div></a></td></tr>';
-        tabella = tabella + '</table>';
-        
-        $('#noconn').html(tabella);
-        
-        $("#verifica").bind ("click", function (event)
-             {
-               var connectionStatus = false;
-               connectionStatus = navigator.onLine ? 'online' : 'offline';
-                             
-              if(connectionStatus=='online'){
-                 onDeviceReady();
-              }
-              else{
-                   $(".spinner").hide();
-                             
-                   navigator.notification.alert(
-                   'Nessuna connessione ad internet rilevata',  // message
-                   alertDismissed,         // callback
-                   'Attenzione',            // title
-                   'OK'                  // buttonName
-                 );
-             }
-							 
-       });
-
-        
+		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
+		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
+		tabella = tabella + "</table>";
+		
+		$('#noconn').html(tabella);
+		
         $(".spinner").hide();
         
     }
@@ -137,17 +135,17 @@ function onDeviceReady() {
 }
 
 function seleziona() {
+	
 	var landmark2="";
 	var conta = 0;
 	$(".spinner").show();
-	var ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>"
+	var ratio = "";
 	
-	var ratio2 = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>"
 	
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/www/check_rating.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -157,22 +155,34 @@ function seleziona() {
 		   
 		   $.each(result, function(i,item){
 				  
-				if (conta==1){
-				  
-				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'> "+ item.Nome +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ ratio2 +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Recensione +"</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
-				
-				 }
-				 else{
-				  
-				  landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'> "+ item.Nome +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ ratio +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Recensione +"</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
-				  
+				  if(item.Rating==1){
+					ratio = "<img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>"
 				  }
+				  else if (item.Rating==2) {
+					ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>"
+				  }
+				  else if (item.Rating==3) {
+					ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'><img src='img/starunselected.png' width='18'>"
+				  }
+				  else if (item.Rating==4) {
+					ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starunselected.png' width='18'>"
+				  }
+				  else if (item.Rating==5) {
+					ratio = "<img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'><img src='img/starselected.png' width='18'>"
+				  }
+				
 				  
-				  conta = conta+1;
-				  });
+				  
+
+				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'> "+ item.Nome +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ ratio +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Recensione +"</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
+
+			});
 		   
 		   $(".spinner").hide();
+		   
 		    $("#recensione1").html(landmark2);
+		   
+		   $("#noconn").hide();
 		   
 		   myScroll.refresh();
 		   
@@ -492,7 +502,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/www/check_rating.asp",
+			   url:"http://www.gtechplay.com/pizzaxte/www/check_rating.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -501,8 +511,8 @@ function scriviRec(rec,score){
 			   success:function(result){
 			   
 			   $.each(result, function(i,item){
-					alert("OK")
-					window.location.href = "reting.html";
+					//alert("OK")
+					window.location.href = "rating.html";
 				});
 
 			   $(".spinner").hide();
@@ -523,5 +533,20 @@ function scriviRec(rec,score){
 	}
 	
 	
+}
+
+function gomappa(){
+	var addressLongLat = '41.862321,12.692804';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
+}
+
+
+function riparti(){
+	onDeviceReady();
 }
 
