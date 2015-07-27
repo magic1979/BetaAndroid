@@ -2,7 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 
- last_click_time = new Date().getTime();
+last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
 
@@ -19,7 +19,11 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-  
+
+
+
+$.mobile.ajaxLinksEnabled = false;
+    
 
 }
 

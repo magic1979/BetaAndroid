@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -20,16 +20,18 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
+
+
+
+$.mobile.ajaxLinksEnabled = false;
 	
+
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
     $(".spinner").show();
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 	
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -70,6 +72,14 @@ document.addEventListener('click', function (e) {
 		$('#badde3').removeClass('badge2').addClass('badge3');
 	}
 	
+	if((email=="")||(!email)){
+		$("#btnprofilo3").attr("href", "#page4");
+		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
+	}else{
+		$("#btnprofilo3").attr("href", "#mypanel");
+		$("#btnprofilo3").attr("onclick", "#");
+	}
+
 	
     if(connectionStatus=='online'){
 		$(".spinner").hide();
@@ -410,9 +420,7 @@ function verificawifi(){
 }
 
 function onResume() {
-    seleziona();
-		
-	mostrapunti()
+    onDeviceReady();
 }
 
 function onConfirm(button) {
@@ -746,7 +754,7 @@ function compraCarta() {
 								   
 								   localStorage.setItem("Punti", item.Punti);
 								   
-								   var ref = window.open('http://www.gtechplay.com/PizzaxTe/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/pizzaxte/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   

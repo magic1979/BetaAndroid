@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -21,17 +21,14 @@ document.addEventListener('click', function (e) {
 
   }, true);
 
+
+
+$.mobile.ajaxLinksEnabled = false;
+
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
-    $(".spinner").show();
-    var connectionStatus = false;
-    connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
-	
-	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
+		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
 	.on('focus', function (e) {
 		$('header, footer').css('position', 'absolute');
@@ -44,12 +41,12 @@ document.addEventListener('click', function (e) {
 		//		   }, 20 );
 		});
 	
+    $(".spinner").show();
+    var connectionStatus = false;
+    connectionStatus = navigator.onLine ? 'online' : 'offline';
+
 	var Catalogo = getParameterByName('catalogo');
 	//alert(Catalogo)
-	
-	$(document).keydown(function (eventObj){
-		getKey(eventObj);
-	});
 	
 	var email = localStorage.getItem("email");
 	var ciao = "";
@@ -72,6 +69,14 @@ document.addEventListener('click', function (e) {
 	
 	if (Badge10 > 0){
 		$('#badde3').removeClass('badge2').addClass('badge1');
+	}
+	
+	if((email=="")||(!email)){
+		$("#btnprofilo3").attr("href", "#page4");
+		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
+	}else{
+		$("#btnprofilo3").attr("href", "#mypanel");
+		$("#btnprofilo3").attr("onclick", "#");
 	}
 	
 	

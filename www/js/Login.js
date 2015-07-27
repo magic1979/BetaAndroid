@@ -1,9 +1,9 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-	//document.addEventListener("resume", onResume, false);
+	document.addEventListener("resume", onResume, false);
 	
-	last_click_time = new Date().getTime();
+last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
 
@@ -20,24 +20,23 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-	
 
-	
-		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-		document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
-		
-		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
-		$('input, select')
-		.on('focus', function (e) {
-			$('header, footer').css('position', 'absolute');
-			})
-		.on('blur', function (e) {
-			$('header, footer').css('position', 'fixed');
-			//force page redraw to fix incorrectly positioned fixed elements
-			//setTimeout( function() {
-			//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
-			//		   }, 20 );
-			});
+
+
+$.mobile.ajaxLinksEnabled = false;
+
+	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
+	$('input, select')
+	.on('focus', function (e) {
+		$('header, footer').css('position', 'absolute');
+		})
+	.on('blur', function (e) {
+		$('header, footer').css('position', 'fixed');
+		//force page redraw to fix incorrectly positioned fixed elements
+		//setTimeout( function() {
+		//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
+		//		   }, 20 );
+		});
 		
 		var email = localStorage.getItem("email");
 		var loginvera = localStorage.getItem("loginvera");

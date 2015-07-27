@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -20,18 +20,16 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
+
+
+
+$.mobile.ajaxLinksEnabled = false;
 	
+    
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
-    $(".spinner").show();
-    var connectionStatus = false;
-    connectionStatus = navigator.onLine ? 'online' : 'offline';
-    
-	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
-	
-	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
+		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
 	.on('focus', function (e) {
 		$('header, footer').css('position', 'absolute');
@@ -43,11 +41,12 @@ document.addEventListener('click', function (e) {
 		//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
 		//		   }, 20 );
 		});
+		
 	
-	
-	$(document).keydown(function (eventObj){
-		getKey(eventObj);
-	});
+    $(".spinner").show();
+    var connectionStatus = false;
+    connectionStatus = navigator.onLine ? 'online' : 'offline';
+    
 	
 	var email = localStorage.getItem("email");
 	var ciao = "";
@@ -71,6 +70,14 @@ document.addEventListener('click', function (e) {
 	
 	if (Badge10 > 0){
 		$('#badde5').removeClass('badge2').addClass('badge1');
+	}
+	
+	if((email=="")||(!email)){
+		$("#btnprofilo5").attr("href", "#page4");
+		$("#btnprofilo5").attr("onclick", "javascript:checklogin();");
+	}else{
+		$("#btnprofilo5").attr("href", "#mypanel");
+		$("#btnprofilo5").attr("onclick", "#");
 	}
 
 	
@@ -113,7 +120,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<tr><td width='30%'><a href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external' data-prefetch><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
+				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
 				  
 				 //alert(tabella)
 			});
