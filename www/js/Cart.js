@@ -70,14 +70,6 @@ document.addEventListener('click', function (e) {
 		$('#badde3').removeClass('badge2').addClass('badge3');
 	}
 	
-	if((email=="")||(!email)){
-		$("#btnprofilo3").attr("href", "#page4");
-		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
-	}else{
-		$("#btnprofilo3").attr("href", "#mypanel");
-		$("#btnprofilo3").attr("onclick", "#");
-	}
-
 	
     if(connectionStatus=='online'){
 		$(".spinner").hide();

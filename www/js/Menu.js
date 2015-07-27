@@ -72,14 +72,6 @@ document.addEventListener('click', function (e) {
 	if (Badge10 > 0){
 		$('#badde5').removeClass('badge2').addClass('badge1');
 	}
-	
-	if((email=="")||(!email)){
-		$("#btnprofilo5").attr("href", "#page4");
-		$("#btnprofilo5").attr("onclick", "javascript:checklogin();");
-	}else{
-		$("#btnprofilo5").attr("href", "#mypanel");
-		$("#btnprofilo5").attr("onclick", "#");
-	}
 
 	
     if(connectionStatus=='online'){

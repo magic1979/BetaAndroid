@@ -77,16 +77,7 @@ document.addEventListener('click', function (e) {
 		var db;
 		var dbCreated = false;
 		
-		//$("#classifica").html("Loading....");
-		
-		if((email=="")||(!email)){
-			$("#btnprofilo").attr("href", "#page4");
-			$("#btnprofilo").attr("onclick", "javascript:checklogin();");
-		}else{
-			$("#btnprofilo").attr("href", "#mypanel");
-			$("#btnprofilo").attr("onclick", "#");
-		}
-		
+	
 		if((Badge10=="")||(!Badge10)||(Badge10==0)){
 			localStorage.setItem("Badge10", 0)
 			$('#badde').removeClass('badge1').addClass('badge2');

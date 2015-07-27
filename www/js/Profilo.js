@@ -74,14 +74,6 @@ document.addEventListener('click', function (e) {
 		$('#badde3').removeClass('badge2').addClass('badge1');
 	}
 	
-	if((email=="")||(!email)){
-		$("#btnprofilo3").attr("href", "#page4");
-		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
-	}else{
-		$("#btnprofilo3").attr("href", "#mypanel");
-		$("#btnprofilo3").attr("onclick", "#");
-	}
-	
 	
 	$("#ProfiloPersonale").html(localStorage.getItem("Nome") + " " +  localStorage.getItem("Cognome") + "-" + localStorage.getItem("Indirizzo") + "," + localStorage.getItem("Civico") + " , <b>Punti:" + localStorage.getItem("Punti") + "</b>");
 
