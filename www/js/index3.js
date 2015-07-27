@@ -22,6 +22,8 @@ document.addEventListener('click', function (e) {
   }, true);
   
 
+$.mobile.pageLoading(true);
+
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
 	.on('focus', function (e) {
