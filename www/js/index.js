@@ -42,7 +42,6 @@ document.addEventListener('click', function (e) {
 
   }, true);
   
-  $.mobile.pageLoading(true);
 		
 		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
 		document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
