@@ -21,7 +21,6 @@ document.addEventListener('click', function (e) {
 
   }, true);
 	
-    $.mobile.pageLoading(true);
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	

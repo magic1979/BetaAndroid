@@ -20,7 +20,6 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-  
 
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
