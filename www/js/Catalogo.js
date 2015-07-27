@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    document.addEventListener("resume", onResume, false);
+    //document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -20,6 +20,8 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
+  
+  	$.mobile.pageLoading(true);
 
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';

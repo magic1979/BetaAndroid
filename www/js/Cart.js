@@ -21,6 +21,7 @@ document.addEventListener('click', function (e) {
 
   }, true);
 	
+	$.mobile.pageLoading(true);
 
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -419,7 +420,9 @@ function verificawifi(){
 }
 
 function onResume() {
-    onDeviceReady();
+    seleziona();
+		
+	mostrapunti()
 }
 
 function onConfirm(button) {

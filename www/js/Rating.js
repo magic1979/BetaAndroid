@@ -384,7 +384,8 @@ function verificawifi(){
 }
 
 function onResume() {
-    onDeviceReady();
+    	mostrapunti();
+		seleziona();
 }
 
 function onConfirm(button) {

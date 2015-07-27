@@ -4,7 +4,7 @@
 		id        = "it.app-piu.pxt"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>pizzaxte</name>
+		<name>Pizza per te</name>
 		<description>Pizza Per Te App+</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
 Salvatore sas
@@ -33,11 +33,11 @@ Salvatore sas
 		<preference name="android-targetSdkVersion" value="11" />
 		<preference name="android-installLocation" value="auto" />
 		<preference name="SplashScreenDelay" value="10000" />
-		<preference name="ErrorUrl" value="http://www.mistertod.it"/>
+		<preference name="ErrorUrl" value="http://www.app-piu.it"/>
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="MisterTod,Loading"/> 
+		<preference name="LoadingDialog" value="C'è Pizza per te,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
