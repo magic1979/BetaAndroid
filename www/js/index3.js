@@ -22,8 +22,17 @@ document.addEventListener('click', function (e) {
   }, true);
 
 
-
-$.mobile.ajaxLinksEnabled = false;
+	$( document ).on( "mobileinit", function() {
+    $.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+    $.mobile.phonegapNavigationEnabled = true
+    $.mobile.pushStateEnabled = false;
+   	super.setIntegerProperty("loadUrlTimeoutValue", 70000);
+	});
+	
+	$(document).on("pagecreate", "#Index3", function () { 
+		$.mobile.loading('hide');
+	}); 
 
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
