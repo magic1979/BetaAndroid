@@ -465,7 +465,7 @@ function verificawifi(){
 
 
 function onResume() {
-	app.initialize();
+	buildprodotto('Pizza','Roma',1);
 }
 
 function checkPos() {
