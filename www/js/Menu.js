@@ -26,7 +26,7 @@ document.addEventListener('click', function (e) {
 	$( document ).on( "mobileinit", function() {
     $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
-    $.mobile.phonegapNavigationEnabled = true
+    $.mobile.phonegapNavigationEnabled = true;
     $.mobile.pushStateEnabled = false;
    	super.setIntegerProperty("loadUrlTimeoutValue", 60000);
 	});
