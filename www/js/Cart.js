@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    document.addEventListener("resume", onResume, false);
+    //document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -938,5 +938,12 @@ function riparti(){
 	onDeviceReady();
 }
 
+function vaiindex(){
+	window.location.href = "index.html";
+}
+
+function vaimenu(){
+	window.location.href = "menu.html";
+}
 
 
