@@ -1,9 +1,9 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
-	last_click_time = new Date().getTime();
+    last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
 
@@ -20,17 +20,18 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-
-    $.mobile.allowCrossDomainPages = true;
-    $.mobile.phonegapNavigationEnabled = true;
-    $.mobile.pushStateEnabled = false;
-
-	$.mobile.loading('hide'); 
 	
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
-		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
+    $(".spinner").show();
+    var connectionStatus = false;
+    connectionStatus = navigator.onLine ? 'online' : 'offline';
+    
+	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
+	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
+	
+	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
 	.on('focus', function (e) {
 		$('header, footer').css('position', 'absolute');
@@ -42,12 +43,11 @@ document.addEventListener('click', function (e) {
 		//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
 		//		   }, 20 );
 		});
-		
 	
-    $(".spinner").show();
-    var connectionStatus = false;
-    connectionStatus = navigator.onLine ? 'online' : 'offline';
-
+	
+	$(document).keydown(function (eventObj){
+		getKey(eventObj);
+	});
 	
 	var email = localStorage.getItem("email");
 	var ciao = "";

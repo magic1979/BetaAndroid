@@ -1,7 +1,7 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 
@@ -20,14 +20,7 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-
-
-    $.mobile.allowCrossDomainPages = true;
-    $.mobile.phonegapNavigationEnabled = true;
-    $.mobile.pushStateEnabled = false;
-
-
-	$.mobile.loading('hide');
+	
 
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -35,6 +28,9 @@ document.addEventListener('click', function (e) {
     $(".spinner").show();
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
+    
+	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
+	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 	
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -941,12 +937,5 @@ function riparti(){
 	onDeviceReady();
 }
 
-function vaiindex(){
-	window.location.href = "index.html";
-}
-
-function vaimenu(){
-	window.location.href = "menu.html";
-}
 
 
