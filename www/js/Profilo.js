@@ -21,18 +21,11 @@ document.addEventListener('click', function (e) {
 
   }, true);
 
-
-	$( document ).on( "mobileinit", function() {
-    $.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
     $.mobile.phonegapNavigationEnabled = true;
     $.mobile.pushStateEnabled = false;
-   	super.setIntegerProperty("loadUrlTimeoutValue", 60000);
-	});
-	
-	$(document).on("pagecreate", "#ProfiloPage", function () { 
-		$.mobile.loading('hide');
-	}); 
+
+	$.mobile.loading('hide'); 
 	
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
