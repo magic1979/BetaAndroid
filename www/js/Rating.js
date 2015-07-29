@@ -62,10 +62,6 @@ document.addEventListener('click', function (e) {
 	
 	var loggato = localStorage.getItem("loginvera")
 	
-	if((loggato=="")||(!loggato)){
-		window.location.href = "Login.html";
-	}
-	
 	
 	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
@@ -92,6 +88,10 @@ document.addEventListener('click', function (e) {
 	$('#rati1').raty({
 				  click: function(score, evt) {
 				  //alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt);
+					 
+					if((loggato=="")||(!loggato)){
+					 window.location.href = "Login.html";
+					}
 					 
 				  var recensione = self.document.formia.recensione.value;
 					 
@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_PrendiRecensioni.asp",
+		   url:"http://www.gtechplay.com/roma70/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -501,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/pizzaxte/www/check_rating.asp",
+			   url:"http://www.gtechplay.com/roma70/www/check_rating.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -535,7 +535,7 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828941,12.473970';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

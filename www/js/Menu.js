@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/roma70/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,7 +121,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
+				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
 				  
 				 //alert(tabella)
 			});
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828941,12.473970';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

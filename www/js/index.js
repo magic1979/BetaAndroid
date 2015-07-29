@@ -23,6 +23,7 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+		
 		last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
@@ -136,7 +137,18 @@ document.addEventListener('click', function (e) {
 function gocart() {
 	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 	
-
+	$(document).on('pagebeforeshow', function () {
+		$(this).find('a[data-rel=back]').buttonMarkup({
+		iconpos: 'notext'
+	});
+				   
+	//setTimeout(function() {
+		//$(window).scrollTop($(window).scrollTop()+1);
+		//window.scrollTo(0,0);
+	//}, 500);
+				   
+ });
+	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
 	$("#badde3").attr("data-badge", Badge10);
@@ -504,7 +516,8 @@ function checkPos() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828941,12.473970';
+
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -555,7 +568,20 @@ function prodotto(idProdotto) {
 	//loaded();
 	//$(window).off("scroll");
 	
+	$(document).on('pagebeforeshow', function () {
+				   $(this).find('a[data-rel=back]').buttonMarkup({
+																 iconpos: 'notext'
+																 });
 
+
+				   setTimeout (function(){
+						myScroll.refresh();
+					}, 1000);
+
+				   });
+
+	
+	
 	var landmark2 ="";
 	$(".spinner").show();
 	var Recensione = "";
@@ -640,7 +666,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/Check_Home.asp",
+		   url:"http://www.gtechplay.com/roma70/www/Check_Home.asp",
 		   contentType: "application/json",
 		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   data: {Categoria:"offerte"},

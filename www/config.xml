@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.pxt"
+		id        = "it.app-piu.pr7"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>Pizza per te</name>
-		<description>Pizza Per Te App+</description>
+		<name>Pizzeria Roma 70</name>
+		<description>Pizzeria Roma 70 App+</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
 Salvatore sas
 		</author>
@@ -37,7 +37,7 @@ Salvatore sas
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="C'è Pizza per te,Loading"/> 
+		<preference name="LoadingDialog" value="Pizzeria Roma 70,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />

@@ -3,7 +3,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
-    last_click_time = new Date().getTime();
+	last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
 
@@ -20,7 +20,7 @@ document.addEventListener('click', function (e) {
   last_click_time = click_time;
 
   }, true);
-	
+    
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
 	
@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Mietransazioni.asp",
+		   url:"http://www.gtechplay.com/roma70/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828941,12.473970';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

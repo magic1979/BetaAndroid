@@ -2,7 +2,7 @@ document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
-	
+
 	last_click_time = new Date().getTime();
 
 document.addEventListener('click', function (e) {
@@ -121,7 +121,17 @@ function getParameterByName(name) {
 						  
 						  function pagina22() {
 						  
-
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 
+										 //setTimeout(function() {
+										 //	$(window).scrollTop($(window).scrollTop()+1);
+										 //window.scrollTo(0,0);
+										 //}, 500);
+										 
+										 });
 						  
 						  var email = localStorage.getItem("email");
 						  var Badge10 = localStorage.getItem("Badge10");
@@ -137,7 +147,17 @@ function getParameterByName(name) {
 						  
 						  function pagina23() {
 						  
-	
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 
+										 //setTimeout(function() {
+										 //$(window).scrollTop($(window).scrollTop()+1);
+										 //window.scrollTo(0,0);
+										 //}, 500);
+										 
+										 });
 						  
 						  var email = localStorage.getItem("email");
 						  var Badge10 = localStorage.getItem("Badge10");
@@ -157,7 +177,17 @@ function getParameterByName(name) {
 						  function gocart() {
 						  db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
 						  
-	
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 
+										 //setTimeout(function() {
+										 //$(window).scrollTop($(window).scrollTop()+1);
+										 //window.scrollTo(0,0);
+										 //}, 500);
+										 
+										 });
 						  
 						  var email = localStorage.getItem("email");
 						  var Badge10 = localStorage.getItem("Badge10");
@@ -194,7 +224,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -271,7 +301,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -402,7 +432,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -658,7 +688,19 @@ function getParameterByName(name) {
 						  //loaded();
 						  //$(window).off("scroll");
 						  
-	
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 
+										 
+										 setTimeout (function(){
+													 myScroll.refresh();
+													 }, 1000);
+										 
+										 });
+						  
+						  
 						  
 						  var landmark2 ="";
 						  $(".spinner").show();
@@ -727,6 +769,11 @@ function getParameterByName(name) {
 						  function riepilogo(idProdotto,regalo) {
 						  
 						  
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 });
 						  
 						  var model = device.model;
 						  
@@ -1111,7 +1158,16 @@ function getParameterByName(name) {
 						  
 						  
 						  function checklogin() {
-
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 
+										 //setTimeout(function() {
+										 //$(window).scrollTop($(window).scrollTop()+1);
+										 //window.scrollTo(0,0);
+										 //}, 1000);
+										 });
 						  
 						  $("#idheader4").html("<table id='idheader' height='50'><tr><td width='320px' align='center' valign='middle'><font class='fontsforweb_fontid_2802' color='#FFFFFF' size='5.5'>Mister Tod</font></span></td></tr></table>");
 						  
@@ -1263,7 +1319,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/Check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/roma70/www/Check_Prodotto.asp",
 								 //url:"http://www.mistertod.it/www/Check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:IDProd},
@@ -1437,7 +1493,11 @@ function getParameterByName(name) {
 						  
 						  function chie() {
 						  
-
+						  $(document).on('pagebeforeshow', function () {
+										 $(this).find('a[data-rel=back]').buttonMarkup({
+																					   iconpos: 'notext'
+																					   });
+										 });
 						  
 						  
 						  $("#idheader5").html("<table id='idheader' height='50'><tr><td width='320px' align='center' valign='middle'><font color='#FFFFFF' size='3'>Chi e' MisterTod</font></td></tr></table>");
@@ -1875,7 +1935,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/roma70/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:1},
 								 jsonp: 'callback',
@@ -1904,7 +1964,7 @@ function getParameterByName(name) {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://www.gtechplay.com/pizzaxte/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/roma70/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:2},
 								 jsonp: 'callback',
