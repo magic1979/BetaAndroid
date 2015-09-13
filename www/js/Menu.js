@@ -4,22 +4,23 @@ function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
-
-document.addEventListener('click', function (e) {
-
-  click_time = e['timeStamp'];
-
-  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-
-  e.preventDefault();
-
-  return false;
-
-  }
-
-  last_click_time = click_time;
-
-  }, true);
+	
+	document.addEventListener('click', function (e) {
+							  
+							  click_time = e['timeStamp'];
+							  
+							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+							  
+							  e.preventDefault();
+							  
+							  return false;
+							  
+							  }
+							  
+							  last_click_time = click_time;
+							  
+							  }, true);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -66,11 +67,11 @@ document.addEventListener('click', function (e) {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde5").attr("data-badge", Badge10);
-	$("#badde5").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
 		$('#badde5').removeClass('badge2').addClass('badge1');
+		$("#badde5").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	}
 	
 	if((email=="")||(!email)){
@@ -95,9 +96,8 @@ document.addEventListener('click', function (e) {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
-		
-        $(".spinner").hide();
+		$("#noconn").html(tabella);
+
         
     }
 
@@ -105,12 +105,12 @@ document.addEventListener('click', function (e) {
 
 
 function buildmenu() {
-	var tabella = "<table bgcolor='#FFF' width='100%>' border='0'";
+	var tabella = "";
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,12 +121,12 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
 		   
-		   tabella = tabella + "</table>";
+		   //tabella = tabella + "</table>";
 		   
 		   $(".spinner").hide();
 		    $("#noconn").hide();
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.828941,12.473970';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -521,5 +521,7 @@ function gomappa(){
 }
 
 function riparti(){
-	onDeviceReady();
+	
+	window.location.href = "index.html";
+	
 }

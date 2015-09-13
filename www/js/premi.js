@@ -44,8 +44,7 @@ function onDeviceReady() {
 		//		   }, 20 );
 		});
 	
-	var Catalogo = getParameterByName('catalogo');
-	//alert(Catalogo)
+
 	
 	$(document).keydown(function (eventObj){
 		getKey(eventObj);
@@ -61,6 +60,7 @@ function onDeviceReady() {
 	var Badge10 = localStorage.getItem("Badge10");
 	var db;
 	var dbCreated = false;
+	localStorage.setItem("NoPremi", "SI")
 	
 	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
@@ -68,11 +68,10 @@ function onDeviceReady() {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
-	
+	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	
 	if (Badge10 > 0){
 		$('#badde3').removeClass('badge2').addClass('badge1');
-		$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	}
 	
 	if((email=="")||(!email)){
@@ -86,8 +85,10 @@ function onDeviceReady() {
 	
     if(connectionStatus=='online'){
 		$(".spinner").hide();
-		mostrapunti();
-		buildcatalogo(Catalogo)
+		
+		$("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+		
+		buildcatalogo()
 		seleziona();
 		
     }
@@ -100,14 +101,14 @@ function onDeviceReady() {
 		tabella = tabella + "</table>";
 		
 		$("#noconn").html(tabella);
-		
+
         
     }
 
 }
 
-function buildcatalogo(Catalogo) {
-	//alert(Catalogo)
+function buildcatalogo() {
+	//alert()
 	var tabella = "<table align='center' border='0' width='320px' height='90px'>";
 	
 	$(".spinner").show();
@@ -115,7 +116,7 @@ function buildcatalogo(Catalogo) {
 		   type:"GET",
 		   url:"http://www.gtechplay.com/Roma70/www/check_Home.asp",
 		   contentType: "application/json",
-		   data: {categoria:Catalogo},
+		   data: {categoria:"Premi"},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -124,10 +125,10 @@ function buildcatalogo(Catalogo) {
 		   $.each(result, function(i,item){
 				  
 				  if (item.ID==0){
-					window.location.href = "menu.html";
+					window.location.href = "cart.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"&euro;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -165,7 +166,6 @@ function seleziona() {
 }
 
 function AggProd(prod) {
-	
 	var loggato = localStorage.getItem("loginvera")
 	var tblProfile;
 	
@@ -182,14 +182,15 @@ function AggProd(prod) {
 	var prezzo;
 	var test;
 	var P1 = '110';
-	
+	var punteggio = Number(localStorage.getItem("Punti")).toFixed(2)
+	var puntiOK;
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
-		   data: {id:prod},
+		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -197,12 +198,38 @@ function AggProd(prod) {
 		   
 		   $.each(result, function(i,item){
 			  msg=item.Nome;
-			  prezzo=item.Deal;
+			  prezzo=0;
+			  puntiOK = item.Differenza;
+				  
+				  //SONO ARRIVATO QUI! FARE LE OPERAZIONI IN CHEK PRODOTTO
+			  
+				  //alert("D:"+puntiOK)
+				  //alert(Number(prezzo).toFixed(2))
+				  //alert(punteggio)
+				  
+				  if(puntiOK >= 0){
+					//alert("Posso")
+					localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+				  $("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+					
+				  }
+				  else
+				  {
+					localStorage.setItem("NoPremi", "NO")
+					navigator.notification.alert(
+											   'Non hai abbastanza punti per questo premio',  // message
+											   alertDismissed,         // callback
+											   'Attenzione',            // title
+											   'Done'                  // buttonName@
+											   );
+				  }
 				 
 			});
 		   
+		   if(localStorage.getItem("NoPremi")=="SI"){
 		   localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))+1)
 		   var Badge10 = localStorage.getItem("Badge10");
+		   
 		   
 		   $('#badde3').removeClass('badge2').addClass('badge1');
 		   $("#badde3").attr("data-badge", Badge10);
@@ -214,9 +241,10 @@ function AggProd(prod) {
 		   db.transaction(function (tx) {
 						  tx.executeSql('UPDATE Ordine set Qta=Qta+1, Descrizione=Descrizione + '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
 										aggiornamento = 1;
-										//alert("Prod:" + prod);
+										//alert("Prod:" + prod); -@
 										}, null);
 						  });
+		   }
 		   
 		   if(aggiornamento==0){
 		   agg2(prod)
@@ -257,13 +285,15 @@ function agg2(prod){
 	var prezzo;
 	var test;
 	var P1 = '110';
+	var punteggio = Number(localStorage.getItem("Punti")).toFixed(2)
+	var puntiOK;
 	
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
-		   data: {id:prod},
+		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
@@ -271,14 +301,22 @@ function agg2(prod){
 		   
 		   $.each(result, function(i,item){
 				  msg=item.Nome;
-				  prezzo=item.Deal;
+				  prezzo=0;
+				  puntiOK = item.Differenza;
+				  
+				  
+				  //SONO ARRIVATO QUI! FARE LE OPERAZIONI IN CHEK PRODOTTO
+				 
+
 				  
 				  });
 		   
+		   if(localStorage.getItem("NoPremi")=="SI"){
 		   db.transaction(function (tx) {
 						  tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
 						  tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES ('+ prod +', 1, 1, "'+ prezzo +'", "'+ msg +'")');
 						  });
+		   }
 		   $(".spinner").hide();
 		   },
 		   error: function(){
@@ -302,26 +340,13 @@ function SottProd(prod) {
 	var azione=0;
 	var msg;
 	var prezzo;
+	var differenza;
 	var test;
 	var P1 = '110';
-	
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
-		   contentType: "application/json",
-		   data: {id:prod},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  msg=item.Nome;
-				  prezzo=item.Deal;
-				  
-				  });
-		   var Badge10;
+	var punteggio = Number(localStorage.getItem("Punti")).toFixed(2)
+	var puntiOK;
+	var Badge10;
+	var prezzo=0;
 		   
 		   
 		   db.transaction(function (tx) {
@@ -332,6 +357,47 @@ function SottProd(prod) {
 										if (parseInt(results.rows.item(i).Qta) > 1){
 										tx.executeSql('UPDATE Ordine set Qta=Qta-1, Descrizione=Descrizione - '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
 													  //alert("Prod:" + prod);
+													  $(".spinner").show();
+													  $.ajax({
+															 type:"GET",
+															 url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
+															 contentType: "application/json",
+															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
+															 timeout: 7000,
+															 jsonp: 'callback',
+															 crossDomain: true,
+															 success:function(result){
+															 
+															 $.each(result, function(i,item){
+																	msg=item.Nome;
+																	prezzo=0;
+																	puntiOK=item.Differenza;
+																	
+																	localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+																	$("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+																	
+																	});
+															 
+															 
+															 //FINE
+															 
+															 $(".spinner").hide();
+															 },
+															 error: function(){
+															 $(".spinner").hide();
+															 
+															 navigator.notification.alert(
+																						  'Possibile errore di rete, riprova tra qualche minuto 2',  // message
+																						  alertDismissed,         // callback
+																						  'Attenzione',            // title
+																						  'Done'                  // buttonName@
+																						  );
+															 
+															 },
+															 dataType:"jsonp"});
+													  
+													  //localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+													  //alert(Number(puntiOK).toFixed(2));
 													  
 													  localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
 													  
@@ -347,6 +413,47 @@ function SottProd(prod) {
 										else{
 										tx.executeSql('DELETE FROM Ordine where id='+ prod +'', [], function (tx, results) {
 													  //alert("DEL");
+													  $(".spinner").show();
+													  $.ajax({
+															 type:"GET",
+															 url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
+															 contentType: "application/json",
+															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
+															 timeout: 7000,
+															 jsonp: 'callback',
+															 crossDomain: true,
+															 success:function(result){
+															 
+															 $.each(result, function(i,item){
+																	msg=item.Nome;
+																	prezzo=0;
+																	puntiOK=item.Differenza;
+																	
+																	localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+																	$("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+																	
+																	});
+															 
+															 
+															 //FINE
+															 
+															 $(".spinner").hide();
+															 },
+															 error: function(){
+															 $(".spinner").hide();
+															 
+															 navigator.notification.alert(
+																						  'Possibile errore di rete, riprova tra qualche minuto 2',  // message
+																						  alertDismissed,         // callback
+																						  'Attenzione',            // title
+																						  'Done'                  // buttonName@
+																						  );
+															 
+															 },
+															 dataType:"jsonp"});
+													  
+													  //localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+													  //alert(Number(puntiOK).toFixed(2));
 													  
 													  $(".buttonOrdine").hide();
 													  
@@ -357,6 +464,7 @@ function SottProd(prod) {
 													  $("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 													  
 													  $( "#carro3" ).effect( "bounce", "slow" );
+
 													  
 													  }, null);
 										}
@@ -364,24 +472,9 @@ function SottProd(prod) {
 										
 										}, null);
 						  });
-		   $(".spinner").hide();
-		   },
-		   error: function(){
-		   $(".spinner").hide();
 		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto 2',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName@
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	
-	
-	//seleziona();
+		   //FINE
+
 }
 
 

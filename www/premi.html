@@ -25,27 +25,6 @@
 		<script src="jquery.countdown.js"></script>
 		<script src="jquery.raty.js"></script>
 		
-		<script type="text/javascript" src="js/iscroll.js"></script>
-		
-		
-		<script type="text/javascript">
-			
-			var myScroll;
-			
-			function loaded () {
-				myScroll = new IScroll('#wrapper', { click: true });
-				setTimeout (function(){
-					myScroll.refresh();
-				}, 1500);
-
-			}
-		
-		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-		
-		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-		
-			</script>
-		
 		
         <title>FoodApp</title>
 		
@@ -362,12 +341,10 @@
 		}
 
 .circolare {
-	width: 30px;
-	height: 30px;
-	border-radius:999em;
-	-moz-border-radius:999em;
-	-webkit-border-radius:999em;
-	-o-border-radius: 999em;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-o-border-radius: 10px;
 	
 	-webkit-box-shadow: 0px 0px 0.5px 0.5px #000;
 	-moz-box-shadow: 0px 0px 0.5px 0.5px #000;
@@ -423,19 +400,19 @@ a {text-decoration:none;}
 		.badge1[data-badge]:after {
 			content:attr(data-badge);
 			position:absolute;
-			top:3px;
-			right:-1px;
+			top:-15px;
+			right:15px;
 			font-size:.7em;
 			background:green;
 			color:white;
-			width:20px;height:20px;
+			width:18px;height:18px;
 			text-align:center;
 			line-height:20px;
 			border-radius:50%;
 			box-shadow:0 0 1px #333;
 			border: 1px solid #fff;
-			text-shadow:0 0 0;
 		}
+
 		.badge2 {
 			
 		}
@@ -450,7 +427,7 @@ a {text-decoration:none;}
 			position:absolute;
 			top:-30px;
 			right:-15px;
-			font-size:.9em;
+			font-size:.7em;
 			background:green;
 			color:white;
 			width:20px;height:20px;
@@ -459,35 +436,12 @@ a {text-decoration:none;}
 			border-radius:50%;
 			box-shadow:0 0 1px #333;
 			border: 1px solid #fff;
-			text-shadow:0 0 0;
 		}
 		
-		.btn {
-			background: #9f1e24;
-			background-image: -webkit-linear-gradient(top, #9f1e24, ##9f1e24);
-			background-image: -moz-linear-gradient(top, #9f1e24, ##9f1e24);
-			background-image: -ms-linear-gradient(top, #9f1e24, ##9f1e24);
-			background-image: -o-linear-gradient(top, #9f1e24, ##9f1e24);
-			background-image: linear-gradient(to bottom, #9f1e24, ##9f1e24);
-			-webkit-border-radius: 21;
-			-moz-border-radius: 21;
-			border-radius: 21px;
-			font-family: Arial;
-			color: #ffffff;
-			font-size: 16px;
-			padding: 10px 20px 10px 20px;
-			text-decoration: none;
-			text-shadow:0 0 0;
-		}
-		
-		.btn:hover {
-			background: #000000;
-			background-image: -webkit-linear-gradient(top, #000000, #9f1e24);
-			background-image: -moz-linear-gradient(top, #000000, #9f1e24);
-			background-image: -ms-linear-gradient(top, #000000, #9f1e24);
-			background-image: -o-linear-gradient(top, #000000, #9f1e24);
-			background-image: linear-gradient(to bottom, #000000, #9f1e24);
-			text-decoration: none;
+		.ui-icon {
+			background-color: transparent;
+			width: 28px;
+			height: 28px;
 		}
 		
 		.loghetto {
@@ -511,6 +465,7 @@ a {text-decoration:none;}
 			text-align: center;
 			
 		}
+		
 		</style>
 		
     </head>
@@ -528,46 +483,37 @@ a {text-decoration:none;}
 		<div id="page" data-role="page" class="div2" >
 			
 			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
+				<a href="#" data-rel="back" data-transition="slidedown" data-direction="reverse" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-icon-back ui-btn-icon-notext ui-btn-left"></a>
 				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="32px"></td></tr></table>
 			</div>
 			
 			<div class="spinner" id="spinner"></div>
 			
+			<div data-role="content">
+				<br>
+			</div>
+			
 			<div id="wrapper">
 				<div id="scroller">
-					<table align="center" border="0" width="310px" height="120px"><tr><td align="left" width="160px"><img src="img/delivery.jpg" width="160px"></td><td align="left" width="60px"><table align="center" border="0" width="60px"><tr><td align="left"><font size="2" color="black" class="scritta">Carrello</font></td></tr><tr><td align="left"></td></tr></table></td><td align="left" width="100px"><a id="badde3" class="badge3" data-badge="1"><img id="carro" src="carrello.png" width="40px"></a></td></tr>
-					</table>
-					<form name="formia9" action="entra2.asp" method="post">
-					<div id="contenutoCart" align="center"></div><br><br>
-					
-					<div id="tabellaCart" align="center"></div>
-					<center>
-					<table width='100%' border='0' id='' align='center'><tr><td colspan='3' align="center"><a href="premi.html" rel="external"><font size="2" class='btn'>Catalogo Premi</font></a></td></tr><tr><td colspan='3'><br></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td align='left' colspan='2' width='220px'><font color='#454545' size='3'>Prezzo Totale: </font></td><td align='right' width='100px'><font color='#454545' size='3'><b><span id="TOTPrezzo"></span>&euro;</b> </font></td><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='OraConsegna' id='OraConsegna' value='' placeholder='Ora Consegna Desiderata'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='NomeRegalo' id='NomeRegalo' value='' placeholder='Nome e Cognome'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='Indirizzo' id='Indirizzo' value='' placeholder='Indirizzo e Civico'></td></tr><tr><td colspan='3'><input type='text' data-theme='b' name='Telefono' id='Telefono' value='' placeholder='Telefono'></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><!--<a href='#page' onclick='javascript:compraccDemo();' class='zocial cart'></a>--><img src='img/CC_Visa.jpg' width='40'> <img src='img/CC_Mastercard.jpg' width='40'> <img src='img/CC_PostePay.jpg' width='40'></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'></font></td></tr><tr><td colspan='3'><hr class='style-six'></td></tr><tr><td colspan='3' alaign="center"><a href='#page' onclick='javascript:compraCC();' class='zocial paypal'>Paga con Paypal</a><br></td></tr><tr><td colspan='3' alaign="center"><a href='#' onclick='javascript:compraConsegna();' id='buttonOrdine' data-role='button' class='custom-btn' data-theme='b'>Paga alla Consegna</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href="TerminiCondizioni.html" rel="external"><font size='1' color='#000'>Accetto i termini di vendita</font></a></td></tr><tr><td colspan='3' align='center'><a href="TerminiCondizioni.html" rel="external"><font size='1' color='#000'>Informativa sulla Privacy</font></a></td></tr></table>
-					<input type="hidden" nome="totordine" id="totordine" value="0">
-					<input type="hidden" nome="totpunti" id="totpunti" value="0">
-					</form>
-					<!--<a href="#"  style="display:none">ORDINA SUBITO</a>
-					<br>
-					<a href="javascript:dlt();"><font size="2">CANCELLA TUTTO</font></a></center>-->
-					<!--<br><br>
-					<a href="premi.html" rel="external"><font size="3" class='btn'>PREMI</font></a></center>-->
-					<br><br><br><br>
-					
+					<br><center><div id="Punto"></div>
+					<font size="2">Acquista e raccogli i tuoi punti che puoi usare per ricevere i nostri regali/premi con il tuo  nuovo ordine.</font><br><br></center>
+					<div id="prodotto" align="center">
+						
+						<div id="CatalogoPag"></div>
+
+					</div>
+					<br><br>
 					<div id="noconn" align="center"><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></div>
 				</div>
 			</div>
 			
-			<div id="footer" data-role="footer" data-theme="b" data-tap-toggle="false" class="div1">
-				<div data-role="navbar" class="nav" data-grid="d" data-theme="c" class="div1">
-					<ul>
-						<li><a href="index.html" id="programas" data-icon="homehome" rel="external"><font size="1">Promo</font></a></li>
-						<li><a href="menu.html" onclick="#" id="menuR" data-icon="ristohome" rel="external"><font size="1">Menu</font></a></li>
-						<li><a href="#" id="badde4" data-icon="taifun"><font size="1">Carrello</font></a></li>
-						<li><a id="btnprofilo7" href="rating.html" onclick="#" data-transition="slide" data-icon="userhome" rel="external"><font size="1">Recensioni</font></a></li>
-						<li><a href="#mypanelH" onclick="javascript:rati()" data-icon="pinhome"><font size="1">Altro</font></a></li>
-					</ul>
-				</div>
-			</div>
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter4" width="90%"><tr><td width="100%" align="left">
+					<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+				</td>
+				<td width="120px" align="center"><a href="cart.html" id="badde3" class="badge2" data-badge="1" data-icon="taifun" rel="external"><font size="1">Carrello</font></a></td>
+				</tr></table>
+			</div><!-- /footer4 -->
 			
 			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="a" data-position-fixed="true" width="100%" class="div2">
 				<center>
@@ -618,7 +564,25 @@ a {text-decoration:none;}
 		
 
         <script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/Cart.js"></script>
+		<script type='application/javascript' src='js/fastclick.js'></script>
+		
+		<script type="text/javascript" src="js/premi.js"></script>
+		<script type="text/javascript" src="js/iscroll.js"></script>
+		
+		
+		<script type="text/javascript">
+			
+			var myScroll;
+			
+			function loaded () {
+				myScroll = new IScroll('#wrapper', { click: true });
+			}
+			
+			document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+			
+			document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		
+		</script>
 		
     </body>
 </html>

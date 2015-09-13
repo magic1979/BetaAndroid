@@ -3,23 +3,26 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
+	//PushbotsPlugin.resetBadge();
+	
 	last_click_time = new Date().getTime();
-
-document.addEventListener('click', function (e) {
-
-  click_time = e['timeStamp'];
-
-  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-
-  e.preventDefault();
-
-  return false;
-
-  }
-
-  last_click_time = click_time;
-
-  }, true);
+	
+	document.addEventListener('click', function (e) {
+							  
+							  click_time = e['timeStamp'];
+							  
+							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+							  
+							  e.preventDefault();
+							  
+							  return false;
+							  
+							  }
+							  
+							  last_click_time = click_time;
+							  
+							  }, true);
+	
 
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -39,7 +42,7 @@ document.addEventListener('click', function (e) {
 	.on('blur', function (e) {
 		$('header, footer').css('position', 'fixed');
 		//force page redraw to fix incorrectly positioned fixed elements
-		//setTimeout( function() {
+		//setTimeout( function() {_
 		//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
 		//		   }, 20 );
 		});
@@ -94,10 +97,7 @@ document.addEventListener('click', function (e) {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
-		
-		
-		$(".spinner").hide();
+		$("#noconn").html(tabella);
 
         
     }
@@ -130,7 +130,19 @@ function seleziona() {
 					 
 					 Punita = (Number(results.rows.item(i).Descrizione).toFixed(2) / Number(results.rows.item(i).Qta).toFixed(2))
 					 
-					 landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'<font color="#000" size="1"> x('+ Number(Punita).toFixed(2) +'&euro;)</font></td><td><font size="3">'+ Number(results.rows.item(i).Descrizione).toFixed(2) +'&euro;</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
+					 var n = results.rows.item(i).Nome.indexOf("Punti");
+					 
+					 //alert(n)
+					 
+					 if (n != -1){
+						
+						landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'<font color="#000" size="1"> x('+ Number(Punita).toFixed(2) +'&euro;)</font></td><td><font size="3">'+ Number(results.rows.item(i).Descrizione).toFixed(2) +'&euro;</font></td><td align="center"></td><td align="center"></td></tr>';
+					 }
+					 else
+					 {
+						landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'<font color="#000" size="1"> x('+ Number(Punita).toFixed(2) +'&euro;)</font></td><td><font size="3">'+ Number(results.rows.item(i).Descrizione).toFixed(2) +'&euro;</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
+					 }
+					 
 					 
 					 }
 					 
@@ -138,6 +150,8 @@ function seleziona() {
 					 $('#contenutoCart').html(landmark);
 					 
 					 selPrezzo();
+					 
+					 selPunti();
 
 					 }, null);
 				   });
@@ -160,6 +174,10 @@ function selPrezzo(){
 	$("#noconn").hide();
 }
 
+function selPunti(){
+	document.getElementById("totpunti").value = localStorage.getItem("Punti");
+}
+
 function dlt(){
 	db.transaction(function (tx) {
 				   tx.executeSql('DELETE FROM Ordine', [], function (tx, results) {
@@ -180,6 +198,26 @@ function dlt(){
 	seleziona();
 }
 
+function dlt2(){
+	db.transaction(function (tx) {
+				   tx.executeSql('DELETE FROM Ordine', [], function (tx, results) {
+								 }, null);
+				   });
+	
+	
+	localStorage.setItem("Badge10", 0)
+	
+	Badge10 = localStorage.getItem("Badge10");
+	
+	
+	$('#badde3').removeClass('badge3').addClass('badge2');
+	
+	
+	localStorage.setItem("TOT", 0)
+	
+	seleziona();
+}
+
 
 function AggProd(prod) {
 	var aggiornamento = 0;
@@ -191,7 +229,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -258,7 +296,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -306,7 +344,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -511,6 +549,8 @@ function compra() {
 	//var EmailRegalo = self.document.formia9.EmailRegalo.value;
 	var Telefono = self.document.formia9.Telefono.value;
 	var amount = self.document.formia9.totordine.value;
+	var amountPunti = self.document.formia9.totpunti.value;
+	var OraConsegna = self.document.formia9.OraConsegna.value;
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -561,6 +601,15 @@ function compra() {
 									 );
 		return;
 	}
+	if (OraConsegna == "") {
+		navigator.notification.alert(
+									 'Non hai inserito un orario di consegna desiderata',  // message
+									 alertDismissed,         // callback
+									 'Ora Consegna',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
 	
 	//alert(amount)
 	
@@ -584,9 +633,9 @@ function compra() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/roma70/www/Check_Transaction.asp",
+							url:"http://www.gtechplay.com/Roma70/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -594,18 +643,19 @@ function compra() {
 							
 							$.each(result, function(i,item){
 								   if (item.Token == "1024"){
-								   //var ref = window.open('http://www.mistertod.it/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'&Nome='+ nome +'', '_blank', 'location=no');
 								   
-								   navigator.notification.alert(
-																'controlla la tua email, anche in spam, per la ricevuta.',
-																alertDismissed,         // callback
-																'Ordine Eseguito',            // title
-																'Done'                  // buttonName
-																);
+								     navigator.notification.alert(
+										'Ordine eseguito correttamente',
+										 alertDismissed,         // callback
+										'Grazie',            // title
+										'Done'                  // buttonName
+									);
 								   
 								   localStorage.setItem("Punti", item.Punti);
 								   
-								   window.location.href = "Profilo.html";
+								   dlt2();
+								   
+								   //window.location.href = "Profilo.html";
 								   
 								   }
 								   else{
@@ -668,6 +718,9 @@ function compraCarta() {
 	//var EmailRegalo = self.document.formia9.EmailRegalo.value;
 	var Telefono = self.document.formia9.Telefono.value;
 	var amount = self.document.formia9.totordine.value;
+	var amountPunti = self.document.formia9.totpunti.value;
+	var OraConsegna = self.document.formia9.OraConsegna.value;
+	
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -719,6 +772,17 @@ function compraCarta() {
 		return;
 	}
 	
+	if (OraConsegna == "") {
+		navigator.notification.alert(
+									 'Non hai inserito un orario di consegna desiderata',  // message
+									 alertDismissed,         // callback
+									 'Ora Consegna',            // title
+									 'OK'                  // buttonName@
+									 );
+		return;
+	}
+	
+	
 	var ordinazione="";
 	db.transaction(function (tx) {
        tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
@@ -739,9 +803,9 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/roma70/www/Check_Transaction.asp",
+							url:"http://www.gtechplay.com/Roma70/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -750,9 +814,10 @@ function compraCarta() {
 							$.each(result, function(i,item){
 								   if (item.Token == "1024"){
 								   
-								   localStorage.setItem("Punti", item.Punti);
+								   //localStorage.setItem("Punti", item.Punti);
+								   dlt2()
 								   
-								   var ref = window.open('http://www.gtechplay.com/roma70/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/Roma70/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -888,7 +953,46 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		$(".spinner").show();
+		$.ajax({
+			   type:"GET",
+			   url:"http://www.gtechplay.com/Roma70/www/check_login_punti.asp",
+			   contentType: "application/json",
+			   data: {email:localStorage.getItem("email")},
+			   timeout: 7000,
+			   jsonp: 'callback',
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+					  //alert(item.Token);
+					  
+					  if (item.Token == 1024){
+
+						localStorage.setItem("Punti", Number(item.Punti).toFixed(2));
+
+					  }
+					 
+				});
+			   
+			   $(".spinner").hide();
+		
+			   },
+			   error: function(){
+			   $(".spinner").hide();
+	
+			   navigator.notification.alert(
+								 'Possibile errore di rete, riprova tra qualche minuto',  // message
+								 alertDismissed,         // callback
+								 'Attenzione',            // title
+								 'Done'                  // buttonName
+				);
+	
+			   },
+			   dataType:"jsonp"});
+
+
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ Number(localStorage.getItem("Punti")).toFixed(2) +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 		document.getElementById("NomeRegalo").value = localStorage.getItem("Nome") + " " + localStorage.getItem("Cognome")
 		document.getElementById("Indirizzo").value = localStorage.getItem("Indirizzo") + "," + localStorage.getItem("Civico")
@@ -923,7 +1027,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.828941,12.473970';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -933,7 +1037,7 @@ function gomappa(){
 }
 
 function riparti(){
-	onDeviceReady();
+	window.location.href = "index.html";
 }
 
 

@@ -443,6 +443,28 @@ a {text-decoration:none;}
 			height: 28px;
 		}
 		
+		.loghetto {
+			
+			border-radius:5px;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-o-border-radius: 5px;
+			
+		}
+		
+		.div5 {
+			position: fixed;
+			z-index: 2;
+			bottom: 0;
+			right: 0;
+			width: 60%;
+			padding: 0;
+			color: #000;
+			
+			text-align: center;
+			
+		}
+		
 		</style>
 		
     </head>
@@ -460,7 +482,7 @@ a {text-decoration:none;}
 		<div id="page" data-role="page" class="div2" >
 			
 			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
-				<span> <img src="img/image3017.png" width="120px" height="26px"></span>
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="32px"></td></tr></table>
 			</div>
 			
 			<div class="spinner" id="spinner"></div>
@@ -516,16 +538,24 @@ a {text-decoration:none;}
 					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#9f1e24" size="3">Pizzeria Roma 70</font>
 						<br><font color="#000000" size="2">Via dell&apos;arte 66 Roma</font><br><br>
 						<ul data-role="listview" data-inset="true">
-							<li><a href="javascript:goprofilo()">I Miei Ordini</a></li>
-							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
-							<li><a id="radio" href="javascript:gomappa()">Dove Siamo</a></li>
+							<li><a href="premi.html" rel="external">Card e Premi</a></li>
+							<li><a href="javascript:goprofilo()" rel="external">I Miei Ordini</a></li>
+							<li><a id="radio" href="javascript:gomappa()" rel="external">Dove Siamo</a></li>
 							<li><a href="tel:+393396200327">Contattaci</a></li>
+							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
 						</ul>
 						</center>
 				<br>
 				
 				<table id="profile" border="0">
-
+					
+					
+				</table>
+				
+				<table align="right" id="profile" border="0" class="div5">
+					<tr><td align="center"><font size="1"><img src="img/Prolution.png" class="loghetto" width="32"></font></td></tr>
+					<tr><td align="center"><font size="0.5">Powerd By Prolution</font></td></tr>
+					<tr><td align="left"><font size="0.5">&nbsp;</font></td></tr>
 				</table>
 			</div>
 			

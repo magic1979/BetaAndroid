@@ -4,22 +4,23 @@ function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
-
-document.addEventListener('click', function (e) {
-
-  click_time = e['timeStamp'];
-
-  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-
-  e.preventDefault();
-
-  return false;
-
-  }
-
-  last_click_time = click_time;
-
-  }, true);
+	
+	document.addEventListener('click', function (e) {
+							  
+							  click_time = e['timeStamp'];
+							  
+							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+							  
+							  e.preventDefault();
+							  
+							  return false;
+							  
+							  }
+							  
+							  last_click_time = click_time;
+							  
+							  }, true);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -60,8 +61,6 @@ document.addEventListener('click', function (e) {
 	var db;
 	var dbCreated = false;
 	
-	var loggato = localStorage.getItem("loginvera")
-	
 	
 	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
 	
@@ -69,11 +68,11 @@ document.addEventListener('click', function (e) {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
-	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
 		$('#badde3').removeClass('badge2').addClass('badge1');
+		$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	}
 	
 	if((email=="")||(!email)){
@@ -88,10 +87,12 @@ document.addEventListener('click', function (e) {
 	$('#rati1').raty({
 				  click: function(score, evt) {
 				  //alert('ID: ' + this.id + "\nscore: " + score + "\nevent: " + evt);
+					 var loggato = localStorage.getItem("loginvera")
 					 
-					if((loggato=="")||(!loggato)){
-					 window.location.href = "Login.html";
-					}
+					 if((loggato=="")||(!loggato)){
+						window.location.href = "Login.html";
+						return;
+					 }
 					 
 				  var recensione = self.document.formia.recensione.value;
 					 
@@ -125,9 +126,8 @@ document.addEventListener('click', function (e) {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
+		$("#noconn").html(tabella);
 		
-        $(".spinner").hide();
         
     }
 
@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_PrendiRecensioni.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -501,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/roma70/www/check_rating.asp",
+			   url:"http://www.gtechplay.com/Roma70/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -510,8 +510,17 @@ function scriviRec(rec,score){
 			   success:function(result){
 			   
 			   $.each(result, function(i,item){
-					//alert("OK")
-					window.location.href = "rating.html";
+					  if(item.Token==1024){
+						window.location.href = "rating.html";
+					  }
+					  else{
+						navigator.notification.alert(
+							'Devi aver effettuato almeno un acquisto!',  // message
+							 alertDismissed,         // callback
+							'Attenzione',            // title
+							'Done'                  // buttonName
+						);
+					  }
 				});
 
 			   $(".spinner").hide();
@@ -535,7 +544,7 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.828941,12.473970';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -546,6 +555,8 @@ function gomappa(){
 
 
 function riparti(){
-	onDeviceReady();
+	
+	window.location.href = "index.html";
+	
 }
 

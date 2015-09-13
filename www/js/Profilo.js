@@ -1,25 +1,26 @@
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
-
-document.addEventListener('click', function (e) {
-
-  click_time = e['timeStamp'];
-
-  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-
-  e.preventDefault();
-
-  return false;
-
-  }
-
-  last_click_time = click_time;
-
-  }, true);
+	
+	document.addEventListener('click', function (e) {
+							  
+							  click_time = e['timeStamp'];
+							  
+							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
+							  
+							  e.preventDefault();
+							  
+							  return false;
+							  
+							  }
+							  
+							  last_click_time = click_time;
+							  
+							  }, true);
+	
     
     $.mobile.defaultPageTransition = 'none';
     $.mobile.defaultDialogTransition = 'none';
@@ -99,9 +100,8 @@ document.addEventListener('click', function (e) {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
+		$("#noconn").html(tabella);
 		
-        $(".spinner").hide();
         
     }
 
@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/roma70/www/check_Mietransazioni.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.828941,12.473970';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -452,5 +452,5 @@ function gomappa(){
 }
 
 function riparti(){
-	onDeviceReady();
+	window.location.href = "index.html";
 }

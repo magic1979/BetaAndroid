@@ -474,6 +474,38 @@ a {text-decoration:none;}
 			text-shadow:0 0 0;
 		}
 		
+		.tabella1{
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border: #9f1e24 1px solid;
+			border-color: #9f1e24;
+			height: 100px;
+			border-spacing: 0px;
+			border-style: outset;
+		}
+		
+		.loghetto {
+			
+			border-radius:5px;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-o-border-radius: 5px;
+			
+		}
+		
+		.div5 {
+			position: fixed;
+			z-index: 2;
+			bottom: 0;
+			right: 0;
+			width: 60%;
+			padding: 0;
+			color: #000;
+			
+			text-align: center;
+			
+		}
+		
 		</style>
 		
     </head>
@@ -483,7 +515,7 @@ a {text-decoration:none;}
 		<div id="page" data-role="page" class="div2" >
 			
 			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
-				<span > <img src="img/image3017.png" width="120px" height="26px"></span>
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="32px"></td></tr></table>
 			</div>
 			
 			<div class="spinner" id="spinner"></div>
@@ -499,6 +531,51 @@ a {text-decoration:none;}
 				</div>
 			</div>
 			
+			<!--<ul data-role="listview"  data-theme="b" data-inset="true">
+				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/PizzaSmall.png" >
+					<h2>&nbsp;PIZZE</h2>
+					<p>Rosse e Bianche</p></a>
+				</li>
+				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/PaniniSmall.png">
+					<h2>&nbsp;PANINI</h2>
+					<p>Americani e Farciti</p></a>
+				</li>
+				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/BibiteSmall.png" height="70">
+					<h2>&nbsp;BIBITE</h2>
+					<p>Cola, Pepsi, Fanta</p></a>
+				</li>
+				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/CannoliSmall.png" height="70">
+					<h2>&nbsp;DOLCI</h2>
+					<p>Cannoli, Tiramisu, Baba</p></a>
+				</li>
+			</ul>-->
+
+
+			<!--<ul id="my-listview" data-role="listview"  data-theme="b" data-inset="true">
+				<li><a href='catalogo.html' onclick='#' rel="external"><img src="img/PizzaSmall.png">
+					<font size="3">Pizze</font>
+					<p>Romene, Napoletane</p></a>
+				</li>
+				<li><a href='catalogo.html' onclick='#' rel="external"><img src="img/PaniniSmall.png">
+					<h2>Panini</h2>
+					<p>Americani, Italiani</p></a>
+				</li>
+				<li><a href='#' onclick='#' rel="external"><img src="img/BibiteSmall.png">
+					<h2>Bibite</h2>
+					<p>Gassate, Normali</p></a>
+				</li>
+				<li><a href='#' onclick='#' rel="external"><img src="img/CannoliSmall.png">
+					<h2>Dolci</h2>
+					<p>Provenienti da tutta Italia</p></a>
+				</li>
+			</ul>
+			
+			<div id="wrapper">
+				<div id="scroller">
+
+				</div>
+			</div>-->
+
 
 			<div id="footer" data-role="footer" data-theme="b" data-tap-toggle="false" class="div1">
 				<div data-role="navbar" class="nav" data-grid="d" data-theme="c" class="div1">
@@ -535,16 +612,24 @@ a {text-decoration:none;}
 					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#9f1e24" size="3">Pizzeria Roma 70</font>
 						<br><font color="#000000" size="2">Via dell&apos;arte 66 Roma</font><br><br>
 						<ul data-role="listview" data-inset="true">
-							<li><a href="javascript:goprofilo()">I Miei Ordini</a></li>
-							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
-							<li><a id="radio" href="javascript:gomappa()">Dove Siamo</a></li>
+							<li><a href="premi.html" rel="external">Card e Premi</a></li>
+							<li><a href="javascript:goprofilo()" rel="external">I Miei Ordini</a></li>
+							<li><a id="radio" href="javascript:gomappa()" rel="external">Dove Siamo</a></li>
 							<li><a href="tel:+393396200327">Contattaci</a></li>
+							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
 						</ul>
 						</center>
 				<br>
 				
 				<table id="profile" border="0">
-
+					
+					
+				</table>
+				
+				<table align="right" id="profile" border="0" class="div5">
+					<tr><td align="center"><font size="1"><img src="img/Prolution.png" class="loghetto" width="32"></font></td></tr>
+					<tr><td align="center"><font size="0.5">Powerd By Prolution</font></td></tr>
+					<tr><td align="left"><font size="0.5">&nbsp;</font></td></tr>
 				</table>
 			</div>
 			
