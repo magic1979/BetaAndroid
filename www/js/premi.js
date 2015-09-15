@@ -100,8 +100,8 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
-		
+		$("#noconn").html(tabella);
+
         
     }
 
@@ -114,7 +114,7 @@ function buildcatalogo() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Home.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Home.asp",
 		   contentType: "application/json",
 		   data: {categoria:"Premi"},
 		   timeout: 7000,
@@ -128,7 +128,7 @@ function buildcatalogo() {
 					window.location.href = "cart.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -188,7 +188,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto_Punti.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -217,7 +217,7 @@ function AggProd(prod) {
 				  {
 					localStorage.setItem("NoPremi", "NO")
 					navigator.notification.alert(
-											   'Non hai abbastanza punti per questo premio 1',  // message
+											   'Non hai abbastanza punti per questo premio',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@
@@ -291,7 +291,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto_Punti.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -360,7 +360,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto_Punti.asp",
+															 url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -416,7 +416,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto_Punti.asp",
+															 url:"http://www.gtechplay.com/Roma70/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -645,8 +645,9 @@ function getParameterByName(name) {
 						  }
 
 
+						  
 						  function gomappa(){
-						  var addressLongLat = '41.862321,12.692804';
+						  var addressLongLat = '41.828989, 12.473965';
 						  
 						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -656,7 +657,5 @@ function getParameterByName(name) {
 						  }
 						  
 						  function riparti(){
-						  
 							window.location.href = "index.html";
-						  
 						  }

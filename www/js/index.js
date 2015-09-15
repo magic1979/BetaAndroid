@@ -144,6 +144,7 @@ var app = {
 			
 		}
 		else{
+			$('#noconn').show();
 			
 			var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 			tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></td></tr>";
@@ -570,7 +571,7 @@ function checkPos() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -719,7 +720,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/Check_Home.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/Check_Home.asp",
 		   contentType: "application/json",
 		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   data: {Categoria:"offerte"},
@@ -738,7 +739,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/up/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 				  }
 				  
 				  idProdotto = idProdotto+1;
@@ -1089,7 +1090,7 @@ function exitapp(){
 
 function riparti(){
 	
-	window.location.href = "index.html";
+	 window.location.href = "index.html";
 	
 }
 

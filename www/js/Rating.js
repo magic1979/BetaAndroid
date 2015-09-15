@@ -126,7 +126,7 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
+		$("#noconn").html(tabella);
 		
         
     }
@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_PrendiRecensioni.asp",
+		   url:"http://www.gtechplay.com/Roma70/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -501,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/pizzaxte/www/check_ratingV2.asp",
+			   url:"http://www.gtechplay.com/Roma70/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -544,7 +544,7 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -555,6 +555,8 @@ function gomappa(){
 
 
 function riparti(){
+	
 	window.location.href = "index.html";
+	
 }
 
