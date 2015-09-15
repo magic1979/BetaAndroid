@@ -120,7 +120,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma70/www/check_login.asp",
+		   url:"http://www.gtechplay.com/PizzaxTe/www/check_login.asp",
 		   contentType: "application/json",
 		   data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -315,7 +315,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma70/www/Check_Reg.asp",
+		   url:"http://www.gtechplay.com/PizzaxTe/www/Check_Reg.asp",
 		   contentType: "application/json",
 		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg},
 		   timeout: 7000,
@@ -441,7 +441,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/Roma70/www/Check_RecPassword.asp",
+			   url:"http://www.gtechplay.com/pizzaxte/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
@@ -493,7 +493,7 @@ function onPrompt(results) {
 }
 
 function gomappa(){
-	var addressLongLat = '41.828989, 12.473965';
+	var addressLongLat = '41.862321,12.692804';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
