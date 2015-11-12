@@ -229,7 +229,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -296,7 +296,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -344,7 +344,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/pizzaxte2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -633,7 +633,7 @@ function compra() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/pizzaxte/www/Check_TransactionV2.asp",
+							url:"http://www.gtechplay.com/pizzaxte2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
 							timeout: 7000,
@@ -803,7 +803,7 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://www.gtechplay.com/pizzaxte/www/Check_TransactionV2.asp",
+							url:"http://www.gtechplay.com/pizzaxte2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
 							timeout: 7000,
@@ -817,7 +817,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://www.gtechplay.com/pizzaxte/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/pizzaxte2/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -956,7 +956,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/PizzaxTe/www/check_login_punti.asp",
+			   url:"http://www.gtechplay.com/pizzaxte2/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,

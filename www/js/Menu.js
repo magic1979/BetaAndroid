@@ -1,11 +1,11 @@
-document.addEventListener('deviceready', onDeviceReady, false);
+http://www.gtechplay.com/pizzaxte2.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    //http://www.gtechplay.com/pizzaxte2.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 	
-	document.addEventListener('click', function (e) {
+	http://www.gtechplay.com/pizzaxte2.addEventListener('click', function (e) {
 							  
 							  click_time = e['timeStamp'];
 							  
@@ -29,8 +29,8 @@ function onDeviceReady() {
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
     
-	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
+	http://www.gtechplay.com/pizzaxte2.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
+	http://www.gtechplay.com/pizzaxte2.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 	
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -46,7 +46,7 @@ function onDeviceReady() {
 		});
 	
 	
-	$(document).keydown(function (eventObj){
+	$(http://www.gtechplay.com/pizzaxte2).keydown(function (eventObj){
 		getKey(eventObj);
 	});
 	
@@ -422,7 +422,7 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		document.activeElement.blur();
+		http://www.gtechplay.com/pizzaxte2.activeElement.blur();
 		$("input").blur()
 		return false;
 		
