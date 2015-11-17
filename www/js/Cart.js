@@ -513,7 +513,6 @@ function compraCC(){
 }
 
 
-
 function compra(metodo) {
 	var metodopp = "Cash";
 	
@@ -1010,9 +1009,7 @@ function mostraOrario(){
 			   $(".spinner").hide();
 	
 			         // buttonName
-				);
-	
-			   },
+				},
 			   dataType:"jsonp"});
 }
 
