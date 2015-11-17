@@ -555,7 +555,7 @@ function getParameterByName(name) {
 
 						  
 						  function gomappa(){
-						  var addressLongLat = '41.862321,12.692804';
+						  var addressLongLat = '41.903294,12.684594';
 						  
 						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat

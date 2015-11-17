@@ -1,11 +1,11 @@
-document.addEventListener('deviceready', onDeviceReady, false);
+http://www.gtechplay.com/pizzaxte2.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //document.addEventListener("resume", onResume, false);
+    //http://www.gtechplay.com/pizzaxte2.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 	
-	document.addEventListener('click', function (e) {
+	http://www.gtechplay.com/pizzaxte2.addEventListener('click', function (e) {
 							  
 							  click_time = e['timeStamp'];
 							  
@@ -29,8 +29,8 @@ function onDeviceReady() {
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
     
-	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
+	http://www.gtechplay.com/pizzaxte2.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
+	http://www.gtechplay.com/pizzaxte2.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 	
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -46,7 +46,7 @@ function onDeviceReady() {
 		});
 	
 	
-	$(document).keydown(function (eventObj){
+	$(http://www.gtechplay.com/pizzaxte2).keydown(function (eventObj){
 		getKey(eventObj);
 	});
 	
@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte2/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/pizzaxte/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -422,7 +422,7 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		document.activeElement.blur();
+		http://www.gtechplay.com/pizzaxte2.activeElement.blur();
 		$("input").blur()
 		return false;
 		
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.903294,12.684594';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
