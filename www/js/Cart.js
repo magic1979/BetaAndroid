@@ -85,6 +85,8 @@ function onDeviceReady() {
 		seleziona();
 		
 		mostrapunti()
+			
+		mostraOrario()
     }
     
     else{
@@ -510,18 +512,6 @@ function compraCC(){
 	
 }
 
-
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
-	
-	if((loggato=="")||(!loggato)){
-		
-	}else{
-		
-	}
-	
-	
-}
 
 
 function compra(metodo) {
@@ -953,7 +943,6 @@ function mostrapunti(){
 					  if (item.Token == 1024){
 
 						localStorage.setItem("Punti", Number(item.Punti).toFixed(2));
-						mostraOrario()
 
 					  }
 					 
@@ -1008,8 +997,8 @@ function mostraOrario(){
 					  
 					  if (item.Token == 1024){
 
-						$("#oraConsegna").show()
-						$("#oraConsegna").html(item.Giorno + " / " + itam.Ora)
+						$("#oraConsegna2").show()
+						$("#oraConsegna2").html(item.Giorno + " / " + itam.Ora)
 						  
 					  }
 				});
