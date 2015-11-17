@@ -997,7 +997,7 @@ function mostraOrario(){
 					  if (item.Token == 1024){
 
 						$("#oraConsegna2").show()
-						$("#oraConsegna2").html(item.Giorno + " / " + itam.Ora)
+						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
 						  
 					  }
 				});
