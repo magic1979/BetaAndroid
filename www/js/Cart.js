@@ -996,7 +996,7 @@ function mostraOrario(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/vogliadipizza/www/check_login_punti.asp",
+			   url:"http://www.gtechplay.com/vogliadipizza/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
