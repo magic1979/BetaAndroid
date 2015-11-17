@@ -1,11 +1,11 @@
-http://www.gtechplay.com/pizzaxte2.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
-    //http://www.gtechplay.com/pizzaxte2.addEventListener("resume", onResume, false);
+    //document.addEventListener("resume", onResume, false);
 	
 	last_click_time = new Date().getTime();
 	
-	http://www.gtechplay.com/pizzaxte2.addEventListener('click', function (e) {
+	document.addEventListener('click', function (e) {
 							  
 							  click_time = e['timeStamp'];
 							  
@@ -29,8 +29,8 @@ function onDeviceReady() {
     var connectionStatus = false;
     connectionStatus = navigator.onLine ? 'online' : 'offline';
     
-	http://www.gtechplay.com/pizzaxte2.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-	http://www.gtechplay.com/pizzaxte2.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
+	document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
+	document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 	
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -46,7 +46,7 @@ function onDeviceReady() {
 		});
 	
 	
-	$(http://www.gtechplay.com/pizzaxte2).keydown(function (eventObj){
+	$(document).keydown(function (eventObj){
 		getKey(eventObj);
 	});
 	
@@ -90,14 +90,14 @@ function onDeviceReady() {
     }
     
     else{
-        $("#noconn").show();
+        $('#noconn').show();
         
 		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
-		
+		$("#noconn").html(tabella);
+
         
     }
 
@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,7 +121,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/vogliadipizza/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
@@ -422,7 +422,7 @@ function getKey(key){
 	
 	if (keycode ==13){
 		
-		http://www.gtechplay.com/pizzaxte2.activeElement.blur();
+		document.activeElement.blur();
 		$("input").blur()
 		return false;
 		
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.903294,12.684594';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

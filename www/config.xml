@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.pxt"
-		versionCode="4.0"
-		version   = "4.0">
+		id        = "it.app-piu.vdp"
+		versionCode="1.0"
+		version   = "1.0">
 		<name>VogliaDiPizza</name>
 		<description>Voglia di Pizza App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
