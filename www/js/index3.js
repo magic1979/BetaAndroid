@@ -1396,7 +1396,7 @@ function onDeviceReady() {
 														   }, true);
 	
 
-								 $(document).on("click touchstart", "#aggbutton", function(e){
+								 $(document).on("touchstart", "#aggbutton", function(e){
 									e.preventDefault();
 									AggProd(codiceProdotto)
 								});
