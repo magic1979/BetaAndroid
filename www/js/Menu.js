@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/vogliadipizza/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/barber/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,7 +121,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/vogliadipizza/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/barber/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.828989, 12.473965';
+	var addressLongLat = '41.833360,12.466862';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
