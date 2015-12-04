@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.barber"
-		versionCode="2.0"
-		version   = "2.0">
-		<name>IlBarbiere</name>
-		<description>Il Barbiere App+, Pizza, Pizza a legna</description>
+		id        = "it.app-piu.vdp"
+		versionCode="1.0"
+		version   = "1.0">
+		<name>VogliaDiPizza</name>
+		<description>Voglia di Pizza App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
-			Prolution srl
+Prolution srl
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
@@ -108,6 +108,4 @@
 		<access origin="http://googleapis.com" subdomains="true"  />
 
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
-		<gap:plugin name="com.sharinglabs.cordova.plugin.datepicker" />
-		
 	</widget>
