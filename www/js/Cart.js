@@ -3,7 +3,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
-	//PushbotsPlugin.resetBadge();
 	
 	last_click_time = new Date().getTime();
 	
@@ -63,8 +62,6 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
-	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
-	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
 	$("#badde3").attr("data-badge", Badge10);
@@ -88,6 +85,8 @@ function onDeviceReady() {
 		seleziona();
 		
 		mostrapunti()
+			
+		mostraOrario()
     }
     
     else{
@@ -492,12 +491,13 @@ function rati() {
 	$('#rati1').raty({ score: 3 });
 }
 
-function compraConsegna(){
+function compraConsegna(metodo){
 	var loggato = localStorage.getItem("loginvera")
 	if((loggato=="")||(!loggato)){
 		window.location.href = "Login.html";
 	}else{
-		compra()
+		
+		compra(metodo)
 	}
 	
 }
@@ -513,21 +513,15 @@ function compraCC(){
 }
 
 
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
+function compra(metodo) {
+	var metodopp = "Cash";
 	
-	if((loggato=="")||(!loggato)){
-		
-	}else{
-		
+	if(metodo==1){
+		metodopp = "Cash";
 	}
-	
-	
-}
-
-
-function compra() {
-	
+	else{
+		metodopp = "Take";
+	}
 	
 	var num1 = Math.floor((Math.random() * 20) + 1);
 	var num2 = Math.floor((Math.random() * 20) + 1);
@@ -635,7 +629,7 @@ function compra() {
 							type:"GET",
 							url:"http://www.gtechplay.com/pizzaxte2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -689,8 +683,7 @@ function compra() {
 				   
 				   });
 				  
-	//vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
-	
+		
 }
 
 function compraCarta() {
@@ -831,7 +824,7 @@ function compraCarta() {
 																);
 								   }
 								   
-								   });
+							});
 							
 							$(".spinner").hide();
 							
@@ -853,8 +846,7 @@ function compraCarta() {
 				   
 				   });
 	
-	//vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
-	
+		
 }
 
 function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
@@ -914,16 +906,7 @@ function saldopunti(){
 		//alert("No")
 		window.location.href = "Login.html";
 	}else{
-		//window.location.href = "profilo.html";
-		//window.location.href = "Login.html";
-		
-		/*localStorage.getItem("Nome")
-		 localStorage.getItem("Cognome")
-		 localStorage.getItem("Punti")
-		 localStorage.getItem("Indirizzo")
-		 localStorage.getItem("Citta")
-		 localStorage.getItem("Telefono")
-		 localStorage.getItem("email")*/
+
 		
 		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
 		
@@ -931,18 +914,7 @@ function saldopunti(){
 		$("#profile").show()
 		
 	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
-	 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
-	 alertDismissed,         // callback
-	 'Saldo Punti',            // title
-	 'Chiudi'                  // buttonName
-	 );*/
-	
+
 }
 
 function mostrapunti(){
@@ -1007,6 +979,41 @@ function mostrapunti(){
 }
 
 
+function mostraOrario(){
+	
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://www.gtechplay.com/pizzaxte2/www/Check_Orario.asp",
+		   contentType: "application/json",
+		   //data: {email:localStorage.getItem("email")},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if (item.Token == 1024){
+				  
+						$("#oraConsegna2").show()
+						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
+				  
+				  }
+				  });
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   // buttonName
+		   },
+		   dataType:"jsonp"});
+}
+
+
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
@@ -1027,13 +1034,9 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.903294,12.684594';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
-	
 }
 
 function riparti(){
@@ -1041,6 +1044,4 @@ function riparti(){
 	window.location.href = "index.html";
 	
 }
-
-
 
