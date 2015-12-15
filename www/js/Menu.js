@@ -90,14 +90,14 @@ function onDeviceReady() {
     }
     
     else{
-        $("#noconn").show();
+        $('#noconn').show();
         
 		var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
-		
+		$("#noconn").html(tabella);
+
         
     }
 
@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte2/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/Roma702/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,7 +121,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.862321,12.692804';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
