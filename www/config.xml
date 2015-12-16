@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "it.app-piu.pr7"
-		versionCode="2.0"
-		version   = "2.0">
+		versionCode="3.0"
+		version   = "3.0">
 		<name>Pizzeria Roma 70</name>
 		<description>Pizzeria Roma 70 App+</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
