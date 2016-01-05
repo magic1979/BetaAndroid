@@ -109,6 +109,6 @@
 
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer"  />
 		<gap:plugin name="com.sharinglabs.cordova.plugin.datepicker" />
-		<gap:plugin name="pushbots-cordova-plugin" source="npm" />
+		<gap:plugin name="pushbots-cordova-plugin" source="npm" version="1.2.8" />
 		
 	</widget>
