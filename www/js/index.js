@@ -27,6 +27,13 @@ var app = {
 		//PushbotsPlugin.debug(true);
 		
 		//PushbotsPlugin.setBadge(1);
+	    	if(PushbotsPlugin.isiOS()){
+			PushbotsPlugin.initializeiOS("56893d101779599c7d8b4568");
+		 }
+		 if(PushbotsPlugin.isAndroid()){
+			PushbotsPlugin.initializeAndroid("56893d101779599c7d8b4568", "637328979344");
+		 }
+		 
 		
 		
 		last_click_time = new Date().getTime();
@@ -137,6 +144,33 @@ var app = {
 					);
 					}
 				}
+			}
+			
+			var loggato = localStorage.getItem("loginvera")
+			
+			if((loggato=="")||(!loggato)){
+				//alert("blocco1")
+			}else{
+			
+			
+			if(localStorage.getItem("Registrato")!=1){
+				//alert("entrato")
+				
+			setTimeout (function(){
+						
+				PushbotsPlugin.getToken(function(token){
+					localStorage.setItem("Token", token);
+										
+					RegToken()
+				 });
+						
+			}, 2000);
+				
+			}
+			else{
+				//alert("blocco2")
+			}
+				
 			}
 
 			
@@ -1094,5 +1128,49 @@ function riparti(){
 	
 }
 
+function RegToken(){
+	//alert("entrato2")
+	
+		$(".spinner").show();
+		$.ajax({
+			   type:"GET",
+			   url:"http://msop.it/prolutionapp/www/Check_RegToken.asp",
+			   contentType: "application/json",
+			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token")},
+			   timeout: 7000,
+			   jsonp: 'callback',
+			   crossDomain: true,
+			   success:function(result){
+			   
+			   $.each(result, function(i,item){
+					  if (item.Token == '1024'){
+					  //alert(item.Token)
+					  localStorage.setItem("Registrato", "1");
+					  
+					  }
+					  else{
+					  //alert(item.Token)
+					  localStorage.setItem("Registrato", "0");
+					  
+					  }
+					  });
+			   
+			   $(".spinner").hide();
+			   //window.location.href = "index.html";
+			   
+			   },
+			   error: function(){
+			   $(".spinner").hide();
+			   
+			   navigator.notification.alert(
+											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											alertDismissed,         // callback
+											'Attenzione',            // title
+											'Done'                  // buttonName
+											);
+			   
+			   },
+			   dataType:"jsonp"});
+}
 
 
