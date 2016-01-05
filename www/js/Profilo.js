@@ -67,11 +67,11 @@ function onDeviceReady() {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
+	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
 		$('#badde3').removeClass('badge2').addClass('badge1');
-		$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	}
 	
 	if((email=="")||(!email)){
@@ -100,9 +100,8 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
+		$("#noconn").html(tabella);
 		
-        $(".spinner").hide();
         
     }
 
@@ -114,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_Mietransazioni.asp",
+		   url:"http://www.gtechplay.com/barber/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -135,7 +134,7 @@ function seleziona() {
 				
 				var comp = anno + "/" + mese + "/" + giorno
 				  
-				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/logo.png' width='18'>"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Ordine  +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Tot +"&euro;</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
+				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'>"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Ordine  +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Tot +"&euro;</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
 				}
 
 			});
@@ -438,7 +437,6 @@ function mostrapunti(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
-	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
