@@ -30,9 +30,6 @@ var app = {
 		 if(PushbotsPlugin.isAndroid()){
 			PushbotsPlugin.initializeAndroid("56893d101779599c7d8b4568", "637328979344");
 		 }
-		 
-		 
-		 PushbotsPlugin.resetBadge();
 		
 		
 		last_click_time = new Date().getTime();
@@ -147,12 +144,13 @@ var app = {
 			
 			
 			//REG DEVICE PER PUSH
-			var loggato = localStorage.getItem("loginvera")
+			/*var loggato = localStorage.getItem("loginvera")
 			
 			if((loggato=="")||(!loggato)){
 				//alert("blocco1")
-			}else{
-			
+			}
+			else{
+				
 			
 			if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
@@ -172,7 +170,7 @@ var app = {
 				//alert("blocco2")
 			}
 				
-			}
+			}*/
 
 			
 			$("#footer").show();
