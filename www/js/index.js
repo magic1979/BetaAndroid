@@ -146,7 +146,13 @@ var app = {
 			}
 			
 			
-			//REG DEVICE PER PUS			
+			//REG DEVICE PER PUSH
+			var loggato = localStorage.getItem("loginvera")
+			
+			if((loggato=="")||(!loggato)){
+				//alert("blocco1")
+			}else{
+			
 			
 			if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
@@ -164,6 +170,8 @@ var app = {
 			}
 			else{
 				//alert("blocco2")
+			}
+				
 			}
 
 			
