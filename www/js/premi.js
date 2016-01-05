@@ -114,7 +114,7 @@ function buildcatalogo() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma702/www/check_Home.asp",
+		   url:"http://msop.it/prolutionapp/www/check_Home.asp",
 		   contentType: "application/json",
 		   data: {categoria:"Premi"},
 		   timeout: 7000,
@@ -128,7 +128,7 @@ function buildcatalogo() {
 					window.location.href = "cart.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/Roma70/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://www.gtechplay.com/public/barber/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -188,7 +188,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma702/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -209,7 +209,7 @@ function AggProd(prod) {
 				  
 				  if(puntiOK >= 0){
 					//alert("Posso")
-					//localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
+					localStorage.setItem("Punti", Number(puntiOK).toFixed(2))
 				  $("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
 					
 				  }
@@ -291,7 +291,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/Roma702/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -360,7 +360,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://www.gtechplay.com/Roma702/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -416,7 +416,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://www.gtechplay.com/Roma702/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -647,7 +647,7 @@ function getParameterByName(name) {
 
 						  
 						  function gomappa(){
-						  var addressLongLat = '41.828989, 12.473965';
+						  var addressLongLat = '41.833360,12.466862';
 						  
 						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
