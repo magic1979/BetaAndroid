@@ -1083,6 +1083,7 @@ function mostraOrario(){
 
 						$("#oraConsegna2").show()
 						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
+                        $("#zoneServite").html("Zone Servite:" + item.Zona)
 						  
 					  }
 				});
@@ -1102,6 +1103,7 @@ function mostraOrario(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
+	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
