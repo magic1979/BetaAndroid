@@ -146,12 +146,6 @@ var app = {
 				}
 			}
 			
-			var loggato = localStorage.getItem("loginvera")
-			
-			if((loggato=="")||(!loggato)){
-				//alert("blocco1")
-			}else{
-			
 			
 			if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
@@ -160,8 +154,8 @@ var app = {
 						
 				PushbotsPlugin.getToken(function(token){
 					localStorage.setItem("Token", token);
-										
-					RegToken()
+					alert(token)
+					//RegToken()
 				 });
 						
 			}, 2000);
@@ -169,8 +163,6 @@ var app = {
 			}
 			else{
 				//alert("blocco2")
-			}
-				
 			}
 
 			
