@@ -1137,7 +1137,7 @@ function RegToken(){
 			   type:"GET",
 			   url:"http://msop.it/prolutionapp/www/Check_RegToken.asp",
 			   contentType: "application/json",
-			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token")},
+			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token"),platform:"Android"},
 			   timeout: 7000,
 			   jsonp: 'callback',
 			   crossDomain: true,

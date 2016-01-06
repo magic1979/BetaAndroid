@@ -317,7 +317,7 @@ function iscriviti(){
 		   type:"GET",
 		   url:"http://msop.it/prolutionapp/www/Check_Reg.asp",
 		   contentType: "application/json",
-		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token")},
+		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token"),platform:"Android"},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
