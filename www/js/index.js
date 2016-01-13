@@ -24,15 +24,15 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
-		if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("56893d101779599c7d8b4568");
+		//PushbotsPlugin.debug(true);
+		
+		//PushbotsPlugin.setBadge(1);
+	    	if(PushbotsPlugin.isiOS()){
+			PushbotsPlugin.initializeiOS("569628d3177959067a8b4567");
 		 }
 		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("56893d101779599c7d8b4568", "637328979344");
+			PushbotsPlugin.initializeAndroid("569628d3177959067a8b4567", "12250132047");
 		 }
-		 
-		 
-		 PushbotsPlugin.resetBadge();
 		
 		
 		last_click_time = new Date().getTime();
@@ -123,7 +123,7 @@ var app = {
 			$(".spinner").hide();
 			
 			buildprodotto('Pizza','Roma',1);
-
+			
 			
 			if ((localStorage.getItem("emailStory")=="")||(!localStorage.getItem("emailStory"))||(localStorage.getItem("emailStory")==0)){
 				//alert("Non ci sta")
@@ -146,14 +146,6 @@ var app = {
 			}
 			
 			
-			//REG DEVICE PER PUSH
-			var loggato = localStorage.getItem("loginvera")
-			
-			if((loggato=="")||(!loggato)){
-				//alert("blocco1")
-			}else{
-			
-			
 			if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
 				
@@ -161,16 +153,11 @@ var app = {
 						
 				PushbotsPlugin.getToken(function(token){
 					localStorage.setItem("Token", token);
-										
+					//alert(token)
 					RegToken()
 				 });
 						
 			}, 2000);
-				
-			}
-			else{
-				//alert("blocco2")
-			}
 				
 			}
 
@@ -179,6 +166,7 @@ var app = {
 			
 		}
 		else{
+			$('#noconn').show();
 			
 			var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 			tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></td></tr>";
@@ -605,7 +593,7 @@ function checkPos() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.863862,12.497881';
+	var addressLongLat = '41.903313,12.684689';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -754,7 +742,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/Check_Home.asp",
+		   url:"http://msop.it/SmartPizza/www/Check_Home.asp",
 		   contentType: "application/json",
 		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   data: {Categoria:"offerte"},
@@ -770,17 +758,17 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 				   //alert(distanza);javascript:AggProd(3);
 				  
 				  if (model.indexOf('iPad') >= 0) {
-					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#1d96d3'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://msop.it/public/prolution/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#1d96d3'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#1d96d3'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#1d96d3'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#1d96d3'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://msop.it/public/smartfood/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 				  }
 				  
 				  idProdotto = idProdotto+1;
-				  /*<font size='4' color='#1d96d3'>"+ item.Deal +"&euro;</font>
+				  /*<font size='4' color='#B40431'>"+ item.Deal +"&euro;</font>
 				  <font size='3' color='#454545'>"+ item.Descrizione +"</font>
 				  <font size='2' color='#454545'>Scade tra 14 giorni</font>
-				  <font size='2' color='#1d96d3'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
+				  <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 				  
 
 				  
@@ -1101,7 +1089,6 @@ function mostrapunti(){
 function uscire(){
 localStorage.setItem("loginvera", "")
 localStorage.setItem("email", "")
-localStorage.setItem("Registrato", "")
 	
 window.location.href = "index.html";
 }
@@ -1125,7 +1112,7 @@ function exitapp(){
 
 function riparti(){
 	
-	window.location.href = "index.html";
+	 window.location.href = "index.html";
 	
 }
 
@@ -1135,26 +1122,26 @@ function RegToken(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/prolutionapp/www/Check_RegToken.asp",
+			   url:"http://msop.it/SmartPizza/www/Check_RegToken.asp",
 			   contentType: "application/json",
-			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token"),platform:"Android"},
+			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token")},
 			   timeout: 7000,
 			   jsonp: 'callback',
 			   crossDomain: true,
 			   success:function(result){
 			   
 			   $.each(result, function(i,item){
-					  if (item.Token == '1024'){
-					  //alert(item.Token)
-					  localStorage.setItem("Registrato", "1");
-					  
-					  }
-					  else{
-					  //alert(item.Token)
-					  localStorage.setItem("Registrato", "0");
-					  
-					  }
-					  });
+				  if (item.Token == '1024'){
+				  //alert(item.Token)
+				  localStorage.setItem("Registrato", "1");
+				  
+				  }
+				  else{
+				  //alert(item.Token)
+				  localStorage.setItem("Registrato", "0");
+				  
+				  }
+			});
 			   
 			   $(".spinner").hide();
 			   //window.location.href = "index.html";
@@ -1164,15 +1151,17 @@ function RegToken(){
 			   $(".spinner").hide();
 			   
 			   navigator.notification.alert(
-											'Possibile errore di rete, riprova tra qualche minuto',  // message
-											alertDismissed,         // callback
-											'Attenzione',            // title
-											'Done'                  // buttonName
-											);
+				'Possibile errore di rete, riprova tra qualche minuto',  // message
+				alertDismissed,         // callback
+				'Attenzione',            // title
+				'Done'                  // buttonName
+				);
 			   
 			   },
 			   dataType:"jsonp"});
 }
+
+
 
 
 

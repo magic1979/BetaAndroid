@@ -120,7 +120,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_login.asp",
+		   url:"http://msop.it/SmartPizza/www/check_login.asp",
 		   contentType: "application/json",
 		   data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -315,18 +315,17 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/Check_Reg.asp",
+		   url:"http://msop.it/SmartPizza/www/Check_Reg.asp",
 		   contentType: "application/json",
-		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token"),platform:"Android"},
+		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
 		   
 		   $.each(result, function(i,item){
-				if (item.Token == '1024'){
+				  if (item.Token == '1024'){
 				  
-				  localStorage.setItem("Registrato", "1");
 				  navigator.notification.alert(
 											   'Registrazione effettuata correttamente.',  // message
 											    alertDismissed,         // callback
@@ -337,7 +336,7 @@ function iscriviti(){
 				  window.location.href = "#page.html";
 				  
 				  }
-				else{
+				  else{
 				  navigator.notification.alert(
 											   'Cliente gia registrato',  // message
 											   alertDismissed,         // callback
@@ -346,7 +345,7 @@ function iscriviti(){
 											   );
 				  
 				  }
-			});
+				  });
 		   
 		   $(".spinner").hide();
 		   window.location.href = "index.html";
@@ -442,7 +441,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/prolutionapp/www/Check_RecPassword.asp",
+			   url:"http://msop.it/SmartPizza/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
@@ -494,7 +493,7 @@ function onPrompt(results) {
 }
 
 function gomappa(){
-	var addressLongLat = '41.833360,12.466862';
+	var addressLongLat = '41.828989, 12.473965';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
