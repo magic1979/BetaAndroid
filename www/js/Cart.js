@@ -1034,7 +1034,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.903294,12.684594';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
