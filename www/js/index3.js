@@ -1359,7 +1359,7 @@ function onDeviceReady() {
 										var today = new Date();
 										var yyyy = today.getFullYear();
 										
-										$("#getting-started").countdown(yyyy+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
+										$("#getting-started").countdown(yyyy +"/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
 																		$(this).html(event.strftime('%D giorni %H:%M:%S'));
 																		});
 										
