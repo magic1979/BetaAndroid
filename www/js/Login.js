@@ -120,7 +120,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_login.asp",
+		   url:"http://msop.it/smartpizza/www/check_login.asp",
 		   contentType: "application/json",
 		   data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -315,7 +315,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/Check_Reg.asp",
+		   url:"http://msop.it/smartpizza/www/Check_Reg.asp",
 		   contentType: "application/json",
 		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token"),platform:"Android"},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/prolutionapp/www/Check_RecPassword.asp",
+			   url:"http://msop.it/smartpizza/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,

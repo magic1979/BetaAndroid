@@ -545,6 +545,7 @@ function compra(metodo) {
 	var amount = self.document.formia9.totordine.value;
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
+	var Note = self.document.formia9.Note.value;
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -629,7 +630,7 @@ function compra(metodo) {
 							type:"GET",
 							url:"http://msop.it/SmartPizza/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -713,6 +714,7 @@ function compraCarta() {
 	var amount = self.document.formia9.totordine.value;
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
+	var Note = self.document.formia9.Note.value;
 	
 	
 	if ((email == "")||(!email)) {
@@ -798,7 +800,7 @@ function compraCarta() {
 							type:"GET",
 							url:"http://msop.it/SmartPizza/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
