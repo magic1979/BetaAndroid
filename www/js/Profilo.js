@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/SmartPizza/www/check_Mietransazioni.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.588583,12.653672';
+	var addressLongLat = '41.903313,12.684689';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

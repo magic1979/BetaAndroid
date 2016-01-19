@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.smartpizza"
-		versionCode="2.0"
-		version   = "2.0">
-		<name>SmartFood</name>
-		<description>Smart Food App+, Pizza, Pizza a legna</description>
+		id        = "it.app-piu.vdp"
+		versionCode="5.0"
+		version   = "5.0">
+		<name>VogliaDiPizza</name>
+		<description>Voglia di Pizza App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
 Prolution srl
 		</author>

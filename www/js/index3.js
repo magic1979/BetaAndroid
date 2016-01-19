@@ -214,7 +214,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -291,7 +291,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -434,7 +434,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -1322,7 +1322,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/Check_Prodotto.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/Check_Prodotto.asp",
 								 //url:"http://www.mistertod.it/www/Check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:IDProd},
@@ -1341,7 +1341,7 @@ function onDeviceReady() {
 										landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 										}
 										else{
-										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://msop.it/public/smartfood/"+ item.IMG +".png' width='100%'></a><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a id='aggbutton' href='#' class='btn'><font color='#fff'>Acquista</font></a><br><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1.5' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table><br><hr class='div3'></div>";
+										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://www.gtechplay.com/public/vogliadipizza/"+ item.IMG +".png' width='100%'></a><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a id='aggbutton' href='#' class='btn'><font color='#fff'>Acquista</font></a><br><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1.5' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table><br><hr class='div3'></div>";
 										
 											codiceProdotto = item.Cod_Prodotto
 										
@@ -1355,11 +1355,8 @@ function onDeviceReady() {
 										 <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 										
 										//alert(idProdotto);
-										 
-										var today = new Date();
-										var yyyy = today.getFullYear();
 										
-										$("#getting-started").countdown(yyyy +"/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
+										$("#getting-started").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
 																		$(this).html(event.strftime('%D giorni %H:%M:%S'));
 																		});
 										
@@ -1968,7 +1965,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:1},
 								 jsonp: 'callback',
@@ -1997,7 +1994,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/SmartPizza/www/check_acquistati.asp",
+								 url:"http://www.gtechplay.com/vogliadipizza2/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:2},
 								 jsonp: 'callback',

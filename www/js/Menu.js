@@ -110,7 +110,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/SmartPizza/www/check_Menu.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -121,7 +121,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://msop.it/public/smartfood/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://www.gtechplay.com/public/vogliadipizza/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
@@ -511,7 +511,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.588583,12.653672';
+	var addressLongLat = '41.903313,12.684689';
 	
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
