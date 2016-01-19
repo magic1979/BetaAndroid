@@ -28,7 +28,7 @@ var app = {
 			PushbotsPlugin.initializeiOS("569cc754177959df038b4567");
 		 }
 		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("569cc754177959df038b4567", "12250132047");
+			PushbotsPlugin.initializeAndroid("569cc754177959df038b4567", "979160788694");
 		 }
 		
 		
