@@ -1355,8 +1355,10 @@ function onDeviceReady() {
 										 <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 										
 										//alert(idProdotto);
+										 var today = new Date();
+										var yyyy = today.getFullYear();
 										
-										$("#getting-started").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
+										$("#getting-started").countdown(yyyy +"/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
 																		$(this).html(event.strftime('%D giorni %H:%M:%S'));
 																		});
 										
