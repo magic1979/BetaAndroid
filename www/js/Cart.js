@@ -228,7 +228,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -295,7 +295,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -343,7 +343,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -628,7 +628,7 @@ function compra(metodo) {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
+							url:"http://www.gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -798,7 +798,7 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
+							url:"http://www.gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -812,7 +812,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://gtechplay.com/vogliadipizza2/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://www.gtechplay.com/vogliadipizza2/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -826,7 +826,7 @@ function compraCarta() {
 																);
 								   }
 								   
-								   });
+							});
 							
 							$(".spinner").hide();
 							
@@ -930,7 +930,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://gtechplay.com/vogliadipizza2/www/check_login_punti.asp",
+			   url:"http://www.gtechplay.com/vogliadipizza2/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -983,36 +983,36 @@ function mostrapunti(){
 
 function mostraOrario(){
 	
-		$(".spinner").show();
-		$.ajax({
-			   type:"GET",
-			   url:"http://gtechplay.com/vogliadipizza2/www/Check_Orario.asp",
-			   contentType: "application/json",
-			   //data: {email:localStorage.getItem("email")},
-			   timeout: 7000,
-			   jsonp: 'callback',
-			   crossDomain: true,
-			   success:function(result){
-			   
-			   $.each(result, function(i,item){
-					  
-					  if (item.Token == 1024){
-
+	$(".spinner").show();
+	$.ajax({
+		   type:"GET",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/Check_Orario.asp",
+		   contentType: "application/json",
+		   //data: {email:localStorage.getItem("email")},
+		   timeout: 7000,
+		   jsonp: 'callback',
+		   crossDomain: true,
+		   success:function(result){
+		   
+		   $.each(result, function(i,item){
+				  
+				  if (item.Token == 1024){
+				  
 						$("#oraConsegna2").show()
 						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
-						$("#zoneServite").html("Zone Servite:" + item.Zona)
-					  }
-				});
-			   
-			   $(".spinner").hide();
-		
-			   },
-			   error: function(){
-			   $(".spinner").hide();
-	
-			         // buttonName
-				},
-			   dataType:"jsonp"});
+				  
+				  }
+				  });
+		   
+		   $(".spinner").hide();
+		   
+		   },
+		   error: function(){
+		   $(".spinner").hide();
+		   
+		   // buttonName
+		   },
+		   dataType:"jsonp"});
 }
 
 
@@ -1036,7 +1036,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.903313,12.684689';
+	var addressLongLat = '41.903294,12.684594';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
