@@ -25,10 +25,10 @@ var app = {
     receivedEvent: function(id) {
 		
 		if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("56893d101779599c7d8b4568");
+			PushbotsPlugin.initializeiOS("569cc707177959b17f8b4567");
 		 }
 		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("56893d101779599c7d8b4568", "819657450833");
+			PushbotsPlugin.initializeAndroid("569cc707177959b17f8b4567", "819657450833");
 		 }
 		 
 		 
