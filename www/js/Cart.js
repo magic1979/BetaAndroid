@@ -1000,7 +1000,7 @@ function mostraOrario(){
 
 						$("#oraConsegna2").show()
 						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
-						$("#zoneServite").html("Zone Servite:" + item.Zona)
+						$("#zoneServite").html(item.Zona)
 					  }
 				});
 			   
