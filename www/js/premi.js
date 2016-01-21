@@ -120,7 +120,7 @@ function buildcatalogo() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_Home.asp",
+		   url:"http://msop.it/altradonna/www/check_Home.asp",
 		   contentType: "application/json",
 		   data: {categoria:"Premi"},
 		   timeout: 7000,
@@ -134,7 +134,7 @@ function buildcatalogo() {
 					window.location.href = "cart.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/prolution/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/altradonna/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -194,7 +194,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -297,7 +297,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -366,7 +366,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -422,7 +422,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://msop.it/prolutionapp/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -644,6 +644,10 @@ function goprofilo(){
 	}
 }
 
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
+}
+
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 						  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -667,3 +671,5 @@ function getParameterByName(name) {
 							window.location.href = "index.html";
 						  
 						  }
+						  
+						  

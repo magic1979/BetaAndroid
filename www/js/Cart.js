@@ -135,8 +135,18 @@ datePicker.show(options, function(date){
 				
 	var datta1 = datta.replace("Sep","Settembre")
 	var datta2 = datta1.replace("Oct","Ottobre")
-				
-	document.getElementById("DataAppuntamento").value = datta2
+	var datta3 = datta2.replace("Nov","Novembre")
+	var datta4 = datta3.replace("Dec","Dicembre")
+	var datta5 = datta4.replace("Jan","Gennaio")
+	var datta6 = datta5.replace("Feb","Febbraio")			
+	var datta7 = datta6.replace("Mar","Marzo")
+	var datta8 = datta7.replace("Apr","Aprile")
+	var datta9 = datta8.replace("May","Maggio")
+	var datta10 = datta9.replace("Jun","Giugno")
+	var datta11 = datta10.replace("Jul","Luglio")
+	var datta12 = datta11.replace("Aug","Agosto")
+	
+	document.getElementById("DataAppuntamento").value = datta12
 				
  });
 }
@@ -266,11 +276,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-<<<<<<< HEAD
-		   url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
-=======
-		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
->>>>>>> origin/master
+		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -337,11 +343,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-<<<<<<< HEAD
-		   url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
-=======
-		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
->>>>>>> origin/master
+		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -389,11 +391,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-<<<<<<< HEAD
-		   url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
-=======
-		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
->>>>>>> origin/master
+		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -601,7 +599,6 @@ function compra() {
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
 	var DataAppuntamento = self.document.formia9.DataAppuntamento.value;
-	var Note = self.document.formia9.Note.value;
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -693,13 +690,9 @@ function compra() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-<<<<<<< HEAD
-							url:"http://msop.it/prolutionapp/www/Check_TransactionV2.asp",
-=======
-							url:"http://www.gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
->>>>>>> origin/master
+							url:"http://msop.it/altradonna/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento,Note:Note},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -785,7 +778,7 @@ function compraCarta() {
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
 	var DataAppuntamento = self.document.formia9.DataAppuntamento.value;
-	var Note = self.document.formia9.Note.value;
+	
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -878,13 +871,9 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-<<<<<<< HEAD
-							url:"http://msop.it/prolutionapp/www/Check_TransactionV2.asp",
-=======
-							url:"http://www.gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
->>>>>>> origin/master
+							url:"http://msop.it/altradonna/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento,Note:Note},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -896,11 +885,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-<<<<<<< HEAD
-								   var ref = window.open('http://msop.it/prolutionapp/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
-=======
-								   var ref = window.open('http://www.gtechplay.com/vogliadipizza2/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
->>>>>>> origin/master
+								   var ref = window.open('http://msop.it/altradonna/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -914,7 +899,7 @@ function compraCarta() {
 																);
 								   }
 								   
-							});
+								   });
 							
 							$(".spinner").hide();
 							
@@ -1039,11 +1024,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-<<<<<<< HEAD
-			   url:"http://msop.it/prolutionapp/www/check_login_punti.asp",
-=======
-			   url:"http://www.gtechplay.com/vogliadipizza2/www/check_login_punti.asp",
->>>>>>> origin/master
+			   url:"http://msop.it/altradonna/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1095,11 +1076,10 @@ function mostrapunti(){
 
 function mostraOrario(){
 	
-<<<<<<< HEAD
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/prolutionapp/www/Check_Orario.asp",
+			   url:"http://msop.it/altradonna/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1127,38 +1107,6 @@ function mostraOrario(){
 			         // buttonName
 				},
 			   dataType:"jsonp"});
-=======
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.gtechplay.com/vogliadipizza2/www/Check_Orario.asp",
-		   contentType: "application/json",
-		   //data: {email:localStorage.getItem("email")},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  if (item.Token == 1024){
-				  
-						$("#oraConsegna2").show()
-						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
-				  
-				  }
-				  });
-		   
-		   $(".spinner").hide();
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-		   // buttonName
-		   },
-		   dataType:"jsonp"});
->>>>>>> origin/master
 }
 
 
@@ -1183,11 +1131,7 @@ function goprofilo(){
 }
 
 function gomappa(){
-<<<<<<< HEAD
 	var addressLongLat = '41.863862,12.497881';
-=======
-	var addressLongLat = '41.903294,12.684594';
->>>>>>> origin/master
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -1200,6 +1144,10 @@ function riparti(){
 	
 	window.location.href = "index.html";
 	
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
 }
 
 

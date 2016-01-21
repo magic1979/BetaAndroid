@@ -114,7 +114,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_Mietransazioni.asp",
+		   url:"http://msop.it/altradonna/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -455,4 +455,8 @@ function gomappa(){
 
 function riparti(){
 	window.location.href = "index.html";
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
 }

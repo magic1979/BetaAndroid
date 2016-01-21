@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/prolutionapp/www/check_PrendiRecensioni.asp",
+		   url:"http://msop.it/altradonna/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -502,7 +502,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/prolutionapp/www/check_ratingV2.asp",
+			   url:"http://msop.it/altradonna/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -557,5 +557,9 @@ function gomappa(){
 
 function riparti(){
 	window.location.href = "index.html";
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
 }
 
