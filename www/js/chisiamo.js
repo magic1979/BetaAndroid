@@ -44,3 +44,14 @@ function onDeviceReady() {
 	//agg();
 	$(".spinner").hide();
 }
+
+function gomappa(){
+	var addressLongLat = '41.830227,12.577421';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
+}

@@ -31,10 +31,7 @@ var app = {
 			PushbotsPlugin.initializeAndroid("569cc707177959b17f8b4567", "819657450833");
 		 }
 		 
-		 
-		 PushbotsPlugin.resetBadge();
-		
-		
+	
 		last_click_time = new Date().getTime();
 		
 		document.addEventListener('click', function (e) {
@@ -145,36 +142,25 @@ var app = {
 				}
 			}
 			
-			
-			//REG DEVICE PER PUSH
-			var loggato = localStorage.getItem("loginvera")
-			
-			if((loggato=="")||(!loggato)){
-				//alert("blocco1")
-			}else{
-			
-			
-			if(localStorage.getItem("Registrato")!=1){
-				//alert("entrato")
 				
-			setTimeout (function(){
-						
-				PushbotsPlugin.getToken(function(token){
-					localStorage.setItem("Token", token);
-										
-					RegToken()
-				 });
-						
-			}, 2000);
+			if(localStorage.getItem("Registrato")!=1){
+				
+				setTimeout (function(){
+							
+					PushbotsPlugin.getToken(function(token){
+						localStorage.setItem("Token", token);
+											
+						RegToken()
+					 });
+							
+				}, 2000);
 				
 			}
 			else{
 				//alert("blocco2")
 			}
-				
-			}
 
-			
+
 			$("#footer").show();
 			
 		}
