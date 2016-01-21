@@ -3,14 +3,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
-	//PushbotsPlugin.resetBadge();
-
-	
-	/*datePicker.show(options, function(date){
-		var datta = String(date).substring(0, 15);
-		document.getElementById("DataAppuntamento").value = datta
-		//alert(datta);
-	});*/
 	
 	last_click_time = new Date().getTime();
 	
@@ -70,8 +62,6 @@ function onDeviceReady() {
 	var db;
 	var dbCreated = false;
 	
-	//$("#radio").attr("href", "maps:saddr="+ localStorage.getItem("ciao") +","+ localStorage.getItem("ciao1") +"&daddr=Via di Acilia,17,Roma");
-	
 	var email = localStorage.getItem("email");
 	var Badge10 = localStorage.getItem("Badge10");
 	$("#badde3").attr("data-badge", Badge10);
@@ -111,44 +101,6 @@ function onDeviceReady() {
 
     }
 
-}
-
-
-function mostracal(){
-
-var options = {
-	
-date: new Date(),
-	
-mode: 'date',
-
-doneButtonLabel: 'OK',
-doneButtonColor: '#000000',
-cancelButtonLabel: 'RESET',
-cancelButtonColor: '#000000'
-	
-};
-
-
-datePicker.show(options, function(date){
-	var datta = String(date).substring(4, 15);
-				
-	var datta1 = datta.replace("Sep","Settembre")
-	var datta2 = datta1.replace("Oct","Ottobre")
-	var datta3 = datta2.replace("Nov","Novembre")
-	var datta4 = datta3.replace("Dec","Dicembre")
-	var datta5 = datta4.replace("Jan","Gennaio")
-	var datta6 = datta5.replace("Feb","Febbraio")			
-	var datta7 = datta6.replace("Mar","Marzo")
-	var datta8 = datta7.replace("Apr","Aprile")
-	var datta9 = datta8.replace("May","Maggio")
-	var datta10 = datta9.replace("Jun","Giugno")
-	var datta11 = datta10.replace("Jul","Luglio")
-	var datta12 = datta11.replace("Aug","Agosto")
-	
-	document.getElementById("DataAppuntamento").value = datta12
-				
- });
 }
 
 function someFunctionOnDblClick(){
@@ -276,7 +228,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
+		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -343,7 +295,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
+		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -391,7 +343,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_Prodotto.asp",
+		   url:"http://gtechplay.com/vogliadipizza2/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -539,12 +491,13 @@ function rati() {
 	$('#rati1').raty({ score: 3 });
 }
 
-function compraConsegna(){
+function compraConsegna(metodo){
 	var loggato = localStorage.getItem("loginvera")
 	if((loggato=="")||(!loggato)){
 		window.location.href = "Login.html";
 	}else{
-		compra()
+		
+		compra(metodo)
 	}
 	
 }
@@ -560,21 +513,15 @@ function compraCC(){
 }
 
 
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
+function compra(metodo) {
+	var metodopp = "Cash";
 	
-	if((loggato=="")||(!loggato)){
-		
-	}else{
-		
+	if(metodo==1){
+		metodopp = "Cash";
 	}
-	
-	
-}
-
-
-function compra() {
-	
+	else{
+		metodopp = "Take";
+	}
 	
 	var num1 = Math.floor((Math.random() * 20) + 1);
 	var num2 = Math.floor((Math.random() * 20) + 1);
@@ -598,7 +545,7 @@ function compra() {
 	var amount = self.document.formia9.totordine.value;
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
-	var DataAppuntamento = self.document.formia9.DataAppuntamento.value;
+	var Note = self.document.formia9.Note.value;
 	
 	if ((email == "")||(!email)) {
 		navigator.notification.alert(
@@ -651,18 +598,9 @@ function compra() {
 	}
 	if (OraConsegna == "") {
 		navigator.notification.alert(
-									 'Non hai inserito un orario desiderata',  // message
+									 'Non hai inserito un orario di consegna desiderata',  // message
 									 alertDismissed,         // callback
 									 'Ora Consegna',            // title
-									 'OK'                  // buttonName@
-									 );
-		return;
-	}
-	if (DataAppuntamento == "") {
-		navigator.notification.alert(
-									 'Non hai inserito una data valida',  // message
-									 alertDismissed,         // callback
-									 'Data Appuntamento',            // title
 									 'OK'                  // buttonName@
 									 );
 		return;
@@ -690,9 +628,9 @@ function compra() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/altradonna/www/Check_TransactionV2.asp",
+							url:"http://gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"Cash",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -746,8 +684,7 @@ function compra() {
 				   
 				   });
 				  
-	//vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
-	
+		
 }
 
 function compraCarta() {
@@ -777,7 +714,7 @@ function compraCarta() {
 	var amount = self.document.formia9.totordine.value;
 	var amountPunti = self.document.formia9.totpunti.value;
 	var OraConsegna = self.document.formia9.OraConsegna.value;
-	var DataAppuntamento = self.document.formia9.DataAppuntamento.value;
+	var Note = self.document.formia9.Note.value;
 	
 	
 	if ((email == "")||(!email)) {
@@ -839,16 +776,6 @@ function compraCarta() {
 									 );
 		return;
 	}
-	if (DataAppuntamento == "") {
-		navigator.notification.alert(
-									 'Non hai inserito una data valida',  // message
-									 alertDismissed,         // callback
-									 'Data Appuntamento',            // title
-									 'OK'                  // buttonName@
-									 );
-		return;
-	}
-
 	
 	
 	var ordinazione="";
@@ -871,9 +798,9 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/altradonna/www/Check_TransactionV2.asp",
+							url:"http://gtechplay.com/vogliadipizza2/www/Check_TransactionV2.asp",
 							contentType: "application/json",
-							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,GiornoAppuntamento:DataAppuntamento},
+							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
 							jsonp: 'callback',
 							crossDomain: true,
@@ -885,7 +812,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://msop.it/altradonna/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://gtechplay.com/vogliadipizza2/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -921,8 +848,7 @@ function compraCarta() {
 				   
 				   });
 	
-	//vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio);
-	
+		
 }
 
 function vendoPayPal(idProdotto,nome,amount,transazioneprodotto,item_number,email,EmailEsercente,NomeRegalo,TuoRegalo,EmailRegalo,Messaggio){
@@ -982,16 +908,7 @@ function saldopunti(){
 		//alert("No")
 		window.location.href = "Login.html";
 	}else{
-		//window.location.href = "profilo.html";
-		//window.location.href = "Login.html";
-		
-		/*localStorage.getItem("Nome")
-		 localStorage.getItem("Cognome")
-		 localStorage.getItem("Punti")
-		 localStorage.getItem("Indirizzo")
-		 localStorage.getItem("Citta")
-		 localStorage.getItem("Telefono")
-		 localStorage.getItem("email")*/
+
 		
 		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
 		
@@ -999,18 +916,7 @@ function saldopunti(){
 		$("#profile").show()
 		
 	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
-	 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
-	 alertDismissed,         // callback
-	 'Saldo Punti',            // title
-	 'Chiudi'                  // buttonName
-	 );*/
-	
+
 }
 
 function mostrapunti(){
@@ -1024,7 +930,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/altradonna/www/check_login_punti.asp",
+			   url:"http://gtechplay.com/vogliadipizza2/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1074,12 +980,13 @@ function mostrapunti(){
 	
 }
 
+
 function mostraOrario(){
 	
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/altradonna/www/Check_Orario.asp",
+			   url:"http://gtechplay.com/vogliadipizza2/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1093,8 +1000,7 @@ function mostraOrario(){
 
 						$("#oraConsegna2").show()
 						$("#oraConsegna2").html("Giorni:" + item.Giorno + " - Nelle Ore:" + item.Ora)
-                        $("#zoneServite").html("Zone Servite:" + item.Zona)
-						  
+						$("#zoneServite").html("Zone Servite:" + item.Zona)
 					  }
 				});
 			   
@@ -1113,7 +1019,6 @@ function mostraOrario(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
-	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
@@ -1131,13 +1036,9 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.863862,12.497881';
+	var addressLongLat = '41.903313,12.684689';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
-	
 }
 
 function riparti(){
@@ -1145,10 +1046,4 @@ function riparti(){
 	window.location.href = "index.html";
 	
 }
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
-}
-
-
 

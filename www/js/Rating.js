@@ -126,7 +126,7 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$('#noconn').html(tabella);
+		$("#noconn").html(tabella);
 		
         
     }
@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_PrendiRecensioni.asp",
+		   url:"http://www.gtechplay.com/vogliadipizza2/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -173,7 +173,7 @@ function seleziona() {
 				  
 				  
 
-				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/logo.png' width='18'> "+ item.Nome +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ ratio +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Recensione +"</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
+				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'> "+ item.Nome +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ ratio +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Recensione +"</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
 
 			});
 		   
@@ -475,7 +475,6 @@ function mostrapunti(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
-	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
@@ -502,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/altradonna/www/check_ratingV2.asp",
+			   url:"http://www.gtechplay.com/vogliadipizza2/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -545,7 +544,7 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.863862,12.497881';
+	var addressLongLat = '41.903313,12.684689';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -556,10 +555,8 @@ function gomappa(){
 
 
 function riparti(){
+	
 	window.location.href = "index.html";
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
+	
 }
 
