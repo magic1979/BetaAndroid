@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "it.app-piu.altradonna"
-		versionCode="1.0"
-		version   = "1.0">
+		versionCode="1.1"
+		version   = "1.1">
 		<name>L'altra Donna</name>
 		<description>L'altra Donna App+</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
