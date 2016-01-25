@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="font.css">
 			
 		<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.2.min.css" />
-		<link rel="stylesheet" href="themes/BetaApp.css" />
+		<link rel="stylesheet" href="themes/Servizi.css" />
 		<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 		<link rel="stylesheet" href="css/spinner.css" />
 		<link rel="stylesheet" href="css/app-reset.css" />
@@ -91,7 +91,7 @@
 			left: 0;
 			width: 100%;
 			height: 48px;
-			background: #9f1e24;
+			background: #1d96d3;
 			padding: 0;
 			border-top: 0px solid #444;
 		}
@@ -183,7 +183,7 @@
 			}
 		
 			.div1 {
-				background-color: #9f1e24;
+				background-color: #1d96d3;
 				height: 52px;
 				border: none;
 				
@@ -483,11 +483,20 @@ a {text-decoration:none;}
 		
     </head>
     <body>
+		<!--<div id="menu" style="display: none;">
+			<table height="52"><tr><td></td></tr></table>
+			<h3>Menu</h3>
+			<ul>
+				<li><a href="#page10" onclick="javascript:pagina23()" rel="external"><font size="2">Menu</font></a></li>
+				<li><a href="#home" class="contentLink">Portfolio </a></li>
+				<li><a href="#home" class="contentLink">Contact </a></li>
+			</ul>
+		</div>-->
 		
 		<div id="page" data-role="page" class="div2" >
 			
 			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="32px"></td></tr></table>
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="36px"></td></tr></table>
 			</div>
 			
 			<div class="spinner" id="spinner"></div>
@@ -499,7 +508,7 @@ a {text-decoration:none;}
 			
 			<div id="wrapper">
 				<div id="scroller">
-					 <img src="img/Pizza2.png" width="330px" height="60px">
+					 <img src="img/Pizza2.png" width="100%" height="90px">
 					 <br>
 					 <form name="formia" action="entra.asp" method="post">
 						 <input type="text" data-theme="b" name="recensione" id="recensione" value="" placeholder="Scrivi Recensione">
@@ -519,7 +528,7 @@ a {text-decoration:none;}
 				<div data-role="navbar" class="nav" data-grid="d" data-theme="c" class="div1">
 					<ul>
 						<li><a href="index.html" id="programas" data-icon="homehome" rel="external"><font size="1">Promo</font></a></li>
-						<li><a href="menu.html" id="menuR" data-icon="ristohome" rel="external"><font size="1">Menu</font></a></li>
+						<li><a href="menu.html" id="menuR" data-icon="ristohome" rel="external"><font size="1">Servizi</font></a></li>
 						<li><a href="cart.html" id="badde3" data-icon="taifun" rel="external"><font size="1">Carrello</font></a></li>
 						<li><a data-transition="slide" data-icon="userhome" rel="external"><font size="1">Recensioni</font></a></li>
 						<li><a href="#mypanelH" onclick="javascript:rati()" data-icon="pinhome"><font size="1">Altro</font></a></li>
@@ -530,7 +539,7 @@ a {text-decoration:none;}
 			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="a" data-position-fixed="true" width="100%" class="div2">
 				<center>
 					<!--<img src="http://www.pokeranswer.it/IMG/AnswerB.png" width="130px" data-rel="external">-->
-					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Food App</font></center>
+					<img src="img/logo.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Food App</font></center>
 				<br><br>
 				<img src="Tod10.png" class="circolare" id="userPic" data-rel="external"/>  <span id='Nome' align="center"></span>
 				<br>
@@ -547,27 +556,30 @@ a {text-decoration:none;}
 			
 			<div data-role="panel" id="mypanelH" data-position-fixed="true" data-position="right" data-display="overlay" width="100%" data-theme="b">
 				<center>
-					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#9f1e24" size="3">Voglia di Pizza</font>
-						<br><font color="#000000" size="2">Via fosso dell'osa 376/e, Roma</font><br><br>
+					<img src="img/LogoFood.png" height="60px"><br><font class="fontsforweb_fontid_2802" color="#1d96d3" size="3">L'altra Donna</font>
+						<br><font color="#000000" size="2">Via Campo Farnia 156, Roma</font><br><br>
 						<ul data-role="listview" data-inset="true">
 							<li><a href="premi.html" rel="external">Card e Premi</a></li>
 							<li><a href="javascript:goprofilo()" rel="external">I Miei Ordini</a></li>
+							<li><a id="radio" href="chisiamo.html" rel="external">Chi Siamo</a></li>
 							<li><a id="radio" href="javascript:gomappa()" rel="external">Dove Siamo</a></li>
-							<li><a href="tel:+390695214739">Contattaci</a></li>
+							<li><a href="tel:+393283140759">Contattaci</a></li>
 							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
 						</ul>
-						</center>
+				</center>
 				<br>
 				
-				<table id="profile" border="0">
-					
-					
+				<table border="0">
+					<tr><td><b>Seguici su:</b></td></tr>
+					<tr><td><a href='javascript:gofacebook()'><img src="img/social1.png" height="50px"></a></td></tr>
+					<tr><td>&nbsp;&nbsp;</td></tr>
+					<tr><td><div id="profile">&nbsp;&nbsp;</div></td></tr>
 				</table>
-				
+
 				<table align="right" id="profile" border="0" class="div5">
-					<tr><td align="center"><font size="1"><img src="img/Prolution.png" class="loghetto" width="32"></font></td></tr>
+					<tr><td align="center"><font size="1"><img src="img/Prolution.png" class="loghetto" width="28"></font></td></tr>
 					<tr><td align="center"><font size="0.5">Powerd By Prolution</font></td></tr>
-					<tr><td align="left"><font size="0.5">&nbsp;</font></td></tr>
+					<tr><td align="left"><font size="0.5">&nbsp;</font></td></tr>   
 				</table>
 			</div>
 

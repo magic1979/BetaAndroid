@@ -24,14 +24,14 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
-	    if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("569cc754177959df038b4567");
+		if(PushbotsPlugin.isiOS()){
+			PushbotsPlugin.initializeiOS("569cc707177959b17f8b4567");
 		 }
 		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("569cc754177959df038b4567", "979160788694");
+			PushbotsPlugin.initializeAndroid("569cc707177959b17f8b4567", "819657450833");
 		 }
-		
-		
+		 
+	
 		last_click_time = new Date().getTime();
 		
 		document.addEventListener('click', function (e) {
@@ -120,7 +120,7 @@ var app = {
 			$(".spinner").hide();
 			
 			buildprodotto('Pizza','Roma',1);
-			
+
 			
 			if ((localStorage.getItem("emailStory")=="")||(!localStorage.getItem("emailStory"))||(localStorage.getItem("emailStory")==0)){
 				//alert("Non ci sta")
@@ -142,27 +142,29 @@ var app = {
 				}
 			}
 			
-			if(localStorage.getItem("Registrato")!=1){
-				//alert("entrato")
 				
-			setTimeout (function(){
-						
-				PushbotsPlugin.getToken(function(token){
-					localStorage.setItem("Token", token);
-					//alert(token)
-					RegToken()
-				 });
-						
-			}, 2000);
+			if(localStorage.getItem("Registrato")!=1){
+				
+				setTimeout (function(){
+							
+					PushbotsPlugin.getToken(function(token){
+						localStorage.setItem("Token", token);
+											
+						RegToken()
+					 });
+							
+				}, 2000);
 				
 			}
+			else{
+				//alert("blocco2")
+			}
 
-			
+
 			$("#footer").show();
 			
 		}
 		else{
-			$('#noconn').show();
 			
 			var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 			tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></td></tr>";
@@ -589,7 +591,7 @@ function checkPos() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.903313,12.684689';
+	var addressLongLat = '41.830227,12.577421';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -738,7 +740,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.gtechplay.com/vogliadipizza2/www/Check_Home.asp",
+		   url:"http://msop.it/altradonna/www/Check_Home.asp",
 		   contentType: "application/json",
 		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   data: {Categoria:"offerte"},
@@ -754,17 +756,17 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 				   //alert(distanza);javascript:AggProd(3);
 				  
 				  if (model.indexOf('iPad') >= 0) {
-					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
+					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#1d96d3'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/vogliadipizza/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://msop.it/public/altradonna/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#1d96d3'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#1d96d3'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#1d96d3'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#1d96d3'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 				  }
 				  
 				  idProdotto = idProdotto+1;
-				  /*<font size='4' color='#B40431'>"+ item.Deal +"&euro;</font>
+				  /*<font size='4' color='#1d96d3'>"+ item.Deal +"&euro;</font>
 				  <font size='3' color='#454545'>"+ item.Descrizione +"</font>
 				  <font size='2' color='#454545'>Scade tra 14 giorni</font>
-				  <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
+				  <font size='2' color='#1d96d3'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 				  
 
 				  
@@ -1022,13 +1024,11 @@ function initscroll() {
 }
 
 
-
 function saldopunti(){
 	var loggato = localStorage.getItem("loginvera")
 	
 	
 	if((loggato=="")||(!loggato)){
-		//alert("No")
 		window.location.href = "Login.html";
 	}else{
 		//window.location.href = "profilo.html";
@@ -1042,24 +1042,13 @@ function saldopunti(){
 		localStorage.getItem("Telefono")
 		localStorage.getItem("email")*/
 		
-		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
+		var tblProfile = "SALDO PUNTI: "+ localStorage.getItem("Punti")
 		
 		$("#profile").html(tblProfile)
 		$("#profile").show()
 		
 	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
-								 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
-								 alertDismissed,         // callback
-								 'Saldo Punti',            // title
-								 'Chiudi'                  // buttonName
-								 );*/
-	
+		
 }
 
 function mostrapunti(){
@@ -1069,22 +1058,26 @@ function mostrapunti(){
 	//Se email story == NO allora cancello
 	
 	if((loggato=="")||(!loggato)){
-		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
+		tblProfile = "<a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a>"
 	}else{
 		
-		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "SALDO PUNTI: "+ localStorage.getItem("Punti") +"<br><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a>"
 	
 	}
 	
 	$("#profile").html(tblProfile)
 	$("#profile").show()
-	
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
 }
 
 
 function uscire(){
 localStorage.setItem("loginvera", "")
 localStorage.setItem("email", "")
+localStorage.setItem("Registrato", "")
 	
 window.location.href = "index.html";
 }
@@ -1108,8 +1101,7 @@ function exitapp(){
 
 function riparti(){
 	
-	 window.location.href = "index.html";
-	
+	window.location.href = "index.html";
 }
 
 function RegToken(){
@@ -1118,7 +1110,7 @@ function RegToken(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://www.gtechplay.com/vogliadipizza2/www/Check_RegToken.asp",
+			   url:"http://msop.it/altradonna/www/Check_RegToken.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token"),platform:"Android"},
 			   timeout: 7000,
@@ -1127,17 +1119,17 @@ function RegToken(){
 			   success:function(result){
 			   
 			   $.each(result, function(i,item){
-				  if (item.Token == '1024'){
-				  //alert(item.Token)
-				  localStorage.setItem("Registrato", "1");
-				  
-				  }
-				  else{
-				  //alert(item.Token)
-				  localStorage.setItem("Registrato", "0");
-				  
-				  }
-			});
+					  if (item.Token == '1024'){
+					  //alert(item.Token)
+					  localStorage.setItem("Registrato", "1");
+					  
+					  }
+					  else{
+					  //alert(item.Token)
+					  localStorage.setItem("Registrato", "0");
+					  
+					  }
+					  });
 			   
 			   $(".spinner").hide();
 			   //window.location.href = "index.html";
@@ -1147,16 +1139,15 @@ function RegToken(){
 			   $(".spinner").hide();
 			   
 			   navigator.notification.alert(
-				'Possibile errore di rete, riprova tra qualche minuto',  // message
-				alertDismissed,         // callback
-				'Attenzione',            // title
-				'Done'                  // buttonName
-				);
+											'Possibile errore di rete, riprova tra qualche minuto',  // message
+											alertDismissed,         // callback
+											'Attenzione',            // title
+											'Done'                  // buttonName
+											);
 			   
 			   },
 			   dataType:"jsonp"});
 }
-
 
 
 
