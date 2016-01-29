@@ -1,4 +1,4 @@
-document.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
@@ -120,7 +120,7 @@ function LoginVera(email,pin){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_login.asp",
+		   url:"http://msop.it/starpizza/www/check_login.asp",
 		   contentType: "application/json",
 		   data: {email:email,pin:pin},
 		   timeout: 7000,
@@ -315,7 +315,7 @@ function iscriviti(){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/Check_Reg.asp",
+		   url:"http://msop.it/starpizza/www/Check_Reg.asp",
 		   contentType: "application/json",
 		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token"),platform:"Android"},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/altradonna/www/Check_RecPassword.asp",
+			   url:"http://msop.it/starpizza/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
@@ -494,11 +494,15 @@ function onPrompt(results) {
 }
 
 function gomappa(){
-	var addressLongLat = '41.833360,12.466862';
+	var addressLongLat = '41.900220,12.389957';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
-	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/Star-pizza-montespaccato-1461933377278917', '_system', 'location=no');
 }
