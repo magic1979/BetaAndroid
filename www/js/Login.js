@@ -1,4 +1,4 @@
-document.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
@@ -317,16 +317,15 @@ function iscriviti(){
 		   type:"GET",
 		   url:"http://msop.it/starpizza/www/Check_Reg.asp",
 		   contentType: "application/json",
-		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,token:localStorage.getItem("Token"),platform:"Android"},
+		   data: {email:emailreg,nome:nomereg,cognome:cognome,indirizzo:indirizzo,cap:cap,civico:civico,telefono:telefono,citta:citta,pin:pinreg,platform:"Ios"},
 		   timeout: 7000,
 		   jsonp: 'callback',
 		   crossDomain: true,
 		   success:function(result){
 		   
 		   $.each(result, function(i,item){
-				if (item.Token == '1024'){
+				  if (item.Token == '1024'){
 				  
-				  localStorage.setItem("Registrato", "1");
 				  navigator.notification.alert(
 											   'Registrazione effettuata correttamente.',  // message
 											    alertDismissed,         // callback
@@ -337,7 +336,7 @@ function iscriviti(){
 				  window.location.href = "#page.html";
 				  
 				  }
-				else{
+				  else{
 				  navigator.notification.alert(
 											   'Cliente gia registrato',  // message
 											   alertDismissed,         // callback
@@ -346,7 +345,7 @@ function iscriviti(){
 											   );
 				  
 				  }
-			});
+				  });
 		   
 		   $(".spinner").hide();
 		   window.location.href = "index.html";
@@ -442,7 +441,7 @@ function onPrompt(results) {
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/starpizza/www/Check_RecPassword.asp",
+			   url:"http://"+ web +"/www/Check_RecPassword.asp",
 			   contentType: "application/json",
 			   data: {email:results.input1},
 			   timeout: 7000,
@@ -494,15 +493,11 @@ function onPrompt(results) {
 }
 
 function gomappa(){
-	var addressLongLat = '41.900220,12.389957';
+	var addressLongLat = '41.862321,12.692804';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Star-pizza-montespaccato-1461933377278917', '_system', 'location=no');
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
