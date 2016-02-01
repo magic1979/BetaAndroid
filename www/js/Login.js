@@ -3,6 +3,8 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	
+	
+	
 	last_click_time = new Date().getTime();
 	
 	document.addEventListener('click', function (e) {
@@ -39,6 +41,8 @@ function onDeviceReady() {
 		
 		var email = localStorage.getItem("email");
 		var loginvera = localStorage.getItem("loginvera");
+		
+		$(".spinner").hide();
 	
 		
 		var connectionStatus = false;
