@@ -2,8 +2,8 @@
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "it.app-piu.starpizza"
-		versionCode="1.0"
-		version   = "1.0">
+		versionCode="2.0"
+		version   = "2.0">
 		<name>StarPizza</name>
 		<description>StarPizza App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
@@ -11,7 +11,7 @@ Prolution srl
 		</author>
 		<preference name="phonegap-version" value="3.7.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="true" />
+		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
 		<preference name="webviewbounce" value="true" />
 		<preference name="prerendered-icon" value="true" />
