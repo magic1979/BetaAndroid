@@ -67,11 +67,11 @@ function onDeviceReady() {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
-	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
 		$('#badde3').removeClass('badge2').addClass('badge1');
+		$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 	}
 	
 	if((email=="")||(!email)){
@@ -100,8 +100,9 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$("#noconn").html(tabella);
+		$('#noconn').html(tabella);
 		
+        $(".spinner").hide();
         
     }
 
@@ -113,7 +114,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/starpizza/www/check_Mietransazioni.asp",
+		   url:"http://msop.it/prolutionapp/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -134,7 +135,7 @@ function seleziona() {
 				
 				var comp = anno + "/" + mese + "/" + giorno
 				  
-				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'>"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Ordine  +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Tot +"&euro;</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
+				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/logo.png' width='18'>"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Ordine  +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Tot +"&euro;</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
 				}
 
 			});
@@ -424,7 +425,7 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td></td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 	}
 	
@@ -437,22 +438,27 @@ function mostrapunti(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
+	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
 
 function gomappa(){
-	var addressLongLat = '41.900220,12.389957';
+	var addressLongLat = '41.863862,12.497881';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Star-pizza-montespaccato-1461933377278917', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/StudioProfitsrl', '_system', 'location=no');
+}
+
+function golinkedin(){
+	var ref = window.open('https://www.linkedin.com/company/2386874?trk=prof-exp-company-name', '_system', 'location=no');
 }
 
 function riparti(){
