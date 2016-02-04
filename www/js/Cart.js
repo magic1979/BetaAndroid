@@ -4,6 +4,30 @@ function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
 	
+	$('#OraConsegna').focus(function(){
+		myScroll.scrollToElement("#OraConsegna", "1s");
+	});
+	
+	$('#Note').focus(function(){
+		myScroll.scrollToElement("#Note", "1s");
+	});
+	
+	$('#NomeRegalo').focus(function(){
+		myScroll.scrollToElement("#NomeRegalo", "1s");
+	});
+	
+	$('#Indirizzo').focus(function(){
+		myScroll.scrollToElement("#Indirizzo", "1s");
+	});
+	
+	$('#Telefono').focus(function(){
+		myScroll.scrollToElement("#Telefono", "1s");
+	});
+	
+	$('#Telefono').focus(function(){
+		myScroll.scrollToElement("#Telefono", "1s");
+	});
+	
 	last_click_time = new Date().getTime();
 	
 	document.addEventListener('click', function (e) {
