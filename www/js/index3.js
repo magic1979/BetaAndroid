@@ -3,23 +3,6 @@ document.addEventListener('deviceready', onDeviceReady, false);
 function onDeviceReady() {
 	//document.addEventListener("resume", onResume, false);
 	
-	last_click_time = new Date().getTime();
-	
-	document.addEventListener('click', function (e) {
-							  
-							  click_time = e['timeStamp'];
-							  
-							  if (click_time && (click_time - last_click_time) < 1000) { e.stopImmediatePropagation();
-							  
-							  e.preventDefault();
-							  
-							  return false;
-							  
-							  }
-							  
-							  last_click_time = click_time;
-							  
-							  }, true);
 
 	// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 	$('input, select')
@@ -231,7 +214,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
+								 url:"http://msop.it/starpizza/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -308,7 +291,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
+								 url:"http://msop.it/starpizza/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -451,7 +434,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/check_Prodotto.asp",
+								 url:"http://msop.it/starpizza/www/check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:prod},
 								 timeout: 7000,
@@ -1339,7 +1322,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/Check_Prodotto.asp",
+								 url:"http://msop.it/starpizza/www/Check_Prodotto.asp",
 								 //url:"http://www.mistertod.it/www/Check_Prodotto.asp",
 								 contentType: "application/json",
 								 data: {id:IDProd},
@@ -1355,10 +1338,10 @@ function onDeviceReady() {
 										//alert(distanza);javascript:AggProd(3);
 										
 										if (model.indexOf('iPad') >= 0) {
-										landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#1d96d3'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
+										landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 										}
 										else{
-										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://msop.it/public/prolution/"+ item.IMG +".png' width='100%'></a><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#1d96d3'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a id='aggbutton' href='#' class='btn'><font color='#fff'>Acquista</font></a><br><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#1d96d3'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1.5' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table><br><hr class='div3'></div>";
+										landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index.html' onclick='#' id='linkdettagli"+ item.Cod_Prodotto +"' rel='external'><img src='http://msop.it/public/starpizza/"+ item.IMG +".png' width='100%'></a><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.DescrizioneS +"</font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' id='vis1"+ item.Cod_Prodotto +"' class='visione'><a id='aggbutton' href='#' class='btn'><font color='#fff'>Acquista</font></a><br><br></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr><td colspan='2'><hr class='div3'></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' class='visione'><td align='left' colspan='2'><font size='1.5' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table><br><hr class='div3'></div>";
 										
 											codiceProdotto = item.Cod_Prodotto
 										
@@ -1366,13 +1349,13 @@ function onDeviceReady() {
 										}
 										
 										idProdotto = idProdotto+1;
-										/*<font size='4' color='#1d96d3'>"+ item.Deal +"&euro;</font>
+										/*<font size='4' color='#B40431'>"+ item.Deal +"&euro;</font>
 										 <font size='3' color='#454545'>"+ item.Descrizione +"</font>
 										 <font size='2' color='#454545'>Scade tra 14 giorni</font>
-										 <font size='2' color='#1d96d3'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
+										 <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
 										
 										//alert(idProdotto);
-                                        
+										 
 										var today = new Date();
 										var yyyy = today.getFullYear();
 										
@@ -1396,9 +1379,27 @@ function onDeviceReady() {
 								 $("#noconn").hide();
 								 
 								 //myScroll = new IScroll('#wrapper', { click: true });
+								 
+										last_click_time = new Date().getTime();
+								 
+										document.addEventListener('click', function (e) {
+														   
+														   click_time = e['timeStamp'];
+														   
+														   if (click_time && (click_time - last_click_time) < 2000) { e.stopImmediatePropagation();
+														   
+															   e.preventDefault();
+														   
+															   return false;
+														   
+														   }
+														   
+														   last_click_time = click_time;
+														   
+														   }, true);
 	
 
-								 $(document).on("click touchstart", "#aggbutton", function(e){
+								 $(document).on("touchstart", "#aggbutton", function(e){
 									e.preventDefault();
 									AggProd(codiceProdotto)
 								});
@@ -1967,7 +1968,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/check_acquistati.asp",
+								 url:"http://msop.it/starpizza/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:1},
 								 jsonp: 'callback',
@@ -1996,7 +1997,7 @@ function onDeviceReady() {
 						  $(".spinner").show();
 						  $.ajax({
 								 type:"GET",
-								 url:"http://msop.it/prolutionapp/www/check_acquistati.asp",
+								 url:"http://msop.it/starpizza/www/check_acquistati.asp",
 								 contentType: "application/json",
 								 data: {id:prod,OP:2},
 								 jsonp: 'callback',
@@ -2020,19 +2021,23 @@ function onDeviceReady() {
 						  
 						  }
 
-						  function gomappa(){
-						  var addressLongLat = localStorage.getItem("lat")+','+localStorage.getItem("lng");
-						  
-						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
-						  
-						  //var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
-						  
-						  }
+function gomappa(){
+	var addressLongLat = '41.900220,12.389957';
+	
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
+}
+
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/Star-pizza-montespaccato-1461933377278917', '_system', 'location=no');
+}
 
 						  function riparti(){
 							  
-						    window.location.href = "index.html";
+							  window.location.href = "index.html";
 							  
 						  }
 
