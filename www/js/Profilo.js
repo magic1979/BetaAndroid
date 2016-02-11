@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/starpizza/www/check_Mietransazioni.asp",
+		   url:"http://msop.it/mirketto/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.565170,12.526310';
+	var addressLongLat = '41.565181,12.526334';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat

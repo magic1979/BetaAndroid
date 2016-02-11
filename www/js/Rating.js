@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/starpizza/www/check_PrendiRecensioni.asp",
+		   url:"http://msop.it/mirketto/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -501,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/starpizza/www/check_ratingV2.asp",
+			   url:"http://msop.it/mirketto/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -544,7 +544,7 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.565170,12.526310';
+	var addressLongLat = '41.565181,12.526334';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
