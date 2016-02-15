@@ -67,7 +67,7 @@ function onDeviceReady() {
 	var Badge10 = localStorage.getItem("Badge10");
 	
 	$("#badde3").attr("data-badge", Badge10);
-	$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
+	//$("#badde3").html('<img id="carro3" src="img/CartW.png" width="20px">');
 
 	
 	if (Badge10 > 0){
@@ -83,7 +83,7 @@ function onDeviceReady() {
 	}
 	
 	
-	$("#ProfiloPersonale").html(localStorage.getItem("Nome") + " " +  localStorage.getItem("Cognome") + "-" + localStorage.getItem("Indirizzo") + "," + localStorage.getItem("Civico") + " , <b>Punti:" + localStorage.getItem("Punti") + "</b>");
+	//$("#ProfiloPersonale").html(localStorage.getItem("Nome") + " " +  localStorage.getItem("Cognome") + "-" + localStorage.getItem("Indirizzo") + "," + localStorage.getItem("Civico") + " , <b>Punti:" + localStorage.getItem("Punti") + "</b>");
 
     if(connectionStatus=='online'){
 		//$('#rati1').raty({ score: 3 });

@@ -98,7 +98,6 @@ function onDeviceReady() {
 		
 		$("#noconn").html(tabella);
 
-        
     }
 
 }
