@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Mietransazioni.asp",
+		   url:"http://msop.it/mirketto/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -124,17 +124,17 @@ function seleziona() {
 		   $.each(result, function(i,item){
 				  
 			if(item.ID==0) {
-				landmark2 = landmark2 + "Nessuna transazione registrata.";
+				landmark2 = landmark2 + "Nessuna notifica presente.";
 			}
 			else{
 				
-				var anno = item.Data.slice(0,4)
-				var mese = item.Data.slice(4,6)
-				var giorno = item.Data.slice(6,8)
+				//var anno = item.Data.slice(0,4)
+				//var mese = item.Data.slice(4,6)
+				//var giorno = item.Data.slice(6,8)
 				
-				var comp = anno + "/" + mese + "/" + giorno
+				var comp =  item.Giorno + "/" +  item.Mese + "/" +  item.Anno + "&nbsp;-&nbsp;" + item.Ora + ":" + item.minuti
 				  
-				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/delivery2.jpg' width='18'>"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Ordine  +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Tot +"&euro;</font></td></tr></table><br><table class='div3' width='100%'><tr><td></td></tr></table>";
+				landmark2 = landmark2 + "<table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='4' color='#454545'><img src='img/push.png' width='18'>&nbsp;"+ comp +"</font></td></tr><tr><td align='left' colspan='2'><font size='2' color='#454545'>"+ item.Push  +"</font></td></tr></table><hr><br>";
 				}
 
 			});
