@@ -144,7 +144,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_PrendiRecensioni.asp",
+		   url:"http://msop.it/SmartPizza/www/check_PrendiRecensioni.asp",
 		   contentType: "application/json",
 		   //data: {ID: tech},
 		   timeout: 7000,
@@ -462,7 +462,7 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 	}
 	
@@ -501,7 +501,7 @@ function scriviRec(rec,score){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/mirketto/www/check_ratingV2.asp",
+			   url:"http://msop.it/SmartPizza/www/check_ratingV2.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email"),Recensione:rec,Stelle:score},
 			   timeout: 7000,
@@ -544,17 +544,13 @@ function scriviRec(rec,score){
 }
 
 function gomappa(){
-	var addressLongLat = '41.565181,12.526334';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Mirketto-1396958183922266', '_system', 'location=no');
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
 
 

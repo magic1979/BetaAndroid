@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_MieNotifiche.asp",
+		   url:"http://msop.it/SmartPizza/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,13 +442,14 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.565181,12.526334';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
 	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
 
 function gofacebook(){

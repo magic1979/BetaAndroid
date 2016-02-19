@@ -4,30 +4,6 @@ function onDeviceReady() {
     //document.addEventListener("resume", onResume, false);
 	
 	
-	$('#OraConsegna').focus(function(){
-		myScroll.scrollToElement("#OraConsegna", "1s");
-	});
-	
-	$('#Note').focus(function(){
-		myScroll.scrollToElement("#Note", "1s");
-	});
-	
-	$('#NomeRegalo').focus(function(){
-		myScroll.scrollToElement("#NomeRegalo", "1s");
-	});
-	
-	$('#Indirizzo').focus(function(){
-		myScroll.scrollToElement("#Indirizzo", "1s");
-	});
-	
-	$('#Telefono').focus(function(){
-		myScroll.scrollToElement("#Telefono", "1s");
-	});
-	
-	$('#Telefono').focus(function(){
-		myScroll.scrollToElement("#Telefono", "1s");
-	});
-	
 	last_click_time = new Date().getTime();
 	
 	document.addEventListener('click', function (e) {
@@ -252,7 +228,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://www.msop.it/smartpizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -319,7 +295,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -367,7 +343,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -652,7 +628,7 @@ function compra(metodo) {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/mirketto/www/Check_TransactionV2.asp",
+							url:"http://msop.it/SmartPizza/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -822,7 +798,7 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/mirketto/www/Check_TransactionV2.asp",
+							url:"http://msop.it/SmartPizza/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -836,7 +812,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://msop.it/mirketto/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://msop.it/SmartPizza/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -954,7 +930,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/mirketto/www/check_login_punti.asp",
+			   url:"http://msop.it/SmartPizza/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -990,7 +966,7 @@ function mostrapunti(){
 			   dataType:"jsonp"});
 
 
-		tblProfile = "<tr><td>SALDO PUNTI: "+ Number(localStorage.getItem("Punti")).toFixed(2) +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ Number(localStorage.getItem("Punti")).toFixed(2) +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 		document.getElementById("NomeRegalo").value = localStorage.getItem("Nome") + " " + localStorage.getItem("Cognome")
 		document.getElementById("Indirizzo").value = localStorage.getItem("Indirizzo") + "," + localStorage.getItem("Civico")
@@ -1010,7 +986,7 @@ function mostraOrario(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/mirketto/www/Check_Orario.asp",
+			   url:"http://msop.it/SmartPizza/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1060,17 +1036,9 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.565181,12.526334';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Mirketto-1396958183922266', '_system', 'location=no');
 }
 
 function riparti(){

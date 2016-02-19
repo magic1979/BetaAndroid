@@ -113,7 +113,7 @@ function buildcatalogo(Catalogo) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Home.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Home.asp",
 		   contentType: "application/json",
 		   data: {categoria:Catalogo},
 		   timeout: 7000,
@@ -127,7 +127,7 @@ function buildcatalogo(Catalogo) {
 					window.location.href = "menu.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/mirketto/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"&euro;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/smartfood/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"&euro;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -187,7 +187,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -261,7 +261,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -308,7 +308,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/mirketto/www/check_Prodotto.asp",
+		   url:"http://msop.it/SmartPizza/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -515,7 +515,7 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 	}
 	
@@ -553,19 +553,15 @@ function getParameterByName(name) {
 
 
 						  
-function gomappa(){
-	var addressLongLat = '41.565181,12.526334';
-	
-	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Mirketto-1396958183922266', '_system', 'location=no');
-}
+						  function gomappa(){
+						  var addressLongLat = '41.588583,12.653672';
+						  
+						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
+						  
+						  //var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+						  
+						  }
 						  
 						  function riparti(){
 							window.location.href = "index.html";
