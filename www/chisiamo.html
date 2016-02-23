@@ -17,8 +17,10 @@
 		<link rel="stylesheet" href="css/app-reset.css" />
 		<link rel="stylesheet" href="css/app-ios.css" />
 		<link rel="stylesheet" type="text/css" href="css/zocial.css" />
+		<link rel="stylesheet" href="css/jquery-ui.css">
 		
 		<script src="jquery-1.10.2.min.js"></script>
+		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/jquery.mobile-1.4.2.min.js"></script>
 		<script src="jquery.countdown.js"></script>
 		<script src="jquery.raty.js"></script>
@@ -33,8 +35,8 @@
 			function loaded () {
 				myScroll = new IScroll('#wrapper', { click: true });
 				setTimeout (function(){
-							myScroll.refresh();
-							}, 1500);
+					myScroll.refresh();
+				}, 1500);
 			}
 		
 		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
@@ -42,8 +44,8 @@
 		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		
 			</script>
-
-
+		
+		
         <title>FoodApp</title>
 		
 		<style type="text/css">
@@ -78,7 +80,7 @@
 			height: 45px;
 			line-height: 45px;
 			padding: 0;
-			color: #eee;
+			color: #fff;
 			font-size: 20px;
 			text-align: center;
 			font-weight: bold;
@@ -91,7 +93,7 @@
 			left: 0;
 			width: 100%;
 			height: 48px;
-			background: #9f1e24;
+			background: #fff;
 			padding: 0;
 			border-top: 0px solid #444;
 		}
@@ -100,10 +102,10 @@
 			position: absolute;
 			z-index: 1;
 			top: 45px;
-			bottom: 48px;
+			bottom: 0px;
 			left: 0;
 			width: 100%;
-			background: #FFFFFF;
+			background: #fff;
 			overflow: hidden;
 		}
 		
@@ -141,9 +143,9 @@
 			padding: 0 10px;
 			height: 40px;
 			line-height: 40px;
-			border-bottom: 1px solid #ccc;
+			border-bottom: 1px solid #fff;
 			border-top: 1px solid #fff;
-			background-color: #fafafa;
+			background-color: #fff;
 			font-size: 14px;
 		}
 		
@@ -369,22 +371,7 @@
 	-webkit-box-shadow: 0px 0px 0.5px 0.5px #000;
 	-moz-box-shadow: 0px 0px 0.5px 0.5px #000;
 	box-shadow: 0px 0px 0.5px 0.5px #000;
-	
-	border: none;
 }
-		
-		.circolare2 {
-			border-radius:10px;
-			-moz-border-radius:10px;
-			-webkit-border-radius:10px;
-			-o-border-radius: 10px;
-			
-			-webkit-box-shadow: 0px 0px 0.5px 0.5px #000;
-			-moz-box-shadow: 0px 0px 0.5px 0.5px #000;
-			box-shadow: 0px 0px 0.5px 0.5px #000;
-			
-			border: none;  
-		}
 		
 a {text-decoration:none;}
 
@@ -435,12 +422,12 @@ a {text-decoration:none;}
 		.badge1[data-badge]:after {
 			content:attr(data-badge);
 			position:absolute;
-			top:3px;
-			right:-1px;
+			top:-15px;
+			right:15px;
 			font-size:.7em;
 			background:green;
 			color:white;
-			width:20px;height:20px;
+			width:18px;height:18px;
 			text-align:center;
 			line-height:20px;
 			border-radius:50%;
@@ -471,178 +458,94 @@ a {text-decoration:none;}
 			box-shadow:0 0 1px #333;
 			border: 1px solid #fff;
 		}
-		
 		.visione {
 			color:#000;
+			font-size: 9pt;
 			text-decoration: none;
 			text-shadow:0 0 0;
 		}
 		
-		.tabella1{
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			border: #9f1e24 1px solid;
-			border-color: #9f1e24;
-			height: 100px;
-			border-spacing: 0px;
-			border-style: outset;
+		.someClass b {
+			font-weight: normal;
+			text-decoration: none;
+			text-shadow:0 0 0;
 		}
 		
-		.loghetto {
-			
-			border-radius:5px;
-			-moz-border-radius:5px;
-			-webkit-border-radius:5px;
-			-o-border-radius: 5px;
-			
+		.someClass {
+			font-weight: normal;
+			text-decoration: none;
+			text-shadow:0 0 0;
 		}
-		
-		.div5 {
-			position: fixed;
-			z-index: 2;
-			bottom: 0;
-			right: 0;
-			width: 60%;
-			padding: 0;
+		.someClass2 {
 			color: #000;
-			
+			font-size: 20px;
 			text-align: center;
-			
+			font-weight: bold;
+		}
+		
+		.btn {
+			background: #1d96d3;
+			background-image: -webkit-linear-gradient(top, #1d96d3, #1d96d3);
+			background-image: -moz-linear-gradient(top, #1d96d3, #1d96d3);
+			background-image: -ms-linear-gradient(top, #1d96d3, #1d96d3);
+			background-image: -o-linear-gradient(top, #1d96d3, #1d96d3);
+			background-image: linear-gradient(to bottom, #1d96d3, #1d96d3);
+			-webkit-border-radius: 5;
+			-moz-border-radius: 5;
+			border-radius: 5px;
+			font-family: Arial;
+			color: #ffffff;
+			font-size: 24px;
+			padding: 10px 20px 10px 20px;
+			text-decoration: none;
+		}
+		
+		.btn:hover {
+			background: #000000;
+			background-image: -webkit-linear-gradient(top, #000000, #1d96d3);
+			background-image: -moz-linear-gradient(top, #000000, #1d96d3);
+			background-image: -ms-linear-gradient(top, #000000, #1d96d3);
+			background-image: -o-linear-gradient(top, #000000, #1d96d3);
+			background-image: linear-gradient(to bottom, #000000, #1d96d3);
+			text-decoration: none;
 		}
 		
 		</style>
 		
     </head>
     <body>
-
 		
 		<div id="page" data-role="page" class="div2" >
 			
 			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
-				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="32px"></td></tr></table>
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><img src="img/image3017.png" width="150px" height="36px"></td></tr></table>
 			</div>
-			
 			<div class="spinner" id="spinner"></div>
 			
-			<br>
 			<div id="wrapper">
 				<div id="scroller">
-					<font class="fontsforweb_fontid_2802" color="#B40431" size="6">Menu</font></center>
-					<br><br>
-					<div id="menuL"></div>
-					<br><br>
-					<div id="noconn" align="center"><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></div>
+					<center>
+						<div id="classifica" align="center">
+							<img src='img/foto.png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>Ristorante, Pizzeria, Braceria da Mirketto<br><br></font></td></tr><tr><td align='left' width='160px'><font size='2' color='#454545'></font></td><td align='right'><font size='2' color='#1d96d3'><b>Tel:06-91019049/380-2131754</b></font></font></td></tr></table><br><hr class='div3'>
+						</div>
+						<br><br>
+						<font color="#1d96d3"><h2>Indirizzo:</h2></font>
+						<div id="getting-started" class="someClass2">Lungo mare tor san lorenzo 12, angolo con via delle anitre</div>
+					</center>
 				</div>
 			</div>
 			
-			<!--<ul data-role="listview"  data-theme="b" data-inset="true">
-				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/PizzaSmall.png" >
-					<h2>&nbsp;PIZZE</h2>
-					<p>Rosse e Bianche</p></a>
-				</li>
-				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/PaniniSmall.png">
-					<h2>&nbsp;PANINI</h2>
-					<p>Americani e Farciti</p></a>
-				</li>
-				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/BibiteSmall.png" height="70">
-					<h2>&nbsp;BIBITE</h2>
-					<p>Cola, Pepsi, Fanta</p></a>
-				</li>
-				<li><a onclick="#" href="catalogo.html" rel="external"><img src="img/CannoliSmall.png" height="70">
-					<h2>&nbsp;DOLCI</h2>
-					<p>Cannoli, Tiramisu, Baba</p></a>
-				</li>
-			</ul>-->
+			<div data-role="footer" align="center" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1">
+				<table id="idfooter4" width="90%"><tr><td width="100%" align="left">
+					<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
+				</td>
+				</tr></table>
+			</div><!-- /footer4 -->
 
-
-			<!--<ul id="my-listview" data-role="listview"  data-theme="b" data-inset="true">
-				<li><a href='catalogo.html' onclick='#' rel="external"><img src="img/PizzaSmall.png">
-					<font size="3">Pizze</font>
-					<p>Romene, Napoletane</p></a>
-				</li>
-				<li><a href='catalogo.html' onclick='#' rel="external"><img src="img/PaniniSmall.png">
-					<h2>Panini</h2>
-					<p>Americani, Italiani</p></a>
-				</li>
-				<li><a href='#' onclick='#' rel="external"><img src="img/BibiteSmall.png">
-					<h2>Bibite</h2>
-					<p>Gassate, Normali</p></a>
-				</li>
-				<li><a href='#' onclick='#' rel="external"><img src="img/CannoliSmall.png">
-					<h2>Dolci</h2>
-					<p>Provenienti da tutta Italia</p></a>
-				</li>
-			</ul>
-			
-			<div id="wrapper">
-				<div id="scroller">
-
-				</div>
-			</div>-->
-
-
-			<div id="footer" data-role="footer" data-theme="b" data-tap-toggle="false" class="div1">
-				<div data-role="navbar" class="nav" data-grid="d" data-theme="c" class="div1">
-					<ul>
-						<li><a href="index.html" id="programas" data-icon="homehome" rel="external"><font size="1">Promo</font></a></li>
-						<li><a href="#" onclick="#" id="menuR" data-icon="ristohome" rel="external"><font size="1">Menu</font></a></li>
-						<li><a href="cart.html" onclick="#" id="badde5" data-icon="taifun" rel="external"><font size="1">Carrello</font></a></li>
-						<li><a id="btnprofilo7" href="rating.html" data-transition="slide" data-icon="userhome" rel="external"><font size="1">Recensioni</font></a></li>
-						<li><a href="#mypanelH" onclick="javascript:rati()" data-icon="pinhome"><font size="1">Altro</font></a></li>
-					</ul>
-				</div>
-			</div>
-			
-			<div data-role="panel" id="mypanel" data-display="overlay" data-theme="a" data-position-fixed="true" width="100%" class="div2">
-				<center>
-					<!--<img src="http://www.pokeranswer.it/IMG/AnswerB.png" width="130px" data-rel="external">-->
-					<img src="img/LogoFood.png" height="80px"><br><font class="fontsforweb_fontid_2802" color="#FF8000" size="4">Food App</font></center>
-				<br><br>
-				<img src="Tod10.png" class="circolare" id="userPic" data-rel="external"/>  <span id='Nome' align="center"></span>
-				<br>
-				<!--<div id='EmailCliente' align="center"></div>-->
-				<br>
-				<ul data-role="listview" data-inset="true">
-					<li><a href="Miei.html" rel="external">I Miei Acquisti</a></li>
-				</ul>
-				<br>
-				
-				<br>
-				<a href="#my-header" onclick="javascript:chiudipanel();" class="ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left" data-rel="close">Close</a>
-			</div><!-- /panel -->
-			
-			<div data-role="panel" id="mypanelH" data-position-fixed="true" data-position="right" data-display="overlay" width="100%" data-theme="b">
-				<center>
-					<img src="img/LogoFood.png" height="60px"><br><font class="fontsforweb_fontid_2802" color="#1d96d3" size="3">Fratelli Di Pizza</font>
-						<br><font color="#000000" size="2">Via di Saponara 195, Roma</font><br><br>
-						<ul data-role="listview" data-inset="true">
-							<li><a href="premi.html" rel="external">Card e Premi</a></li>
-							<li><a href="Notifiche.html" rel="external">Notifiche</a></li>
-							<li><a href="javascript:goprofilo()" rel="external">I Miei Ordini</a></li>
-							<!--<li><a id="radio" href="chisiamo.html" rel="external">Chi Siamo</a></li>-->
-							<li><a id="radio" href="javascript:gomappa()" rel="external">Dove Siamo</a></li>
-							<li><a href="tel:+393478253732">Contattaci</a></li>
-							<li><a href="TerminiCondizioni.html" rel="external">Termini e Condizioni</a></li>
-						</ul>
-				</center>				<br>
-				
-				<table border="0">
-					<tr><td><b>Seguici su:</b></td></tr>
-					<tr><td><a href='#'><img src="img/social1.png" height="40px"></a></td></tr>
-					<tr><td><div id="profile">&nbsp;&nbsp;</div></td></tr>
-				</table>
-
-				<table align="right" id="profile" border="0" class="div5">
-					<tr><td align="center"><font size="1"><img src="img/Prolution.png" class="loghetto" width="28"></font></td></tr>
-					<tr><td align="center"><font size="0.3">Powerd By Prolution</font></td></tr>
-				</table>
-			</div>
-			
 		</div><!-- /page -->
 		
-
         <script type="text/javascript" src="cordova.js"></script>
-		<script type="text/javascript" src="js/Menu.js"></script>
+        <script type="text/javascript" src="js/chisiamo.js"></script>
 		
     </body>
 </html>
