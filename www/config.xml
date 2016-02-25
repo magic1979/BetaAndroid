@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.fratelli"
+		id        = "it.app-piu.pizzaelite"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>FratelliApp+</name>
-		<description>Fratelli di Pizza App+, Pizza, Pizza a legna</description>
+		<name>Pizza Elite</name>
+		<description>Pizza Elite App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
 Prolution srl
 		</author>

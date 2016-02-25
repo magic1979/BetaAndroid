@@ -252,7 +252,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://www.msop.it/fratelli/www/check_Prodotto.asp",
+		   url:"http://www.msop.it/pizzaelite/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -319,7 +319,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/fratelli/www/check_Prodotto.asp",
+		   url:"http://msop.it/pizzaelite/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -367,7 +367,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/fratelli/www/check_Prodotto.asp",
+		   url:"http://msop.it/pizzaelite/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -652,7 +652,7 @@ function compra(metodo) {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/fratelli/www/Check_TransactionV2.asp",
+							url:"http://msop.it/pizzaelite/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -822,7 +822,7 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://msop.it/fratelli/www/Check_TransactionV2.asp",
+							url:"http://msop.it/pizzaelite/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -836,7 +836,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://msop.it/fratelli/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://msop.it/pizzaelite/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -954,7 +954,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/fratelli/www/check_login_punti.asp",
+			   url:"http://msop.it/pizzaelite/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1010,7 +1010,7 @@ function mostraOrario(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://msop.it/fratelli/www/Check_Orario.asp",
+			   url:"http://msop.it/pizzaelite/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1060,17 +1060,13 @@ function goprofilo(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.777861,12.355745';
+	var addressLongLat = '41.811582, 12.442959';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system')
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/fratelli-1396958183922266', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/Pizza-Elite-635675969879673/', '_system', 'location=no');
 }
 
 function riparti(){
