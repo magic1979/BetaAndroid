@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/pizzaelite/www/check_Mietransazioni.asp",
+		   url:"http://msop.it/puntoincontro/www/check_Mietransazioni.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,13 +442,13 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.811582, 12.442959';
+	var addressLongLat = '41.876742, 12.425899';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Pizza-Elite-635675969879673/', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/Ristorante-Griglieria-Pizzeria-IL-PUNTO-DINCONTRO-270710836291939/', '_system', 'location=no');
 }
 
 function riparti(){
