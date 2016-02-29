@@ -143,7 +143,7 @@ var app = {
 			}
 			
 			
-			if(localStorage.getItem("Registrato")!=1){
+			/*if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
 				
 			setTimeout (function(){
@@ -156,7 +156,7 @@ var app = {
 						
 			}, 2000);
 				
-			}
+			}*/
 
 			
 			$("#footer").show();
