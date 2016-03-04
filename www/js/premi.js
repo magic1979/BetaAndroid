@@ -86,7 +86,13 @@ function onDeviceReady() {
     if(connectionStatus=='online'){
 		$(".spinner").hide();
 		
-		$("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+		if (localStorage.getItem("Punti") === null || typeof(localStorage.getItem("Punti")) == 'undefined' || localStorage.getItem("Punti")==0) {
+			
+			$("#Punto").html("Non Autenticato");
+		}
+		else{
+			$("#Punto").html("<font size='4'>I tuoi punti: "+localStorage.getItem("Punti")+"</font>");
+		}
 		
 		buildcatalogo()
 		seleziona();
@@ -100,8 +106,8 @@ function onDeviceReady() {
 		tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Aggiungi</font></a></td></tr>";
 		tabella = tabella + "</table>";
 		
-		$("#noconn").html(tabella);
-
+		$('#noconn').html(tabella);
+		
         
     }
 
@@ -114,7 +120,7 @@ function buildcatalogo() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/pizzaelite/www/check_Home.asp",
+		   url:"http://msop.it/altradonna/www/check_Home.asp",
 		   contentType: "application/json",
 		   data: {categoria:"Premi"},
 		   timeout: 7000,
@@ -128,7 +134,7 @@ function buildcatalogo() {
 					window.location.href = "cart.html";
 				  }
 				  else{
-				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/pizzaelite/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
+				  tabella = tabella + "<tr><td align='center' width='150px'><img src='http://msop.it/public/altradonna/"+ item.IMG +".png' width='140px' height='140px' class='circolare'></td><td align='left' width='100px'><table align='center' border='0' width='100px'><tr><td align='left'><font color='red' size='3'>"+ item.Nome +", "+ Number(item.Deal).toFixed(2) +"Punti;</font></td></tr><tr><td align='left'>"+ item.Descrizione +"</td></tr></table></td><td align='left'><a href='javascript:AggProd("+ item.Cod_Prodotto +")' ><div width='28px' class='home1'></div></a><br><a href='javascript:SottProd("+ item.Cod_Prodotto +")' onclick='#'><div width='28px' class='home'></div></a></td></tr>";
 				  }
 				  // alert(item.ID)
 			});
@@ -188,7 +194,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/pizzaelite/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -217,7 +223,7 @@ function AggProd(prod) {
 				  {
 					localStorage.setItem("NoPremi", "NO")
 					navigator.notification.alert(
-											   'Non hai abbastanza punti per questo premio',  // message
+											   'Non hai abbastanza punti per questo premio 1',  // message
 											   alertDismissed,         // callback
 											   'Attenzione',            // title
 											   'Done'                  // buttonName@
@@ -291,7 +297,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/pizzaelite/www/check_Prodotto_Punti.asp",
+		   url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 		   contentType: "application/json",
 		   data: {id:prod,Punti:punteggio,Op:1,email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -360,7 +366,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://msop.it/pizzaelite/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -416,7 +422,7 @@ function SottProd(prod) {
 													  $(".spinner").show();
 													  $.ajax({
 															 type:"GET",
-															 url:"http://msop.it/pizzaelite/www/check_Prodotto_Punti.asp",
+															 url:"http://msop.it/altradonna/www/check_Prodotto_Punti.asp",
 															 contentType: "application/json",
 															 data: {id:prod,Punti:punteggio,Op:2,email:localStorage.getItem("email")},
 															 timeout: 7000,
@@ -608,7 +614,7 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 		
 	}
 	
@@ -621,6 +627,7 @@ function mostrapunti(){
 function uscire(){
 	localStorage.setItem("loginvera", "")
 	localStorage.setItem("email", "")
+	localStorage.setItem("Registrato", "")
 	
 	window.location.href = "index.html";
 }
@@ -637,6 +644,10 @@ function goprofilo(){
 	}
 }
 
+function gofacebook(){
+	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
+}
+
 function getParameterByName(name) {
 	name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
 						  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -645,17 +656,20 @@ function getParameterByName(name) {
 						  }
 
 
+						  function gomappa(){
+						  var addressLongLat = '41.863862,12.497881';
 						  
-function gomappa(){
-	var addressLongLat = '41.811582, 12.442959';
-	
-	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Pizza-Elite-635675969879673/', '_system', 'location=no');
-}
+						  window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+						  //window.location.href = "http://maps.apple.com/?q="+addressLongLat
+						  
+						  //var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+						  
+						  }
 						  
 						  function riparti(){
+						  
 							window.location.href = "index.html";
+						  
 						  }
+						  
+						  

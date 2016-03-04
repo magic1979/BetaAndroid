@@ -46,11 +46,12 @@ function onDeviceReady() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.811582, 12.442959';
+	var addressLongLat = '41.830227,12.577421';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-}
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Pizza-Elite-635675969879673/', '_system', 'location=no');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }

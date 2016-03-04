@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/puntoincontro/www/check_MieNotifiche.asp",
+		   url:"http://msop.it/altradonna/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,13 +442,18 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.876742, 12.425899';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/Ristorante-Griglieria-Pizzeria-IL-PUNTO-DINCONTRO-270710836291939/', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/Mirketto-1396958183922266', '_system', 'location=no');
 }
 
 function riparti(){
