@@ -1061,7 +1061,7 @@ function mostrapunti(){
 		tblProfile = "<a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a>"
 	}else{
 		
-		tblProfile = "SALDO PUNTI: "+ localStorage.getItem("Punti") +"<br><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a>"
+		tblProfile = "<a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a>"
 	
 	}
 	
