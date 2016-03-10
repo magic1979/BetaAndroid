@@ -1398,7 +1398,7 @@ function onDeviceReady() {
 								 //myScroll = new IScroll('#wrapper', { click: true });
 	
 
-								 $(document).on("click touchstart", "#aggbutton", function(e){
+								 $(document).on("touchstart", "#aggbutton", function(e){
 									e.preventDefault();
 									AggProd(codiceProdotto)
 								});
