@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_MieNotifiche.asp",
+		   url:"http://msop.it/starpizza/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -442,7 +442,7 @@ function uscire(){
 }
 
 function gomappa(){
-	var addressLongLat = '41.830227,12.577421';
+	var addressLongLat = '41.588583,12.653672';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
@@ -450,12 +450,10 @@ function gomappa(){
 	
 	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
 	
-	
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
-	
+	var ref = window.open('https://m.facebook.com/Mirketto-1396958183922266', '_system', 'location=no');
 }
 
 function riparti(){
