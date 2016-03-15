@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/altradonna/www/check_MieNotifiche.asp",
+		   url:"http://gtechplay.com/mirage/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -441,21 +441,38 @@ function uscire(){
 	window.location.href = "index.html";
 }
 
+function aprimail () {
+
+window.plugin.email.open({
+	to:      'info@i-app.it',
+	subject: 'Contattaci',
+	body:    "",
+	isHtml:  true
+});
+
+
+}
+
+						  
 function gomappa(){
-	var addressLongLat = '41.830227,12.577421';
+	var addressLongLat = '41.873811,12.480266';
 	
-	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	//window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	window.open("google.navigation:q=41.873811,12.480266&mode=d" , '_system');
 	
-	
+
+	refff.addEventListener('exit', function (event) {
+		
+		setTimeout (function(){
+			refff.close();
+		}, 500);
+		
+	});
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/laltra.donna.35', '_system', 'location=no');
-	
+	var ref = window.open('https://m.facebook.com/assogameanswer', '_system', 'location=no');
 }
 
 function riparti(){

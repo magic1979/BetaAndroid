@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.altradonna"
-		versionCode="3.0"
-		version   = "3.0">
-		<name>L'altra Donna</name>
-		<description>L'altra Donna App+</description>
-		<author href="http://www.app-piu.it" email="info@app-piu.it">
-			Prolution srl
+		id        = "it.app-piu.mirage"
+		versionCode="1.0"
+		version   = "1.0">
+		<name>Mirage</name>
+		<description>Mirage</description>
+		<author href="http://i-app.it" email="info@i-app.it">
+			Game Answer
 		</author>
 		<preference name="phonegap-version" value="cli-5.2.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="true" />
+		<preference name="fullscreen" value="false" />
 		<preference name="target-device" value="universal" />
 		<preference name="webviewbounce" value="true" />
 		<preference name="prerendered-icon" value="true" />
@@ -37,7 +37,7 @@
 		<preference name="BackgroundColor" value="#707070"/>
 		<preference name="KeepRunning" value="true"/>
 		<preference name="DisallowOverscroll" value="true"/>
-		<preference name="LoadingDialog" value="L'altra Donna,Loading"/> 
+		<preference name="LoadingDialog" value="C'è Pizza per te,Loading"/> 
 		<preference name="LoadUrlTimeoutValue" value="20000" />
 		<preference name="disable-cursor" value="true" />
 		<gap:platform name="android" />
@@ -110,6 +110,4 @@
 
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer" spec="0.8.2" source="pgb" />
 		<gap:plugin name="pushbots-cordova-plugin" source="npm" version="1.2.8" />
-		<gap:plugin name="com.sharinglabs.cordova.plugin.datepicker" spec="1.1.3" source="pgb"/>
-		
 	</widget>
