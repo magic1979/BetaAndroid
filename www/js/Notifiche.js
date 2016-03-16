@@ -113,7 +113,7 @@ function seleziona() {
 	
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/mirage/www/check_MieNotifiche.asp",
+		   url:"http://msop.it/trecancelli/www/check_MieNotifiche.asp",
 		   contentType: "application/json",
 		   data: {email:localStorage.getItem("email")},
 		   timeout: 7000,
@@ -441,38 +441,14 @@ function uscire(){
 	window.location.href = "index.html";
 }
 
-function aprimail () {
-
-window.plugin.email.open({
-	to:      'info@i-app.it',
-	subject: 'Contattaci',
-	body:    "",
-	isHtml:  true
-});
-
-
-}
-
-						  
 function gomappa(){
-	var addressLongLat = '41.873811,12.480266';
+	var addressLongLat = '41.851869, 12.493830';maps
 	
-	//window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	
-	window.open("google.navigation:q=41.873811,12.480266&mode=d" , '_system');
-	
-
-	refff.addEventListener('exit', function (event) {
-		
-		setTimeout (function(){
-			refff.close();
-		}, 500);
-		
-	});
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/assogameanswer', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/TrecastelliPizzeria/', '_system', 'location=no');
 }
 
 function riparti(){

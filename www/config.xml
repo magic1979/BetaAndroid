@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.mirage"
+		id        = "it.app-piu.3castelli"
 		versionCode="1.0"
 		version   = "1.0">
-		<name>Mirage</name>
-		<description>Mirage</description>
-		<author href="http://i-app.it" email="info@i-app.it">
-			Game Answer
+		<name>Trecastelli</name>
+		<description>Trecastelli App+, Pizza, Pizza a legna</description>
+		<author href="http://www.app-piu.it" email="info@app-piu.it">
+Prolution srl
 		</author>
 		<preference name="phonegap-version" value="cli-5.2.0" />
 		<preference name="orientation" value="portrait" />

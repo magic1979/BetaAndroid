@@ -252,7 +252,7 @@ function AggProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/mirage/www/check_Prodotto.asp",
+		   url:"http://www.msop.it/trecancelli/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -319,7 +319,7 @@ function agg2(prod){
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/mirage/www/check_Prodotto.asp",
+		   url:"http://msop.it/trecancelli/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -367,7 +367,7 @@ function SottProd(prod) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/mirage/www/check_Prodotto.asp",
+		   url:"http://msop.it/trecancelli/www/check_Prodotto.asp",
 		   contentType: "application/json",
 		   data: {id:prod},
 		   timeout: 7000,
@@ -652,7 +652,7 @@ function compra(metodo) {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://gtechplay.com/mirage/www/Check_TransactionV2.asp",
+							url:"http://msop.it/trecancelli/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:metodopp,Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -822,7 +822,7 @@ function compraCarta() {
 					 $(".spinner").show();
 					 $.ajax({
 							type:"GET",
-							url:"http://gtechplay.com/mirage/www/Check_TransactionV2.asp",
+							url:"http://msop.it/trecancelli/www/Check_TransactionV2.asp",
 							contentType: "application/json",
 							data: {email:email,id_prodotto:transazioneprodotto,qta:1,tot:amount,totPunti:amountPunti,transazionemia:transazioneprodotto,NomeProdotto:"Ordine App",EmailEsercente:"salvatore.bruni@gmail.com",idTransazione:"CC",Ordine:ordinazione,Indirizzo:Indirizzo,Telefono:Telefono,OraConsegna:OraConsegna,Note:Note},
 							timeout: 7000,
@@ -836,7 +836,7 @@ function compraCarta() {
 								   //localStorage.setItem("Punti", item.Punti);
 								   dlt2()
 								   
-								   var ref = window.open('http://gtechplay.com/mirage/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
+								   var ref = window.open('http://msop.it/trecancelli/wbspaypal.asp?Transprodotto='+ transazioneprodotto +'', '_blank', 'location=no');
 								   
 								   ref.addEventListener('loadstop', function(event) { if (event.url.match("mobile/close")) { ref.close(); } });
 								   
@@ -954,7 +954,7 @@ function mostrapunti(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://gtechplay.com/mirage/www/check_login_punti.asp",
+			   url:"http://msop.it/trecancelli/www/check_login_punti.asp",
 			   contentType: "application/json",
 			   data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1010,7 +1010,7 @@ function mostraOrario(){
 		$(".spinner").show();
 		$.ajax({
 			   type:"GET",
-			   url:"http://gtechplay.com/mirage/www/Check_Orario.asp",
+			   url:"http://msop.it/trecancelli/www/Check_Orario.asp",
 			   contentType: "application/json",
 			   //data: {email:localStorage.getItem("email")},
 			   timeout: 7000,
@@ -1059,38 +1059,14 @@ function goprofilo(){
 	}
 }
 
-function aprimail () {
-
-window.plugin.email.open({
-	to:      'info@i-app.it',
-	subject: 'Contattaci',
-	body:    "",
-	isHtml:  true
-});
-
-
-}
-
-						  
 function gomappa(){
-	var addressLongLat = '41.873811,12.480266';
+	var addressLongLat = '41.851869, 12.493830';maps
 	
-	//window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	
-	window.open("google.navigation:q=41.873811,12.480266&mode=d" , '_system');
-	
-
-	refff.addEventListener('exit', function (event) {
-		
-		setTimeout (function(){
-			refff.close();
-		}, 500);
-		
-	});
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/assogameanswer', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/TrecastelliPizzeria/', '_system', 'location=no');
 }
 
 function riparti(){

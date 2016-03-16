@@ -109,7 +109,7 @@ function buildmenu() {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://gtechplay.com/mirage/www/check_Menu.asp",
+		   url:"http://msop.it/trecancelli/www/check_Menu.asp",
 		   contentType: "application/json",
 		   //data: {ID:idProdotto},
 		   timeout: 7000,
@@ -120,7 +120,7 @@ function buildmenu() {
 		   $.each(result, function(i,item){
 				  //alert(item.Catalogo)
 				  
-				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://gtechplay.com/public/mirage/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
+				  tabella = tabella + "<table width='100%' height='100px' class='tabella1'><tr><td><table bgcolor='#fff' width='100%' border='0'><tr><td width='30%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='http://msop.it/public/trecancelli/"+ item.IMG +".png' width='100' class='circolare2'></a></td><td width='60%'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><h2 class='visione'>&nbsp;"+ item.Catalogo +"</h2><p class='visione'>"+ item.Descrizione +"</p></a></td><td align='right'><a onclick='#' href='catalogo.html?catalogo="+ item.Catalogo +"' rel='external'><img src='img/arrowD.png' width='40'></a></td></tr></table></td></tr></table><br>";
 				  
 				 //alert(tabella)
 			});
@@ -509,38 +509,14 @@ function goprofilo(){
 	}
 }
 
-function aprimail () {
-
-window.plugin.email.open({
-	to:      'info@i-app.it',
-	subject: 'Contattaci',
-	body:    "",
-	isHtml:  true
-});
-
-
-}
-
-						  
 function gomappa(){
-	var addressLongLat = '41.873811,12.480266';
+	var addressLongLat = '41.851869, 12.493830';maps
 	
-	//window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	
-	window.open("google.navigation:q=41.873811,12.480266&mode=d" , '_system');
-	
-
-	refff.addEventListener('exit', function (event) {
-		
-		setTimeout (function(){
-			refff.close();
-		}, 500);
-		
-	});
+	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
 }
 
 function gofacebook(){
-	var ref = window.open('https://m.facebook.com/assogameanswer', '_system', 'location=no');
+	var ref = window.open('https://m.facebook.com/TrecastelliPizzeria/', '_system', 'location=no');
 }
 
 function riparti(){
