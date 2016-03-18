@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "it.app-piu.trecastelli"
-		versionCode="1.0"
-		version   = "1.0">
-		<name>Trecastelli</name>
-		<description>Trecastelli App+, Pizza, Pizza a legna</description>
+		id        = "it.app-piu.pxt"
+		versionCode="7.0"
+		version   = "7.0">
+		<name>Pizza per te</name>
+		<description>Pizza Per Te App+, Pizza, Pizza a legna</description>
 		<author href="http://www.app-piu.it" email="info@app-piu.it">
-Prolution srl
+Salvatore sas
 		</author>
 		<preference name="phonegap-version" value="cli-5.2.0" />
 		<preference name="orientation" value="portrait" />
-		<preference name="fullscreen" value="false" />
+		<preference name="fullscreen" value="true" />
 		<preference name="target-device" value="universal" />
 		<preference name="webviewbounce" value="true" />
 		<preference name="prerendered-icon" value="true" />

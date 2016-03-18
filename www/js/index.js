@@ -11,7 +11,7 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler@ 56e2cb1f177959433a8b4567
+    // deviceready Event Handler@
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
@@ -21,17 +21,17 @@ var app = {
 
 		
     },
-    // Update DOM on a Received Event  56ced89d17795968198b4567  648839823182
+    // Update DOM on a Received Event  // AIzaSyBMsSOAU7Br-MtCXcZOdRPZ6JQ2UoaCYM4
     receivedEvent: function(id) {
 		
-	    if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("56e2cb1f177959433a8b4567");
+		if(PushbotsPlugin.isiOS()){
+			PushbotsPlugin.initializeiOS("568aef3c177959921a8b4567");
 		 }
 		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("56e2cb1f177959433a8b4567", "880412277230");
+			PushbotsPlugin.initializeAndroid("568aef3c177959921a8b4567", "60837206451");
 		 }
 		
-		
+	
 		last_click_time = new Date().getTime();
 		
 		document.addEventListener('click', function (e) {
@@ -142,8 +142,7 @@ var app = {
 				}
 			}
 			
-			
-			if(localStorage.getItem("Registrato")!=1){
+			/*if(localStorage.getItem("Registrato")!=1){
 				//alert("entrato")
 				
 			setTimeout (function(){
@@ -156,14 +155,12 @@ var app = {
 						
 			}, 2000);
 				
-			}
-
+			}*/
 			
 			$("#footer").show();
 			
 		}
 		else{
-			$('#noconn').show();
 			
 			var tabella = "<table align='center' border='0' width='100%' height='120px'>";
 			tabella = tabella + "<tr><td align='center'><a href='javascript:riparti()' class='btn'><font color='#fff'>Connetti</font></a></td></tr>";
@@ -590,15 +587,15 @@ function checkPos() {
 }
 
 function gomappa(){
-	var addressLongLat = '41.851869, 12.493830';maps
+	var addressLongLat = '41.862321,12.692804';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
+	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
+	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
+	
+	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+	
 }
-
-function gofacebook(){
-	var ref = window.open('https://m.facebook.com/TrecastelliPizzeria/', '_system', 'location=no');
-}
-
 
 function getDistance(lat1,lon1,lat2,lon2) {
 	var R = 6371; // Radius of the earth in km
@@ -739,7 +736,7 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 	$(".spinner").show();
 	$.ajax({
 		   type:"GET",
-		   url:"http://msop.it/trecancelli/www/Check_Home.asp",
+		   url:"http://www.gtechplay.com/pizzaxte2/www/Check_Home.asp",
 		   contentType: "application/json",
 		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
 		   data: {Categoria:"offerte"},
@@ -752,13 +749,16 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 				if (item.ID != 0){
 				   distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
 				  
-				   //alert(distanza);javascript:AggProd(3);
+				  var immagine = item.IMG;
+				  //immagine = immagine.slice(0,-4);
+				  
+				   //var n1 = immagine.indexOf(".png");
 				  
 				  if (model.indexOf('iPad') >= 0) {
 					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
 				  }
 				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://msop.it/public/trecancelli/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
+					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
 				  }
 				  
 				  idProdotto = idProdotto+1;
@@ -788,7 +788,9 @@ function buildprodotto(Categoria,Provincia,Pagina) {
 		   
 		   $("#classifica").html(landmark2);
 		   
-		    myScroll.refresh();
+		   setTimeout (function(){
+				myScroll.refresh();
+			}, 1000);
 		   //myScroll = new IScroll('#wrapper', { click: true });
 		   
 		   
@@ -1073,7 +1075,7 @@ function mostrapunti(){
 		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
 	}else{
 		
-		tblProfile = "<tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
+		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
 	
 	}
 	
@@ -1109,56 +1111,9 @@ function exitapp(){
 
 function riparti(){
 	
-	 window.location.href = "index.html";
+	window.location.href = "index.html";
 	
 }
-
-function RegToken(){
-	//alert("entrato2")
-	
-		$(".spinner").show();
-		$.ajax({
-			   type:"GET",
-			   url:"http://msop.it/trecancelli/www/Check_RegToken.asp",
-			   contentType: "application/json",
-			   data: {email:localStorage.getItem("email"),token:localStorage.getItem("Token"),platform:"Android"},
-			   timeout: 7000,
-			   jsonp: 'callback',
-			   crossDomain: true,
-			   success:function(result){
-			   
-			   $.each(result, function(i,item){
-				  if (item.Token == '1024'){
-				  //alert(item.Token)
-				  localStorage.setItem("Registrato", "1");
-				  
-				  }
-				  else{
-				  //alert(item.Token)
-				  localStorage.setItem("Registrato", "0");
-				  
-				  }
-			});
-			   
-			   $(".spinner").hide();
-			   //window.location.href = "index.html";
-			   
-			   },
-			   error: function(){
-			   $(".spinner").hide();
-			   
-			   navigator.notification.alert(
-				'Possibile errore di rete, riprova tra qualche minuto',  // message
-				alertDismissed,         // callback
-				'Attenzione',            // title
-				'Done'                  // buttonName
-				);
-			   
-			   },
-			   dataType:"jsonp"});
-}
-
-
 
 
 
