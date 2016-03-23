@@ -34,7 +34,7 @@
         var ortcClient = null,
             url = 'http://ortc-developers.realtime.co/server/2.1/',
             applicationKey = 'L1YnIH',
-            authenticationToken = '00012212aaa45TT',
+            authenticationToken = '00012212',
             channel = 'my_channel';
 
         // Log function
@@ -50,12 +50,14 @@
         };
 		
 		function cattura() {
-				navigator.camera.PictureSourceType.PHOTOLIBRARY(Successo, onFail, { quality: 30,
-								destinationType: Camera.DestinationType.DATA_URL,
-								encodingType: Camera.EncodingType.PNG,
-								targetWidth: 100,
-								targetHeight: 100
-								});
+			navigator.camera.getPicture(Successo, onFail, { 
+							quality: 30,
+							destinationType: Camera.DestinationType.DATA_URL,
+							sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+							encodingType: Camera.EncodingType.PNG,
+							targetWidth: 200,
+							targetHeight: 200
+							});
         };
 		
 		function Successo(imageData) {
@@ -125,6 +127,7 @@
 
 </head>
 <body>
+<br><br><br><br>
     <div id="dMessage">
         <input type="text" id="txtMessage" style="width: 100%" />
         <input type="button" id="btnSendMessage" value="Send Message" onclick="send();" />

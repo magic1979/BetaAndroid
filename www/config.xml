@@ -110,5 +110,5 @@
 		<access origin="http://googleapis.com" subdomains="true"  />
 
 		<gap:plugin name="de.appplant.cordova.plugin.email-composer" spec="0.8.2" source="pgb" />
-		<gap:plugin name="pushbots-cordova-plugin" source="npm" version="1.2.8" />
+		<plugin name="co.realtime.plugins.cordovapush" spec="0.1.7" source="pgb" />
 	</widget>
