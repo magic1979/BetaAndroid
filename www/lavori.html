@@ -1,5 +1,24 @@
 <!DOCTYPE html>
-
+<!--
+ Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+ 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations@
+ under the License.
+ -->
 <html>
     <head>
 		<meta property="og:locale" content="en_US" />
@@ -25,8 +44,28 @@
 		<script src="jquery.countdown.js"></script>
 		<script src="jquery.raty.js"></script>
 		
+		<script type="text/javascript" src="js/iscroll.js"></script>
 		
-        <title>FoodApp</title>
+		
+		<script type="text/javascript">
+			
+			var myScroll;
+			
+			function loaded () {
+				myScroll = new IScroll('#wrapper', { click: true });
+				setTimeout (function(){
+					myScroll.refresh();
+				}, 1500);
+			}
+		
+		document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+		
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+		
+			</script>
+		
+		
+        <title>Volantini</title>
 		
 		<style type="text/css">
 			* {
@@ -75,13 +114,13 @@
 			height: 48px;
 			background: #fff;
 			padding: 0;
-			border-top: 0px solid #444;
+			border-top: 0px solid #fff;
 		}
 		
 		#wrapper {
 			position: absolute;
 			z-index: 1;
-			top: 45px;
+			top: 60px;
 			bottom: 48px;
 			left: 0;
 			width: 100%;
@@ -121,8 +160,8 @@
 		
 		#scroller li {
 			padding: 0 10px;
-			height: 0px;
-			line-height: 0px;
+			height: 40px;
+			line-height: 40px;
 			border-bottom: 1px solid #fff;
 			border-top: 1px solid #fff;
 			background-color: #fff;
@@ -175,7 +214,7 @@
 				background-color: #FFFFFF;
 			}
 		.div3 {
-			background-color: #F0F0F0;
+			background-color: #fff;
 			border: none;
 			margin:0 auto;
 			height: 10px;
@@ -212,7 +251,6 @@
 		}
 		.custom-btn {
 			width: 280px;
-			font-size: 24px;
 		}
 		
 		.custom-btn2 {
@@ -221,7 +259,11 @@
 		
 		.custom-btn3 {
 			width: 100px;
-			font-size: 18pt;
+			height:40px;
+		}
+		.custom-btn4 {
+			width: 100px;
+			height:70px;
 		}
 		
 		.big { height: 80px;}
@@ -355,6 +397,8 @@
 	box-shadow: 0px 0px 0.5px 0.5px #000;
 }
 		
+
+		
 a {text-decoration:none;}
 
 .styled-select select {
@@ -465,33 +509,110 @@ a {text-decoration:none;}
 			font-size: 18px;
 		}
 		
-		.scrivo {
-			display: block;
-			width: 90%;
-			margin: 0px;
-			border: solid 0.5px #dcdcdc;
-			font-family: sans-serif;
-			font-size: 26px;
-			appearance: none;
-			box-shadow: none;
-			border-radius: none;
+		.btn {
+			background: #9f1e24;
+			background-image: -webkit-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -moz-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -ms-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: -o-linear-gradient(top, #9f1e24, ##9f1e24);
+			background-image: linear-gradient(to bottom, #9f1e24, ##9f1e24);
+			-webkit-border-radius: 21;
+			-moz-border-radius: 21;
+			border-radius: 21px;
+			font-family: Arial;
+			color: #ffffff;
+			font-size: 24px;
+			padding: 10px 20px 10px 20px;
+			text-decoration: none;
+		}
+		
+		.btn:hover {
+			background: #000000;
+			background-image: -webkit-linear-gradient(top, #000000, #9f1e24);
+			background-image: -moz-linear-gradient(top, #000000, #9f1e24);
+			background-image: -ms-linear-gradient(top, #000000, #9f1e24);
+			background-image: -o-linear-gradient(top, #000000, #9f1e24);
+			background-image: linear-gradient(to bottom, #000000, #9f1e24);
+			text-decoration: none;
+		}
+		
+		.loghetto {
 			
-			-webkit-appearance: none;
-			-webkit-border-radius:0px;
-			@include border-radius(0);
+			border-radius:5px;
+			-moz-border-radius:5px;
+			-webkit-border-radius:5px;
+			-o-border-radius: 5px;
+			
 		}
 		
-		#custom-btn {
-			width: 150px;
-			height: 50px !important;
-			background-color: #72b0df;
-			border-radius: 15px !important;
-			/*background:url(http://www.lawyersgunsmoneyblog.com/wp-content/uploads/2012/08/american-flag-2a.jpg) center center no-repeat;*/
+		.div5 {
+			position: fixed;
+			z-index: 2;
+			bottom: 0;
+			right: 0;
+			width: 60%;
+			padding: 0;
+			color: #000;
+			
+			text-align: center;
+			
 		}
 		
-		#custom-btn span span {
-			height: 100px !important;
-			line-height: 70px;
+		.ui-overlay-a{
+			background: #fff;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			/*background-position:center; */
+			background-position: right bottom; /*Positioning*/
+		}
+		.ui-overlay-b{
+			background: #fff;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			/*background-position:center; */
+			background-position: right bottom; /*Positioning*/
+		}
+		.ui-overlay-c{
+			background: #fff;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			/*background-position:center; */
+			background-position: right bottom; /*Positioning*/
+		}
+		.ui-overlay-d{
+			background: #fff;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			/*background-position:center; */
+			background-position: right bottom; /*Positioning*/
+		}
+		.ui-overlay-e{
+			background: #fff;
+			background-repeat:no-repeat;
+			background-attachment:fixed;
+			/*background-position:center; */
+			background-position: right bottom; /*Positioning*/
+		}
+		
+		@font-face {
+			font-family: 'FUTURAB';
+			src: url('./FUTURAB.TTF');
+			src: local('./FUTURAB'), url('./FUTURAB.TTF') format('truetype');
+		}
+		
+		.carattere {
+			font-family: 'FUTURAB' !important;
+			
+			font-weight: normal;
+			text-decoration: none;
+			text-shadow:0 0 0;
+			font-size: 18px;
+		}
+		
+		
+		.Large {
+			font-size: 20pt;
+			height: 70px;
 		}
 		
 		</style>
@@ -500,120 +621,73 @@ a {text-decoration:none;}
     <body>
 		
 		<div id="page" data-role="page" class="div2" >
-			<div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true" >
-				<span class="ui-title"> <font color="#000" size="5.5">Login</font></span>
-				<!--  data-back-btn-text=""-->
+			
+			<div id="header" data-role="header" data-theme="b" data-tap-toggle="false" class="div1">
+				<table align="center" width="100%" valign="center" border="0"><tr><td align="center" valign="center"><font  color="#4885ef" class="carattere" size="5.5">I Miei Lavori</font></td></tr></table>
+			</div>
+			<div class="spinner" id="spinner"></div>
+			
+			<div id="wrapper">
+				<div id="scroller">
+					<center>
+						
+						<center>
+							
+							<table id="formreg" align="center" width="320px">
+								<tr>
+									<td width="320px" align="left">
+										<div data-role="content"><center>Inserisci data lavoro</center></div>
+									</td>
+								</tr>
+								<tr>
+									<td width="320px" align="center">
+										<form name="formia" action="entra2.asp" method="post">
+											<input type="text" data-theme="c" name="operatore" id="operatore" value="" readonly placeholder="Operatore">
+											<input type="text" data-theme="c" name="data" id="data" value="" placeholder="Data">
+											<a href="javascript:lista();" id="#" data-role="button" class="custom-btn" data-theme="c">Trova</a>
+										</form>
+									</td>
+								</tr>
+								
+								
+								<tr>
+									<td width="320px" align="center">
+										<br>
+									</td>
+								</tr>
+								
+							</table>
+							
+						</center>
+
+					<br>
+					<table id="tabella" border='0' align='center' width='100%' style="display:none"><tr><td align='center' width='33%'><b>Data</b></td><td align='center'  width='33%'><b>Operatore</b></td><td align='center'  width='33%'><b>N.Volantini</b></td></tr><tr><td align='center' width='33%'><div id="dataa"></div></td><td align='center'  width='33%'><div id="operatorea"></div></td><td align='center'  width='33%'><div id="volantinia"></div></td></tr></table>
+					<hr>
+					<div id="contenuto"></div>
+					<br>
+					
+				</div>
+			</div>
+
+			<div id="footer" data-role="footer" data-theme="c" data-tap-toggle="false" class="div1" >
+				<div data-role="navbar" class="nav" data-grid="a" data-theme="c" class="div1">
+				<ul>
+					<li><a href="index.html" rel="external" id="programas" data-icon="userhome" ><font size="1">Schede</font></a></li>
+					<li><a href="lavori.html" rel="external" data-icon="pinhome"><font size="1">Lavori</font></a></li>
+				</ul>
+				</div>
 			</div>
 			
-			<div data-role="content"><center>Accedi al tuo account</center></div>
-			
-			<center>
-				
-			<table id="formreg" align="center" width="320px">
-				<tr id="campireg">
-					<td width="320px" align="center">
-						 <form name="formia2" action="entra2.asp" method="post">
-							 <input type="text" data-theme="c" name="email" id="email" value="" placeholder="Username" class="scrivo">
-							 <input type="password" data-theme="c" name="password" id="password" value="" placeholder="Password" class="scrivo">
-							 <a href="javascript:login();" id="#" data-role="button" class="custom-btn" data-theme="c">Accedi</a>
-						</form>
-					</td>
-				</tr>
-				<tr>
-					<td width="320px" align="left">
-						<!--<a href="javascript:EmailDimenticata()"><font size="1" color="red">Password dimenticata</font></a><br>-->
-					</td>
-				</tr>
-				
-				<tr>
-					<td width="320px" align="center">
-						<br>
-					</td>
-				</tr>
 
-			</table>
-			
-			<!--<table align="center" width="320px">
-			<tr>
-				<td width="220px" align="left">
-					Serve un account?
-				</td>
-				<td width="100px" align="center">
-					<a href="#page6" id="#" data-role="button" class="custom-btn3" data-theme="c">Iscriviti</a>
-				</td>
-			</tr>
-			</table>-->
-			
-			</center>
-			<div data-role="footer" align="center" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
-				<span class="ui-title"> <font color="#000" size="4"><img src="img/Prolution.png" height="46px"></font></span>
-				<!--<table id="idfooter4" width="100%" align="center">
-					<tr>
-						<td width="100px" align="left">
-					<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-				</td>
-				<td width="220px" align="center"><font color='#000' size="1">Acconsento all'uso dei miei dati personali come indicato dall'informativa sulla privacy (D.Lgs 196/2003)</td>
-				</tr></table>-->
-				
-			</div><!-- /footer4 -->
-		</div><!-- /page4 -->
+		</div><!-- /page -->
 		
-		
-		<div id="page6" data-role="page" class="div2" >
-			<div data-role="header" data-theme="b" data-position="fixed" data-tap-toggle="false" class="div1" data-add-back-btn="true">
-				<table id="idheader6" height='50' align='center'><tr><td><font color="#000" size="5.5">Login</font></td></tr></table>
-			</div>
-			<div data-role="content"><center>Registrati</center></div>
-			
-			<center>
-			
-			<table id="formreg" align="center" width="320px">
-
-				<tr>
-					<td width="320px" align="center">
-					 <form name="formia" action="entra.asp" method="post">
-						<input type="text" data-theme="b" name="emailreg" id="emailreg" value="" placeholder="Email">
-						<input type="text" data-theme="b" name="pinreg" id="pinreg" value="" placeholder="Password">
-						<input type="text" data-theme="b" name="nome" id="nome" value="" placeholder="Nome">
-						<input type="text" data-theme="b" name="cognome" id="cognome" value="" placeholder="Cognome">
-						<input type="text" data-theme="b" name="indirizzo" id="indirizzo" value="" placeholder="Indirizzo">
-						<input type="text" data-theme="b" name="cap" id="cap" value="" placeholder="Cap">
-						<input type="text" data-theme="b" name="civico" id="civico" value="" placeholder="Civico">
-						<input type="text" data-theme="b" name="citta" id="citta" value="" placeholder="Citta">
-						<input type="text" data-theme="b" name="telefono" id="telefono" value="" placeholder="Telefono">
-									
-						<a href="#" id="#" data-role="button" data-theme="b" class="custom-btn">Iscriviti</a>
-					 </form>
-					</td>
-				</tr>
-			</table>
-			
-<table align="center" width="320px">
-<tr>
-	<td width="220px" align="left">
-		Hai un account?
-	</td>
-	<td width="100px" align="center">
-		<a href="#page" id="#" data-role="button" class="custom-btn3" data-theme="c">Accedi</a>
-	</td>
-</tr>
-</table>
-			<div data-role="footer" align="center" data-theme="c" data-position="fixed" data-tap-toggle="false" class="div1">
-				<table id="idfooter4" width="100%" align="center">
-					<tr>
-						<td width="100px" align="left">
-							<a href="index.html" rel="external" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-home">Home</a>
-						</td>
-						<td width="220px" align="center"><font color='#000' size="1">Acconsento all'uso dei miei dati personali come indicato dall'informativa sulla privacy (D.Lgs 196/2003)</td>
-					</tr></table>
-			</div><!-- /footer6 -->
-		</div><!-- /page6 -->
-		
-
 		
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/Login.js"></script>
-
+        <script type="text/javascript" src="js/lavori.js"></script>
+		
+        <script type="text/javascript">
+            app.initialize();
+        </script>
 		
     </body>
 </html>

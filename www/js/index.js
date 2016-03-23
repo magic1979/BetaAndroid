@@ -21,17 +21,126 @@ var app = {
 
 		
     },
-    // Update DOM on a Received Event  // AIzaSyBMsSOAU7Br-MtCXcZOdRPZ6JQ2UoaCYM4
+    // Update DOM on a Received Event
     receivedEvent: function(id) {
 		
-		if(PushbotsPlugin.isiOS()){
-			PushbotsPlugin.initializeiOS("568aef3c177959921a8b4567");
-		 }
-		 if(PushbotsPlugin.isAndroid()){
-			PushbotsPlugin.initializeAndroid("568aef3c177959921a8b4567", "60837206451");
-		 }
+			document.body.style.height = screen.availHeight + 'px';
 		
-	
+		    $('#NomeAzienda').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+
+            $('#NomeAzienda1').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore1').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda1').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+
+            $('#NomeAzienda2').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore2').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda2').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+
+            $('#NomeAzienda3').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore3').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda3').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+
+            $('#NomeAzienda4').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore4').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda4').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+
+             $('#NomeAzienda5').focus(function(){
+				myScroll.scrollToElement("#NomeAzienda", "1s");
+			});
+			
+			$('#Settore5').focus(function(){
+				myScroll.scrollToElement("#Settore", "1s");
+			});
+			
+			$('#TelAzienda5').focus(function(){
+				myScroll.scrollToElement("#TelAzienda", "1s");
+			});
+			
+			$('#civico').focus(function(){
+				myScroll.scrollToElement("#civico", "1s");
+			});
+			
+			$('#nvolantini').focus(function(){
+				myScroll.scrollToElement("#nvolantini", "1s");
+			});
+			
+			
+		 $(document).on("touchmove", function(e){
+			$('#via').blur();
+			$('#civico').blur();
+			$('#nvolantini').blur();
+			$('#data').blur();
+			$('#ora').blur();
+			$('#ora_fine').blur();
+			$('#volantini').blur();
+
+			$('#NomeAzienda').blur();
+            $('#NomeAzienda1').blur();
+            $('#NomeAzienda2').blur();
+            $('#NomeAzienda3').blur();
+            $('#NomeAzienda4').blur();
+            $('#NomeAzienda5').blur();
+
+			$('#Settore').blur();
+            $('#Settore1').blur();
+            $('#Settore2').blur();
+            $('#Settore3').blur();
+            $('#Settore4').blur();
+            $('#Settore5').blur();
+
+			$('#TelAzienda').blur();
+            $('#TelAzienda1').blur();
+            $('#TelAzienda2').blur();
+            $('#TelAzienda3').blur();
+            $('#TelAzienda4').blur();
+            $('#TelAzienda5').blur();
+
+			cordova.plugins.Keyboard.close();
+		 });
+		 
+
 		last_click_time = new Date().getTime();
 		
 		document.addEventListener('click', function (e) {
@@ -50,11 +159,8 @@ var app = {
 								  
 								  }, true);
 		
-		document.addEventListener("showkeyboard", function(){ $("[data-role=footer]").hide();}, false);
-		document.addEventListener("hidekeyboard", function(){ $("[data-role=footer]").show();}, false);
 		
-		
-		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off@
+		// Workaround for buggy header/footer fixed position when virtual keyboard is on/off
 		$('input, select')
 		.on('focus', function (e) {
 			$('header, footer').css('position', 'absolute');
@@ -62,51 +168,49 @@ var app = {
 		.on('blur', function (e) {
 			$('header, footer').css('position', 'fixed');
 			//force page redraw to fix incorrectly positioned fixed elements
-			//setTimeout( function() {
-			//window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
-			//		   }, 20 );
-			});
-	
-	
-		$(document).keydown(function (eventObj){
-			getKey(eventObj);
+			setTimeout( function() {
+				window.scrollTo( $.mobile.window.scrollLeft(), $.mobile.window.scrollTop() );
+			}, 20 );
 		});
 		
-		var email = localStorage.getItem("email");
+
+		var idoperatore = localStorage.getItem("idoperatore");
 		var loginvera = localStorage.getItem("loginvera");
+		
+		
+		if (localStorage.getItem("idoperatore") === null || localStorage.getItem("idoperatore")=="null" || typeof(localStorage.getItem("idoperatore")) == 'undefined' || localStorage.getItem("idoperatore")==0 || localStorage.getItem("idoperatore")=="") {
+			
+			window.location.href = "Login.html";
+			$(".spinner").hide();
+			
+		}
+		else
+		{
+			
+			if(localStorage.getItem("conteggio") === null || localStorage.getItem("conteggio")=="null" || typeof(localStorage.getItem("conteggio")) == 'undefined' || localStorage.getItem("conteggio")=="0" || localStorage.getItem("conteggio")=="") {
+			
+				self.document.formia.volantini.value = "0";
+			}
+			else{
+				self.document.formia.volantini.value = localStorage.getItem("conteggio")
+			}
+			
+			//self.document.formia.operatore.value = localStorage.getItem("email")
+			self.document.formia.operatore.value = localStorage.getItem("idoperatore")
+			//self.document.formia.id.value = "2790";
+			
+		}
+		
+		
 		var ciao = "";
 		var ciao1 = "";
 		var distanza = "";
 		var Categoria="";
 		var Provincia="";
-		var model = device.model;
-		var Badge10 = localStorage.getItem("Badge10");
+		localStorage.setItem("unico", "0");
+		self.document.formia.volantini.value = 0;
 		var db;
 		var dbCreated = false;
-		
-		//$("#classifica").html("Loading....");
-		
-		if((email=="")||(!email)){
-			$("#btnprofilo").attr("href", "#page4");
-			$("#btnprofilo").attr("onclick", "javascript:checklogin();");
-		}else{
-			$("#btnprofilo").attr("href", "#mypanel");
-			$("#btnprofilo").attr("onclick", "#");
-		}
-		
-		if((Badge10=="")||(!Badge10)||(Badge10==0)){
-			localStorage.setItem("Badge10", 0)
-			$('#badde').removeClass('badge1').addClass('badge2');
-			
-		}else{
-			$('#badde').removeClass('badge2').addClass('badge1');
-			$("#badde").attr("data-badge", Badge10);
-			$("#badde").html('<img src="img/CartW.png" width="20px">');
-			
-			$('#badde2').removeClass('badge2').addClass('badge1');
-			$("#badde2").attr("data-badge", Badge10);
-			$("#badde2").html('<img src="img/CartW.png" width="20px">');
-		}
 		
 		
 		var connectionStatus = false;
@@ -114,51 +218,38 @@ var app = {
 		
 		if(connectionStatus=='online'){
 			
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;//January is 0, so always add + 1
+			
+			var ora = today.getHours()
+			if(ora<10){ora="0"+ora}
+			
+			var minuti = today.getMinutes();
+			if(minuti<10){minuti="0"+minuti}
+			
+			var secondi = today.getSeconds();
+			if(secondi<10){secondi="0"+secondi}
+			
+			self.document.formia.ora.value = ora + ":" + minuti
+			
+			var yyyy = today.getFullYear();
+			if(dd<10){dd="0"+dd}
+			if(mm<10){mm="0"+mm}
+			today = dd+'/'+mm+'/'+yyyy;
+			
+			self.document.formia.data.value = today
+			
 			checkPos();
 			agg();
-			mostrapunti()
+			
+			//mostrapunti()
 			$(".spinner").hide();
 			
-			buildprodotto('Pizza','Roma',1);
-			
-			
-			if ((localStorage.getItem("emailStory")=="")||(!localStorage.getItem("emailStory"))||(localStorage.getItem("emailStory")==0)){
-				//alert("Non ci sta")
-			}
-			else{
-				if(localStorage.getItem("emailStory")==localStorage.getItem("email2")){
-					//alert("stesso utente")
-				}
-				else{
-					//alert("cancella")
-					if(localStorage.getItem("email3")!=1){
-						navigator.notification.confirm(
-						'Stai cercando di accedere con un altro utente, assicurati prima di svuotare il tuo carrello per non perdere i punti della tua card prima di procedere.',  // message
-							onConfirm,              // callback to invoke with index of button pressed
-							'Attenzione',            // title
-							'Prosegui,Annulla'      // buttonLabels
-					);
-					}
-				}
-			}
-			
-			/*if(localStorage.getItem("Registrato")!=1){
-				//alert("entrato")
-				
 			setTimeout (function(){
-						
-				PushbotsPlugin.getToken(function(token){
-					localStorage.setItem("Token", token);
-					//alert(token)
-					RegToken()
-				 });
-						
-			}, 2000);
-				
-			}*/
-			
-			$("#footer").show();
-			
+				$("#footer").show();
+			}, 1500);
+
 		}
 		else{
 			
@@ -174,6 +265,152 @@ var app = {
     }
 	
 }
+
+function agg(){
+	db = window.openDatabase('mydb', '1.0', 'TestDB', 1000000);
+	
+	db.transaction(function (tx) {
+       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (Email, Via, Data, Ora, Civico, Longitudine, Latitudine, Volantini, Foto)');
+	});
+	
+	//agg3();
+	
+	seleziona()
+	
+}
+
+function agg3(){
+	db2 = window.openDatabase('mydb2', '1.0', 'Coord', 1000000);
+	
+	db2.transaction(function (tx2) {
+       tx2.executeSql('CREATE TABLE IF NOT EXISTS Coordinate (Data, Ora, Civico, Latitudine, Longitudine)');
+	});
+	
+	
+	seleziona()
+	
+}
+
+
+function seleziona() {
+	//alert("1")
+	var lend = "<br><table border='0' align='center' width='100%'><tr><td align='center' width='33%'><b>Via</b></td><td align='center'  width='33%'><b>Civico</b></td><td align='center'  width='33%'><b>N.Volantini</b></td></tr>"
+	
+	
+	db.transaction(function (tx) {
+       tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
+					 var len = results.rows.length, i;
+					 
+					 for (i = 0; i < len; i++){
+
+					 
+					 lend = lend + "<tr><td align='center' width='33%'>"+ results.rows.item(i).Via +"</td><td align='center'  width='33%'>"+ results.rows.item(i).Civico +"</td><td align='center'  width='33%'>"+ results.rows.item(i).Volantini +"</td></tr>";
+					 
+					 }
+					 
+					  $("#contenuto").html(lend + "</table>");
+					 
+					 
+					 }, null);
+				   
+				   
+				   $('#via').blur();
+				   $('#civico').blur();
+				   $('#nvolantini').blur();
+				   $('#data').blur();
+				   $('#ora').blur();
+				   $('#ora_fine').blur();
+				   $('#volantini').blur();
+
+			        $('#NomeAzienda').blur();
+                    $('#NomeAzienda1').blur();
+                    $('#NomeAzienda2').blur();
+                    $('#NomeAzienda3').blur();
+                    $('#NomeAzienda4').blur();
+                    $('#NomeAzienda5').blur();
+
+			        $('#Settore').blur();
+                    $('#Settore1').blur();
+                    $('#Settore2').blur();
+                    $('#Settore3').blur();
+                    $('#Settore4').blur();
+                    $('#Settore5').blur();
+
+			        $('#TelAzienda').blur();
+                    $('#TelAzienda1').blur();
+                    $('#TelAzienda2').blur();
+                    $('#TelAzienda3').blur();
+                    $('#TelAzienda4').blur();
+                    $('#TelAzienda5').blur();
+					 
+				   initscroll()
+				   
+		});
+	
+	
+}
+
+function dlt(){
+	
+	db.transaction(function (tx) {
+		tx.executeSql('DELETE FROM Ordine', [], function (tx, results) {
+	}, null);
+	});
+	
+	
+	$("#btncancella").hide();
+	$("#btnsalva").show();
+	
+	localStorage.setItem("imgvolantino", "");
+	localStorage.setItem("imgvolantino2", "");
+	localStorage.setItem("imgvolantino3", "");
+	localStorage.setItem("imgvolantino4", "");
+	localStorage.setItem("imgvolantino5", "");
+	localStorage.setItem("imgvolantino6", "");
+
+        localStorage.setItem("NomeAzienda", "");
+	localStorage.setItem("TelAzienda", "");
+	localStorage.setItem("Settore", "");
+
+        localStorage.setItem("NomeAzienda1", "");
+	localStorage.setItem("TelAzienda1", "");
+	localStorage.setItem("Settore1", "");
+
+        localStorage.setItem("NomeAzienda2", "");
+	localStorage.setItem("TelAzienda2", "");
+	localStorage.setItem("Settore2", "");
+
+        localStorage.setItem("NomeAzienda3", "");
+	localStorage.setItem("TelAzienda3", "");
+	localStorage.setItem("Settore3", "");
+
+        localStorage.setItem("NomeAzienda4", "");
+	localStorage.setItem("TelAzienda4", "");
+	localStorage.setItem("Settore4", "");
+
+        localStorage.setItem("NomeAzienda5", "");
+	localStorage.setItem("TelAzienda5", "");
+	localStorage.setItem("Settore5", "");
+	
+	var image001 = document.getElementById('myImageVol');
+	image001.src = "img/vol1.png";
+	var image002 = document.getElementById('myImageVol2');
+	image002.src = "img/vol1.png";
+	var image003 = document.getElementById('myImageVol3');
+	image003.src = "img/vol1.png";
+	var image004 = document.getElementById('myImageVol4');
+	image004.src = "img/vol1.png";
+	var image005 = document.getElementById('myImageVol5');
+	image005.src = "img/vol1.png";
+	var image006 = document.getElementById('myImageVol6');
+	image006.src = "img/vol1.png";
+	
+	$("#ufoto").hide();
+	
+	seleziona();
+	
+}
+
 
 function onConfirm(button) {
 	
@@ -191,361 +428,10 @@ function onConfirm(button) {
 	}
 }
 
-function gocart() {
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	
-	$(document).on('pagebeforeshow', function () {
-		$(this).find('a[data-rel=back]').buttonMarkup({
-		iconpos: 'notext'
-	});
-				   
-	//setTimeout(function() {
-		//$(window).scrollTop($(window).scrollTop()+1);
-		//window.scrollTo(0,0);
-	//}, 500);
-				   
- });
-	
-	var email = localStorage.getItem("email");
-	var Badge10 = localStorage.getItem("Badge10");
-	$("#badde3").attr("data-badge", Badge10);
-	
-	if (Badge10 > 0){
-		$('#badde3').removeClass('badge2').addClass('badge3');
-	}
-
-	
-	if((email=="")||(!email)){
-		$("#btnprofilo3").attr("href", "#page4");
-		$("#btnprofilo3").attr("onclick", "javascript:checklogin();");
-	}else{
-		$("#btnprofilo3").attr("href", "#mypanel");
-		$("#btnprofilo3").attr("onclick", "#");
-	}
-	
-	//$("#riepilogo9").html("");
-	
-
-	//$('#contenutoCart').html(landmark);
-	seleziona();
-}
-
-function AggProd(prod) {
-	
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	if((loggato=="")||(!loggato)){
-		window.location.href = "Login.html";
-		return;
-	}
-	
-	var aggiornamento = 0;
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-
-	
-	localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))+1)
-	var Badge10 = localStorage.getItem("Badge10");
-
-	$('#badde').removeClass('badge2').addClass('badge1');
-	$("#badde").attr("data-badge", Badge10);
-	$("#badde").html('<img src="img/CartW.png" width="20px">');
-	
-	$('#badde2').removeClass('badge2').addClass('badge1');
-	$("#badde2").attr("data-badge", Badge10);
-	$("#badde2").html('<img id="carro2" src="img/CartW.png" width="20px">');
-	
-	$('#badde3').removeClass('badge2').addClass('badge1');
-	$("#badde3").attr("data-badge", Badge10);
-	
-	$('#badde4').removeClass('badge2').addClass('badge1');
-	$("#badde4").attr("data-badge", Badge10);
-	$("#badde4").html('<img src="img/CartW.png" width="20px">');
-	
-	$( "#carro2" ).effect( "bounce", "slow" );
-	
-	db.transaction(function (tx) {
-		tx.executeSql('UPDATE Ordine set Qta=Qta+1, Descrizione=Descrizione + '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
-			aggiornamento = 1;
-			//alert("Prod:" + prod);
-		}, null);
-	});
-	
-	localStorage.setItem("emailStory", localStorage.getItem("email"));
-	
-	//se sono diverse cancello carrello
-
-	if(aggiornamento==0){
-		agg2(prod)
-		//alert("Prod:" + prod);
-	}
-	
-	
-}
-
-function SottProd(prod) {
-	var aggiornamento = 0;
-	var azione=0;
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-	}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-	
-	var Badge10;
-	/*if (parseInt(localStorage.getItem("Badge10")) > 0){
-		localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
-	
-		Badge10 = localStorage.getItem("Badge10");
-	
-		$("#badde").attr("data-badge", Badge10);
-		$("#badde").html('<img src="img/CartW.png" width="20px">');
-	
-		$("#badde2").attr("data-badge", Badge10);
-		$("#badde2").html('<img src="img/CartW.png" width="20px">');
-		
-	}
-	else {
-		Badge10 = 0;
-		
-		$("#badde").attr("data-badge", Badge10);
-		$("#badde").html('<img src="img/CartW.png" width="20px">');
-		
-		$("#badde2").attr("data-badge", Badge10);
-		$("#badde2").html('<img src="img/CartW.png" width="20px">');
-
-	}*/
-	
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT * FROM Ordine where id='+ prod +'', [], function (tx, results) {
-					 var len = results.rows.length, i;
-
-						for (i = 0; i < len; i++){
-							if (parseInt(results.rows.item(i).Qta) > 1){
-								tx.executeSql('UPDATE Ordine set Qta=Qta-1, Descrizione=Descrizione - '+ prezzo +' where id='+ prod +'', [], function (tx, results) {
-										//alert("UPD");
-										
-											  localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
-											  
-											  Badge10 = localStorage.getItem("Badge10");
-											  
-											  $("#badde").attr("data-badge", Badge10);
-											  $("#badde").html('<img src="img/CartW.png" width="20px">');
-											  
-											  $("#badde2").attr("data-badge", Badge10);
-											  $("#badde2").html('<img src="img/CartW.png" width="20px">');
-											  
-											  $("#badde3").attr("data-badge", Badge10);
-											  
-											  $("#badde4").attr("data-badge", Badge10);
-
-								   }, null);
-							}
-							else{
-									tx.executeSql('DELETE FROM Ordine where id='+ prod +'', [], function (tx, results) {
-										//alert("DEL");
-										$(".buttonOrdine").hide();
-												  
-												  localStorage.setItem("Badge10", parseInt(localStorage.getItem("Badge10"))-1)
-												  Badge10 = localStorage.getItem("Badge10");
-												  
-												  $("#badde").attr("data-badge", Badge10);
-												  $("#badde").html('<img src="img/CartW.png" width="20px">');
-												  
-												  $("#badde2").attr("data-badge", Badge10);
-												  $("#badde2").html('<img src="img/CartW.png" width="20px">');
-												  
-												  $("#badde3").attr("data-badge", Badge10);
-												  
-												  $("#badde4").attr("data-badge", Badge10);
-												  
-								   }, null);
-							}
-						}
-
-					 }, null);
-				   });
-	
-	seleziona();
-}
-
-function agg(){
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	var msg;
-	var test;
-	var P1 = '110';
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       //tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES (1, 1, 1, "Omaggio", "Omaggio")');
-	});
-	
-}
-
-function agg2(prod){
-	db = window.openDatabase('mydb', '1.0', 'TestDB', 2 * 1024 * 1024);
-	var msg;
-	var prezzo;
-	var test;
-	var P1 = '110';
-	
-	if (prod==1){
-		msg="Pizza";
-		prezzo="6.50";
-		}
-	else if (prod==2){
-		msg="Panino";
-		prezzo="4.50";
-	}
-	else{
-		msg="Menu";
-		prezzo="8.00";
-	}
-	
-	db.transaction(function (tx) {
-       tx.executeSql('CREATE TABLE IF NOT EXISTS Ordine (id unique, IdProdotto, Qta, Descrizione, Nome)');
-       tx.executeSql('INSERT INTO Ordine (id, IdProdotto, Qta, Descrizione, Nome) VALUES ('+ prod +', 1, 1, "'+ prezzo +'", "'+ msg +'")');
-				   });
-	
-	seleziona();
-}
-
-
-function seleziona() {
-	var Badge10 = localStorage.getItem("Badge10");
-	$("#badde3").attr("data-badge", Badge10);
-	var TOT = localStorage.getItem("TOT");
-	
-	var landmark = '<table id="myTable" class="tablesorter"><thead><tr><th><font color="white" size="2">ORDINE</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2">QTA</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2">COSTO</font><img src="img/giu2.png" height="10px"></th><th><font color="white" size="2"></font></th><th><font color="white" size="2"></font></th></tr></thead><tbody id="contenutoCart">';
-	
-	
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
-					 var len = results.rows.length, i;
-					 
-					 //alert(len);
-					 
-					 for (i = 0; i < len; i++){
-					 
-					 msg = results.rows.item(i).IdProdotto + "," + results.rows.item(i).Qta + "," + results.rows.item(i).Descrizione + "," + results.rows.item(i).Nome;
-					 
-					 landmark = landmark + '<tr><td><font size="3">'+ results.rows.item(i).Nome +'</font></td><td><font size="3">'+ results.rows.item(i).Qta +'</font></td><td><font size="3">'+ results.rows.item(i).Descrizione +'</font></td><td align="center"><a href="javascript:SottProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home"></div></a></td><td align="center"><a href="javascript:AggProd('+ parseInt(results.rows.item(i).id) +')"><div width="28px" class="home1"></div></td></tr>';
-					 
-					  //TOT = (Number(TOT) + Number(results.rows.item(i).Descrizione));
-					 
-					 //$("#buttonOrdine").show();
-					 
-					 //miaVariabile = msg.split(",");
-					 
-					 //document.write(miaVariabile[0] + "<br>");
-					 //document.write(miaVariabile[1] + "<br>");
-					 
-					 //$('#esempio').html(miaVariabile[0] + miaVariabile[1]);
-					 //$('#contenutoCart').html(msg);
-					 
-					 }
-					 
-					 landmark = landmark + '</tbody></table>';
-					 $('#contenutoCart').html(landmark);
-					 
-					 selPrezzo();
-					 //$('#TOTPrezzo').html(TOT.toFixed(2));
-					 //localStorage.setItem("TOT", TOT.toFixed(2))
-					 
-					 
-					 }, null);
-				   });
-
-}
-
-function dlt(){
-	localStorage.setItem("Badge10", 0)
-	$('#badde').removeClass('badge1').addClass('badge2');
-	
-	db.transaction(function (tx) {
-		tx.executeSql('DELETE FROM Ordine', [], function (tx, results) {
-	}, null);
-	});
-	
-	
-	localStorage.setItem("Badge10", 0)
-	
-	Badge10 = localStorage.getItem("Badge10");
-	
-	$("#badde").attr("data-badge", Badge10);
-	
-	$("#badde2").attr("data-badge", Badge10);
-
-	$('#badde3').removeClass('badge3').addClass('badge2');
-	
-	$('#badde4').removeClass('badge3').addClass('badge2');
-	
-	localStorage.setItem("TOT", 0)
-
-	seleziona();
-}
-
-function selPrezzo(){
-	db.transaction(function (tx) {
-       tx.executeSql('SELECT SUM(Descrizione) as TOT FROM Ordine', [], function (tx, results) {
-					 var len = results.rows.length, i;
-					 
-					 //alert(len);
-					 
-					 for (i = 0; i < len; i++){
-						$('#TOTPrezzo').html(Number(results.rows.item(i).TOT).toFixed(2));
-					 }
-
-					 
-					 }, null);
-				   });
-	
-	document.removeEventListener('touchmove', handleTouch, false);
-
-}
-
-function compraConsegna(){
-	navigator.notification.alert(
-								 'Riceverai la conferma e i tempi di consegna entro pochi minuti, grazie.',  // message
-								 alertDismissed,         // callback
-								 'Ordine Spedito',            // title
-								 'Chiudi'                  // buttonName
-								 );
-}
-
 
 function verificawifi(){
 	$("#verifica").click();
 }
-
 
 function onResume() {
 	app.initialize();
@@ -562,15 +448,12 @@ function checkPos() {
 		localStorage.setItem("lat", ciao)
 		localStorage.setItem("lng", ciao1)
 		
-		localStorage.setItem("geostory", "SI")
-		
-		//$("#radio").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		
-		
-		//alert('Lat' + ciao + 'Lng' + ciao1);
-		/*$("#radio").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		$("#radio2").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");
-		$("#radio9").attr("href", "maps:saddr="+ ciao +","+ ciao1 +"&daddr=Via di Acilia,17,Roma");*/
+		self.document.formia.Lati.value = ciao;
+		self.document.formia.Longi.value = ciao1;
+
+
+		codeLatLng(ciao,ciao1)
+
 	}
 	
 	
@@ -578,22 +461,87 @@ function checkPos() {
 		
 		localStorage.setItem("geostory", "NO")
 		
-		/*$("#radio").attr("maps:q=Via di Acilia, 17,Roma");
-		$("#radio2").attr("maps:q=Via di Acilia, 17,Roma");
-		$("#radio9").attr("maps:q=Via di Acilia, 17,Roma");*/
+		navigator.notification.alert(
+			'Non riesco a rilevare la tua posizione, attiva il gps sul tuo cellulare',  // message
+			alertDismissed,         // callback
+			'Attenzione',            // title
+			'OK'                  // buttonName
+		 );
 
 	}
 	
+}
+
+function codeLatLng(lati,lngi) {
+
+
+	var geocoder;
+	geocoder = new google.maps.Geocoder();
+	//var input = "41.875094, 12.478151";
+	//var latlngStr = input.split(',', 2);
+	var lat = parseFloat(lati);
+	var lng = parseFloat(lngi);
+	var latlng = new google.maps.LatLng(lat, lng);
+	
+	geocoder.geocode({'latLng': latlng}, function(results, status) {
+					 if (status == google.maps.GeocoderStatus.OK) {
+					 
+					 
+					 if (results[0]) {
+					 
+					 var viadotto = results[0].formatted_address;
+					 
+					 var mySplitResult = viadotto.split(",");
+					 
+					 localStorage.setItem("Via", mySplitResult[0].replace(/[0-9]/g, '').replace('-', ''))
+
+					 self.document.formia.via.value = mySplitResult[0].replace(/[0-9]/g, '').replace('-', '');
+					 
+					 
+					 $(".spinner").hide();
+
+					 
+					 }
+
+					 } else {
+					 navigator.notification.alert(
+												  'Non riesco a rilevare la tua posizione',  // message
+												  alertDismissed,         // callback
+												  'Attenzione',            // title
+												  'OK'                  // buttonName
+												  );
+					 
+					 $(".spinner").hide();
+
+
+					 }
+					 
+					 if(results[1]){
+					 
+						var cittaa = results[1].formatted_address;
+						var mySplitResult1 = cittaa.split(",");
+					 
+						localStorage.setItem("Citta", mySplitResult1[1].replace(/[0-9]/g, ''))
+						
+						self.document.formia.citta.value = mySplitResult1[1].replace(/[0-9]/g, '').trim();
+						
+						//alert(mySplitResult1[1].replace(/[0-9]/g, ''))
+					 
+						return;
+						
+					 }
+			});
+
+	
+	myScroll.refresh();
+
 }
 
 function gomappa(){
 	var addressLongLat = '41.862321,12.692804';
 	
 	window.open("http://maps.apple.com/?q="+addressLongLat, '_blank');
-	//window.location.href = "http://maps.apple.com/?q="+addressLongLat
-	//window.open("http://maps.google.com/?q="+addressLongLat, '_system');
-	
-	//var ref = window.open('http://maps.apple.com/?q=Via di Acilia, 7', '_system');
+
 	
 }
 
@@ -615,14 +563,6 @@ function deg2rad(deg) {
 	return deg * (Math.PI/180)
 }
 
-
-
-function apri() {
-	var pagina = "donazione";
-	var ref = window.open('http://www.pokeranswer.it/live/'+ pagina +'.asp', '_blank', 'location=no');
-	//www.pokeranswer.it/live/aams.html
-}
-
 function GoBack() {
 	$(window).scroll(function() {
 					 if($(window).scrollTop() + $(window).height() > $(document).height() - 40) {
@@ -632,247 +572,6 @@ function GoBack() {
 	  history.go(-1);
 	
 	}
-
-function prodotto(idProdotto) {
-	
-	//loaded();
-	//$(window).off("scroll");
-	
-	$(document).on('pagebeforeshow', function () {
-				   $(this).find('a[data-rel=back]').buttonMarkup({
-																 iconpos: 'notext'
-																 });
-
-
-				   setTimeout (function(){
-						myScroll.refresh();
-					}, 1000);
-
-				   });
-
-	
-	
-	var landmark2 ="";
-	$(".spinner").show();
-	var Recensione = "";
-	var model = device.model;
-	
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.mistertod.it/www/Check_Prodotto.asp",
-		   contentType: "application/json",
-		   data: {ID:idProdotto},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				  
-				  $("#idheader").html("<table id='idheader' height='50'><tr><td width='30px' align='center'></td><td width='240px' align='center' valign='middle'><font color='#FFFFFF' size='3'>"+ item.Nome +"</font></td><td width='50px' align='center' valign='middle'></td></tr></table>");
-				  
-				  if((item.TitRecensione=="")||(!item.TitRecensione)){
-				  var Recensione = "";
-				  }
-				  else{
-				  Recensione = "<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>"+ item.TitRecensione +"<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Recensione +"</font></td></tr>";
-				  }
-				  
-				  
-				  if (model.indexOf('iPad') >= 0) {
-				  $("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='440px' class='arrotondamento'><table width='90%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dove Siamo<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'><img src='img/pin.png' height='24px'> "+ item.Indirizzo +"<br>"+ item.Cap +", "+ item.Citta +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
-				  }
-				  else{
-				  $("#prodotto").html("<img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='320px' height='180px'><table width='100%' border='0' id='' align='center'><tr><td colspan='3'><font color='#454545' size='3'><b>"+ item.DescrizioneS +"</b></font></td></tr><tr><td colspan='3' align='left'><font color='#454545' size='2'>Valore: <strike>"+ item.Valore +"</strike></font></td></tr><tr><td colspan='3'></td></tr><tr><td align='left'><font color='#FF8000' size='4'><b>"+ item.Deal +"&euro; </b></font></td><td align='right' colspan='2'><font color='#454545' size='2'>"+ item.Nome +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dove Siamo<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'><img src='img/pin.png' height='24px'> "+ item.Indirizzo +"<br>"+ item.Cap +", "+ item.Citta +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>In Sintesi<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Sintesi +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Dettagli<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Dettagli +"</font></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3'><font color='#454545' size='3'>Condizioni<hr class='style-six'></font></td></tr><tr><td colspan='3'><font color='#454545' size='2'>"+ item.Condizioni +"</font></td></tr>"+ Recensione +"<tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",1);' data-transition='slide' class='zocial email'>&nbsp;&nbsp;&nbsp;Regala Coupon&nbsp;&nbsp;&nbsp;</a></td></tr><tr><td colspan='3'><hr class='div3'></td></tr><tr><td colspan='3' align='center'><a href='javascript:condividi("+ idProdotto +");' class='zocial facebook'>Condividi su Facebook</a></td></tr></table>");
-				  }
-				  
-				  //$("#clock").countdown("2015/"+ item.MeseScadenza +"/"+ item.GiornoScadenza +" "+ item.OraScadenza +":"+ item.MinutiScadenza +":00", function(event) {
-										//$(this).html(event.strftime('%D giorni %H:%M:%S'));
-										//});
-				  
-				  });
-		   
-		   $(".spinner").hide();
-		   
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
-	
-	$("#idfooter").html("<table id='idfooter' border='1'><tr><td width='200px' align='center'><span id='clock'></span></td><td width='120px' align='center'><a href='#page3' onclick='javascript:riepilogo("+ idProdotto +",0);' data-transition='slide' class='ui-btn ui-shadow ui-corner-all'>Acquista!</a></td></tr></table>");
-	
-	
-}
-
-
-function buildprodotto(Categoria,Provincia,Pagina) {
-	
-	localStorage.setItem("Categoria", "");
-	localStorage.setItem("Provincia", "");
-	
-	var idProdotto = 1;
-	var landmark2="";
-	$(".spinner").show();
-	var model = device.model;
-	var MeseScadenza = "06";
-	var GiornoScadenza = "14";
-	var OraScadenza = "15";
-	var MinutiScadenza = "00";
-	
-	// inserire nel WS le date di scadenza
-	
-	$(".spinner").show();
-	$.ajax({
-		   type:"GET",
-		   url:"http://www.gtechplay.com/pizzaxte2/www/Check_Home.asp",
-		   contentType: "application/json",
-		   //data: {Categoria:Categoria,Provincia:Provincia,Pagina:Pagina},
-		   data: {Categoria:"offerte"},
-		   timeout: 7000,
-		   jsonp: 'callback',
-		   crossDomain: true,
-		   success:function(result){
-		   
-		   $.each(result, function(i,item){
-				if (item.ID != 0){
-				   distanza = getDistance(localStorage.getItem("lat"),localStorage.getItem("lng"),item.Lat,item.Long).toFixed(1);
-				  
-				  var immagine = item.IMG;
-				  //immagine = immagine.slice(0,-4);
-				  
-				   //var n1 = immagine.indexOf(".png");
-				  
-				  if (model.indexOf('iPad') >= 0) {
-					landmark2 = landmark2 + "<a style='text-decoration: none;' href='#page2' onclick='javascript:pagina22("+ item.Cod_Prodotto +");' id='linkdettagli' ><img src='http://www.mistertod.it/public/up/"+ item.IMG +".png' width='700px' height='400px' class='arrotondamento'><table height='30px' border='0' width='90%'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>"+ item.Nome +"</font></td><td align='right'><font size='2' color='#454545'>"+ item.Citta +"</font></font></td></tr><tr><td align='left' width='50%'><font size='2' color='#454545'>Distanza:Km "+ distanza +" </font></td><td align='right'><font size='4' color='#B40431'>"+ item.Indirizzo +"</font></td></tr></table></a><br><hr class='div3'>";
-				  }
-				  else{
-					landmark2 = landmark2 + "<div id="+ item.Cod_Prodotto +"'><a style='text-decoration: none;' href='index3.html?prod="+ item.Cod_Prodotto +"' rel='external' onclick='#' data-transition='slide' id='linkdettagli"+ item.Cod_Prodotto +"'><img src='http://www.gtechplay.com/public/pizzaxte/"+ item.IMG +".png' width='100%'><table height='30px' border='0' width='320px'><tr><td align='left' colspan='2'><font size='3' color='#454545'>"+ item.Descrizione +"</font></td></tr><tr><td align='left' width='160px'><br><font size='2' color='#454545'>Acquistati:</font><font size='2' color='#B40431'> "+ item.Acquistati +"</font></td><td align='right'><br><font size='2' color='#B40431'>Vale:<strike>"+ item.Valore +"&euro;</strike> "+ item.Sconto +"%</font></font></td></tr><tr><td align='left' width='160px' valign='center'><font size='2' color='#454545'>Scade tra: </font><font size='2' color='#B40431'>"+ item.GiorniRimanenti +" </font><font size='2' color='#454545'>giorni</font></td><td id='deallo"+ item.Cod_Prodotto +"' colspan='2' align='right'><font size='5' color='#B40431'>"+ item.Deal +"&euro;</font></td></tr><tr id='vis2"+ item.Cod_Prodotto +"' style='display:none' class='visione'><td align='left' colspan='2'><font size='1' color='#454545' class='someclass'>"+ item.Dettagli +"</font></td></tr></table></a><br><hr class='div3'></div>";
-				  }
-				  
-				  idProdotto = idProdotto+1;
-				  /*<font size='4' color='#B40431'>"+ item.Deal +"&euro;</font>
-				  <font size='3' color='#454545'>"+ item.Descrizione +"</font>
-				  <font size='2' color='#454545'>Scade tra 14 giorni</font>
-				  <font size='2' color='#B40431'><strike>"+ item.Valore +"&euro;</strike> -10%</font>*/
-				  
-
-				  
-				  
-				  //$("#getting-started").countdown("2015/"+ MeseScadenza +"/"+ GiornoScadenza +" "+ OraScadenza +":"+ MinutiScadenza +":00", function(event) {
-						//$(this).html(event.strftime('%D giorni %H:%M:%S'));
-					//});
-				  
-				  
-				}
-				else{
-				  landmark2 ="Nessun risultato trovato";
-				}
-				  
-				
-			});
-		   
-		   $(".spinner").hide();
-		   $("#noconn").hide();
-		   
-		   $("#classifica").html(landmark2);
-		   
-		   setTimeout (function(){
-				myScroll.refresh();
-			}, 1000);
-		   //myScroll = new IScroll('#wrapper', { click: true });
-		   
-		   
-		   },
-		   error: function(){
-		   $(".spinner").hide();
-		   
-		   
-		   
-		   navigator.notification.alert(
-										'Possibile errore di rete, riprova tra qualche minuto',  // message
-										alertDismissed,         // callback
-										'Attenzione',            // title
-										'Done'                  // buttonName
-										);
-		   
-		   },
-		   dataType:"jsonp"});
-	
-			//$('#getting-started').countdown('2015/06/30', function(event) {
-				//$(this).html(event.strftime('%w sett. %d giorni %H:%M:%S'));
-			//});
-
-}
-
-function vedi(prod) {
-	
-	//alert("vedi" + prod);
-	
-	//var elementHeight = element.height();
-	var windowHeight  = $(window).height();
-	
-	var altezza= windowHeight;
-	//alert(altezza);
-	
-	if (prod!=4){
-		myScroll.scrollTo(0, -altezza, 0);
-	}
-	else
-	{
-		myScroll.scrollTo(0, 0, 0);
-	}
-	
-	// chiamare prodotto e costruire una nuova pagina solo con uno tutto aperto.
-	
-	setTimeout(function() {
-			   $("#vis1"+ prod +"").toggle( "slide" );
-			   $("#vis2"+ prod +"").toggle( "slide" );
-			   $("#deallo"+ prod +"").attr("colspan", "1");
-			   $("#linkdettagli"+ prod +"").attr("href", "javascript:NOvedi("+ prod +")");
-			   
-			   
-			   setTimeout(function() {
-						  myScroll.refresh();
-			   }, 300);
-	}, 300);
-	
-
-	
-	//myScroll.refresh();
-}
-
-function NOvedi(prod) {
-	//alert("Novedi" + prod);
-	
-	setTimeout(function() {
-	$("#vis1"+ prod +"").hide();
-	$("#vis2"+ prod +"").hide();
-	$("#deallo"+ prod +"").attr("colspan", "2");
-	$("#linkdettagli"+ prod +"").attr("href", "javascript:vedi("+ prod +")");
-	
-	myScroll.refresh();
-	}, 300);
-
-}
-
-function compraoff(id) {
-	//alert(id);
-	$("#compraofferta"+ id +"").show();
-}
-
-
 
 function compraEmail() {
 	window.plugin.email.open({
@@ -920,8 +619,6 @@ function onPrompt(results) {
 			return;
 		}
 
-		//Recupera la Password
-		//alert("You selected button number " + results.buttonIndex + " and entered " + results.input1);
 		
 		$(".spinner").show();
 		$.ajax({
@@ -986,7 +683,6 @@ function errorHandler(error) {
 								 );
 }
 
-
 function getKey(key){
 	if ( key == null ) {
 		keycode = event.keyCode;
@@ -1005,18 +701,19 @@ function getKey(key){
 	
 }
 
-
 function alertDismissed() {
 	
-}
-
-function rati() {
-	$('#rati1').raty({ score: 3 });
 }
 
 function initscroll() {
 	
 	myScroll = new IScroll('#wrapper', { click: true });
+	
+	setTimeout (function(){
+		myScroll.refresh();
+		
+		myScroll.scrollToElement("#segna", "1s");
+	}, 500);
 				   
 	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
 				   
@@ -1024,66 +721,23 @@ function initscroll() {
 
 }
 
+function initscroll2() {
+	
+	myScroll = new IScroll('#wrapper', { click: true });
+	
+	setTimeout (function(){
+		myScroll.refresh();
+		
+		myScroll.scrollToElement("#segna", "1s");
+		$("#btnVia").click();
 
+	}, 1000);
+				   
+	document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+				   
+	document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 
-function saldopunti(){
-	var loggato = localStorage.getItem("loginvera")
-	
-	
-	if((loggato=="")||(!loggato)){
-		//alert("No")
-		window.location.href = "Login.html";
-	}else{
-		//window.location.href = "profilo.html";
-		//window.location.href = "Login.html";
-		
-		/*localStorage.getItem("Nome")
-		localStorage.getItem("Cognome")
-		localStorage.getItem("Punti")
-		localStorage.getItem("Indirizzo")
-		localStorage.getItem("Citta")
-		localStorage.getItem("Telefono")
-		localStorage.getItem("email")*/
-		
-		var tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr>"
-		
-		$("#profile").html(tblProfile)
-		$("#profile").show()
-		
-	}
-	//localStorage.setItem("email", "")
-	//localStorage.setItem("loginfacebook", "NO") @
-	//localStorage.setItem("loginvera", "NO")
-	
-	
-	/*navigator.notification.alert(
-								 'hai 19 punti al momento, se raggiungi 32 punti una bibita in omaggio',  // message
-								 alertDismissed,         // callback
-								 'Saldo Punti',            // title
-								 'Chiudi'                  // buttonName
-								 );*/
-	
 }
-
-function mostrapunti(){
-	var loggato = localStorage.getItem("loginvera")
-	var tblProfile;
-	
-	//Se email story == NO allora cancello
-	
-	if((loggato=="")||(!loggato)){
-		tblProfile = "<tr><td><a href='javascript:saldopunti()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-check ui-btn-icon-left' data-theme='b'>Login</a></td></tr>"
-	}else{
-		
-		tblProfile = "<tr><td><b>PROFILO</b></td></tr><tr><td>" + localStorage.getItem("Nome") +"&nbsp;"+ localStorage.getItem("Cognome") +"</td></tr><tr><td>" + localStorage.getItem("Indirizzo") + "</td></tr><tr><td>&nbsp;&nbsp;</td></tr><tr><td>SALDO PUNTI: "+ localStorage.getItem("Punti") +"</td></tr><tr><td><a href='javascript:uscire()' id='#' data-role='button' class='ui-btn ui-corner-all ui-btn-inline ui-icon-delete ui-btn-icon-left' data-theme='b'>Logout</a></td></tr>"
-	
-	}
-	
-	$("#profile").html(tblProfile)
-	$("#profile").show()
-	
-}
-
 
 function uscire(){
 localStorage.setItem("loginvera", "")
@@ -1091,7 +745,6 @@ localStorage.setItem("email", "")
 	
 window.location.href = "index.html";
 }
-
 
 function goprofilo(){
 	var loggato = localStorage.getItem("loginvera")
@@ -1114,6 +767,873 @@ function riparti(){
 	window.location.href = "index.html";
 	
 }
+
+
+function vedivia(){
+
+    //sparire dati
+    $("#dati").hide();
+    $("#btnavanti").show();
+     $("#btnindietroA").show();
+
+	checkPos()
+	
+	$("#viale").show();
+	$("#viale2").show();
+	$("#civiccia1").show();
+	
+	myScroll.scrollToElement("#via", "1s");
+	
+	//$('#id').focus();
+	
+}
+
+function indietro(){
+   $("#tutto").show();
+   $("#btnavanti").show();
+   $("#btnindietroA").show();
+   $("#btnsalva").hide();
+   $("#ultimatbl").hide();
+   $("#btnindietroB").hide();
+   
+   	setTimeout (function(){
+		myScroll.scrollToElement("#civico", "1s");
+		//$('#civico').focus();
+	}, 700);
+	
+	myScroll.refresh();
+}
+
+function indietrovia(){
+    
+	$("#viale").hide();
+	$("#viale2").hide();
+    $("#civiccia").hide()
+	$("#civiccia1").hide();
+     $("#btnindietroA").hide();
+
+    $("#dati").show();
+    $("#btnavanti").hide();
+	
+	setTimeout (function(){
+		myScroll.scrollToElement("#id", "1s");
+		//$('#id').focus();
+	}, 700);
+	
+	myScroll.refresh();
+	
+}
+
+function vedicivico(){
+	$("#civiccia").show()
+	self.document.formia.nvolantini.value = ""
+	self.document.formia.civico.value = ""
+	
+	setTimeout (function(){
+		myScroll.scrollToElement("#civico", "1s");
+		//$('#civico').focus();
+	}, 700);
+
+	myScroll.refresh();
+}
+
+// FOTO VOLANTINO
+
+function prendi(){
+    	if (self.document.formia2.NomeAzienda.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+
+	navigator.camera.getPicture(Successo, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo(imageData) {
+	
+	localStorage.setItem("imgvolantino", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda", self.document.formia2.NomeAzienda.value);
+	localStorage.setItem("TelAzienda", self.document.formia2.TelAzienda.value);
+	localStorage.setItem("Settore", self.document.formia2.Settore.value);
+	
+	var image000 = document.getElementById('myImageVol');
+	image000.src = localStorage.getItem("imgvolantino");
+
+}
+
+function prendi2(){
+    if (self.document.formia2.NomeAzienda1.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda1.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore1.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	navigator.camera.getPicture(Successo2, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo2(imageData) {
+	
+	localStorage.setItem("imgvolantino2", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda1", self.document.formia2.NomeAzienda1.value);
+	localStorage.setItem("TelAzienda1", self.document.formia2.TelAzienda1.value);
+	localStorage.setItem("Settore1", self.document.formia2.Settore1.value);
+	
+	var image002 = document.getElementById('myImageVol2');
+	image002.src = localStorage.getItem("imgvolantino2");
+	
+}
+
+function prendi3(){
+    if (self.document.formia2.NomeAzienda2.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda2.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore2.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	navigator.camera.getPicture(Successo3, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo3(imageData) {
+	
+	localStorage.setItem("imgvolantino3", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda2", self.document.formia2.NomeAzienda2.value);
+	localStorage.setItem("TelAzienda2", self.document.formia2.TelAzienda2.value);
+	localStorage.setItem("Settore2", self.document.formia2.Settore2.value);
+	
+	var image003 = document.getElementById('myImageVol3');
+	image003.src = localStorage.getItem("imgvolantino3");
+	
+}
+
+function prendi4(){
+    	if (self.document.formia2.NomeAzienda3.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda3.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore3.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	navigator.camera.getPicture(Successo4, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo4(imageData) {
+	
+	localStorage.setItem("imgvolantino4", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda3", self.document.formia2.NomeAzienda3.value);
+	localStorage.setItem("TelAzienda3", self.document.formia2.TelAzienda3.value);
+	localStorage.setItem("Settore3", self.document.formia2.Settore3.value);
+	
+	var image004 = document.getElementById('myImageVol4');
+	image004.src = localStorage.getItem("imgvolantino4");
+	
+}
+
+function prendi5(){
+    if (self.document.formia2.NomeAzienda4.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda4.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore4.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	navigator.camera.getPicture(Successo5, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo5(imageData) {
+	
+	localStorage.setItem("imgvolantino5", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda4", self.document.formia2.NomeAzienda4.value);
+	localStorage.setItem("TelAzienda4", self.document.formia2.TelAzienda4.value);
+	localStorage.setItem("Settore4", self.document.formia2.Settore4.value);
+	
+	var image005 = document.getElementById('myImageVol5');
+	image005.src = localStorage.getItem("imgvolantino5");
+	
+}
+
+function prendi6(){
+    	if (self.document.formia2.NomeAzienda5.value == "") {
+		navigator.notification.alert(
+									 'inserire un Nome Azienda',  // message
+									 alertDismissed,         // callback
+									 'Nome Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.TelAzienda5.value == "") {
+		navigator.notification.alert(
+									 'inserire un Telefono',  // message
+									 alertDismissed,         // callback
+									 'Tel. Azienda',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	if (self.document.formia2.Settore5.value == "") {
+		navigator.notification.alert(
+									 'inserire un Settore Azienda',  // message
+									 alertDismissed,         // callback
+									 'Settore',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+	
+	navigator.camera.getPicture(Successo6, onFail, { quality: 30,
+								destinationType: Camera.DestinationType.DATA_URL,
+								encodingType: Camera.EncodingType.PNG,
+								targetWidth: 200,
+								targetHeight: 200
+								});
+}
+
+function Successo6(imageData) {
+	
+	localStorage.setItem("imgvolantino6", "data:image/png;base64," + imageData);
+
+    localStorage.setItem("NomeAzienda5", self.document.formia2.NomeAzienda5.value);
+	localStorage.setItem("TelAzienda5", self.document.formia2.TelAzienda5.value);
+	localStorage.setItem("Settore5", self.document.formia2.Settore5.value);
+	
+	var image006 = document.getElementById('myImageVol6');
+	image006.src = localStorage.getItem("imgvolantino6");
+	
+}
+
+
+// FOTO E ARCHIVIO
+
+function scatta(){
+	if (self.document.formia.via.value == "") {
+		navigator.notification.alert(
+									 'inserire un indirizzo corretto',  // message
+									 alertDismissed,         // callback
+									 'Indirizzo',            // title
+									 'OK'                  // buttonName
+									 );
+		$('#via').focus();
+		return;
+	}
+	if (self.document.formia.citta.value == "") {
+		navigator.notification.alert(
+									 'inserire una citta corretta',  // message
+									 alertDismissed,         // callback
+									 'Indirizzo',            // title
+									 'OK'                  // buttonName
+									 );
+		$('#citta').focus();
+		return;
+	}
+	
+	
+	if (self.document.formia.nvolantini.value == "") {
+		navigator.notification.alert(
+									 'inserire il numero dei volantini',  // message
+									 alertDismissed,         // callback
+									 'N. Volantini',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+
+	
+	if (self.document.formia.civico.value == "") {
+		navigator.notification.alert(
+									 'inserire un numero civico',  // message
+									 alertDismissed,         // callback
+									 'Civico',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+	}
+
+	localStorage.setItem("Citta", self.document.formia.citta.value)
+	//agg2()
+	
+	navigator.camera.getPicture(onSuccess, onFail, { quality: 30,
+		destinationType: Camera.DestinationType.DATA_URL,
+		encodingType: Camera.EncodingType.PNG,
+		targetWidth: 200,
+		targetHeight: 200
+	});
+}
+
+
+
+
+function onSuccess(imageData) {
+	var today = new Date();
+
+	var ora = today.getHours()
+	if(ora<10){ora="0"+ora}
+	
+	var minuti = today.getMinutes();
+	if(minuti<10){minuti="0"+minuti}
+
+	var nuovoOrario = ora + ":" + minuti
+	
+
+	var image00 = document.getElementById('myImage');
+	
+	sogno = "data:image/png;base64," + imageData;
+	
+	
+	var ciccioL = parseFloat(self.document.formia.Lati.value)
+	
+	var ciccioP = parseFloat(self.document.formia.Longi.value)
+	
+	setTimeout (function(){
+				
+	db.transaction(function (tx) {
+
+       tx.executeSql('INSERT INTO Ordine (Email, Via, Data, Ora, Civico, Volantini, Longitudine, Latitudine, Foto) VALUES ("'+ localStorage.getItem("email") +'", "'+ self.document.formia.via.value +'", "'+ self.document.formia.data.value +'", "'+ nuovoOrario +'", "'+ self.document.formia.civico.value +'", "'+ self.document.formia.nvolantini.value +'", "'+ ciccioP +'", "'+ ciccioL +'", "'+ sogno +'")');
+	});
+				
+	}, 300);
+	
+	var conteggio = (parseInt(self.document.formia.volantini.value) + parseInt(self.document.formia.nvolantini.value))
+	localStorage.setItem("conteggio", conteggio);
+	
+	self.document.formia.volantini.value = conteggio
+	
+				
+	image00.src = sogno;
+	
+	
+	setTimeout (function(){
+	
+		$("#ufoto").show();
+	
+		seleziona();
+				
+	}, 500);
+	
+	//controllo internet
+	var connectionStatus = false;
+	connectionStatus = navigator.onLine ? 'online' : 'offline';
+	
+	if(connectionStatus=='online'){
+	
+	}
+	
+	
+}
+
+function onFail(message) {
+	navigator.notification.alert(
+								 'Nessuna foto archiviata',  // message
+								 alertDismissed,         // callback
+								 'Foto',            // title
+								 'OK'                  // buttonName
+								 );
+}
+
+
+function start() {
+	
+	document.getElementById("email").value = "F10620"
+	
+	localStorage.setItem("idoperatore", result.idoperatore);
+	
+	
+}
+
+
+function salva() {
+	var imgvolantino = "";
+	var imgvolantino2 = "";
+	var imgvolantino3 = "";
+	var imgvolantino4 = "";
+	var imgvolantino5 = "";
+	var imgvolantino6 = "";
+	
+	var nomeazienda = "";
+	var telazienda="";
+	var settore="";
+	var nomeazienda1 = "";
+	var telazienda1="";
+	var settore1="";
+	var nomeazienda2 = "";
+	var telazienda2="";
+	var settore2="";
+	var nomeazienda3 = "";
+	var telazienda3="";
+	var settore3="";
+	var nomeazienda4 = "";
+	var telazienda4="";
+	var settore4="";
+	var nomeazienda5 = "";
+	var telazienda5="";
+	var settore5="";
+	
+	if (self.document.formia.ora_fine.value == "") {
+		navigator.notification.alert(
+									 'inserire un orario di fine lavoro',  // message
+									 alertDismissed,         // callback
+									 'Orario',            // title
+									 'OK'                  // buttonName
+									 );
+								 
+		 $('#ora_fine').focus();
+		return;
+	}
+	
+	if (self.document.formia.id.value == "") {
+		navigator.notification.alert(
+									 'inserire un codice servizio valido',  // message
+									 alertDismissed,         // callback
+									 'Orario',            // title
+									 'OK'                  // buttonName
+									 );
+								 
+		return;
+	}
+	
+	
+
+	localStorage.setItem("servizio", document.getElementById("id").value);
+	
+	localStorage.setItem("data", document.getElementById("data").value);
+	localStorage.setItem("inizio", document.getElementById("ora").value);
+	localStorage.setItem("fine", document.getElementById("ora_fine").value);
+	
+	
+	if (localStorage.getItem("imgvolantino") === null || localStorage.getItem("imgvolantino")=="null" || typeof(localStorage.getItem("imgvolantino")) == 'undefined' || localStorage.getItem("imgvolantino")==0 || localStorage.getItem("imgvolantino")=="") {
+		
+		navigator.notification.alert(
+									 'inserire una foto del Volantino',  // message
+									 alertDismissed,         // callback
+									 'Volantino',            // title
+									 'OK'                  // buttonName
+									 );
+		return;
+
+		imgvolantino = "";
+		
+	}
+	else
+	{
+	
+		imgvolantino = localStorage.getItem("imgvolantino");
+		imgvolantino2 = localStorage.getItem("imgvolantino2");
+		imgvolantino3 = localStorage.getItem("imgvolantino3");
+		imgvolantino4 = localStorage.getItem("imgvolantino4");
+		imgvolantino5 = localStorage.getItem("imgvolantino5");
+		imgvolantino6 = localStorage.getItem("imgvolantino6");
+		
+		nomeazienda = localStorage.getItem("NomeAzienda");
+		nomeazienda1 = localStorage.getItem("NomeAzienda1");
+		nomeazienda2 = localStorage.getItem("NomeAzienda2");
+		nomeazienda3 = localStorage.getItem("NomeAzienda3");
+		nomeazienda4 = localStorage.getItem("NomeAzienda4");
+		nomeazienda5 = localStorage.getItem("NomeAzienda5");
+		
+		telazienda = localStorage.getItem("TelAzienda");
+		telazienda1 = localStorage.getItem("TelAzienda1");
+		telazienda2 = localStorage.getItem("TelAzienda2");
+		telazienda3 = localStorage.getItem("TelAzienda3");
+		telazienda4 = localStorage.getItem("TelAzienda4");
+		telazienda5 = localStorage.getItem("TelAzienda5");
+		
+		settore = localStorage.getItem("Settore");
+		settore1 = localStorage.getItem("Settore1");
+		settore2 = localStorage.getItem("Settore2");
+		settore3 = localStorage.getItem("Settore3");
+		settore4 = localStorage.getItem("Settore4");
+		settore5 = localStorage.getItem("Settore5");
+		
+	}
+
+	
+	$(".spinner").show();
+	$.ajax({
+		   type: "POST",
+		   url: "https://app.prolution.it/api/volantinaggio/dettagli",
+		   data: {servizio:localStorage.getItem("servizio"),operatore:localStorage.getItem("idoperatore"), data:localStorage.getItem("data"), inizio:localStorage.getItem("inizio"), fine:localStorage.getItem("fine"),volantino:imgvolantino,volantino2:imgvolantino2,volantino3:imgvolantino3,volantino4:imgvolantino4,volantino5:imgvolantino5,volantino6:imgvolantino6,nomeazienda:nomeazienda,telefonoazienda:telazienda,settoreazienda:settore,nomeazienda2:nomeazienda1,telefonoazienda2:telazienda1,settoreazienda2:settore1,nomeazienda3:nomeazienda2,telefonoazienda3:telazienda2,settoreazienda3:settore2,nomeazienda4:nomeazienda3,telefonoazienda4:telazienda3,settoreazienda4:settore3,nomeazienda5:nomeazienda4,telefonoazienda5:telazienda4,settoreazienda5:settore4,nomeazienda6:nomeazienda5,telefonoazienda6:telazienda5,settoreazienda6:settore5},
+		   cache: false,
+		   contentType: "application/x-www-form-urlencoded",
+		   success: function (result) {
+		    //alert("Rapporto: " + result.idrapporto);
+			localStorage.setItem("rapporto", result.idrapporto);
+		    //alert(result.result);
+		   
+			setTimeout (function(){
+				salvatutto()
+			}, 500);
+	 
+		   
+		   },
+		   error: function(){
+		   $("#opzioni").show();
+		   
+		   navigator.notification.alert(
+									 'Errore Imprevisto, contatta il fornitore',  // message
+									 alertDismissed,         // callback
+									 'Errore',            // title
+									 'OK'                  // buttonName
+									 );
+	 
+		   }
+		   
+		   });
+	
+}
+
+function lista() {
+	
+	var test="";
+	
+	db.transaction(function (tx) {
+	tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
+		var len = results.rows.length, i;
+								 
+			for (i = 0; i < len; i++){
+
+				  test = test + "<br>Foto: <br>" +  results.rows.item(0).Foto + "<br>Foto: <br>" +  results.rows.item(1).Foto
+				  
+			}
+				  
+				$("#contenuto").html("<div width='320px'><br>Foto: <br>" +  results.rows.item(0).Foto + "<br>Foto: <br>" +  results.rows.item(1).Foto +"<div>");
+				  
+		});
+								 
+
+		});
+	
+	initscroll()
+	
+
+}
+
+
+function salvatutto() {
+	var times;
+	 db.transaction(function (tx) {
+	 tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
+	 var len = results.rows.length, i;
+	 times = parseInt(len)*2000;
+	 
+	 for (i = 0; i < len; i++){
+				   
+				   //Pausa di 2 secondi tra un inserimento ed un altro.
+				   (function(i){
+					
+					setTimeout (function(){
+									  
+									  $.ajax({
+											 type: "POST",
+											 url: "https://app.prolution.it/api/volantinaggio/civico",
+											 data: { rapporto:localStorage.getItem("rapporto"), data:results.rows.item(i).Data, ora:results.rows.item(i).Ora, via:results.rows.item(i).Via, civico:results.rows.item(i).Civico, citta:localStorage.getItem("Citta"), volantini:results.rows.item(i).Volantini, longitudine:results.rows.item(i).Longitudine, latitudine:results.rows.item(i).Latitudine, foto:results.rows.item(i).Foto },
+											 //url: "http://www.gtechplay.com/prolution/Check_CoordinateV2.asp",
+											 //data: {Data:results.rows.item(i).Data, Ora:results.rows.item(i).Ora, Civico:results.rows.item(i).Civico, Nome:results.rows.item(i).Foto},
+											 cache: false,
+											 contentType: "application/x-www-form-urlencoded",
+											 success: function (result) {
+											 //alert(result.idrapportocivico)
+											 
+											 },
+											 error: function(){
+											 $("#opzioni").show();
+											 
+											 navigator.notification.alert(
+																		  'Errore imprevisto nel caricamento dei dati',  // message
+																		  alertDismissed,         // callback
+																		  'Connessione Internet',            // title
+																		  'OK'                  // buttonName
+																		  );
+											 
+											 $(".spinner").hide();
+											 
+											 }
+											 
+											 });
+					}, i * 2000);
+					
+					}(i));
+
+	 }
+	
+	 //aggiornatutto()
+	setTimeout (function(){
+				$(".spinner").hide();
+				
+				$("#btnsalva").hide();
+				$("#btncancella").show();
+				
+				$("#opzioni").show();
+	}, times);
+				   
+				   
+	 }, null);
+	 
+	 });
+
+}
+
+function aggiornatutto() {
+	//longitudine:parseFloat(11.1111), latitudine:parseFloat(41.343434),
+	
+	db.transaction(function (tx) {
+				   tx.executeSql('SELECT * FROM Ordine', [], function (tx, results) {
+								 var len = results.rows.length, i;
+								 
+								 for (i = 0; i < len; i++){
+								 
+								 var nuovadata2 = results.rows.item(i).Data.replace("/","&#47;")
+								 nuovadata2 = nuovadata2.replace("/","&#47;")
+								 
+								 $.ajax({
+										type:"GET",
+										url:"http://www.gtechplay.com/prolution/Leggi_Coordinate.asp",
+										contentType: "application/json",
+										data: {Data:nuovadata2, Ora:results.rows.item(i).Ora, Civico:results.rows.item(i).Civico},
+										timeout: 7000,
+										jsonp: 'callback',
+										crossDomain: true,
+										success:function(result){
+										
+										$.each(result, function(i,item){
+											   
+											   if (item.ID == 1024){
+												alert("insert" + item.Longitudine + " -- " + item.Latitudine)
+											   
+											  
+
+											   
+											   }
+											   else
+											   {
+												//Niente
+											   }
+										});
+										
+										$(".spinner").hide();
+										
+										},
+										error: function(){
+										$(".spinner").hide();
+										
+										
+										},
+									dataType:"jsonp"});
+								 
+
+								 }
+								 
+								 $(".spinner").hide();
+								 
+								 $("#btnsalva").hide();
+								 $("#btncancella").show();
+								 
+								 }, null);
+				   });
+}
+
+function carica2(){
+var myScroll2;
+
+myScroll2 = new IScroll('#wrapper2', { click: true });
+setTimeout (function(){
+	myScroll2.refresh();
+}, 500);
+
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 300); }, false);
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+}
+
+function salvalavoro(){
+   $("#tutto").hide();
+   $("#btnavanti").hide();
+   $("#btnindietroA").hide();
+   $("#btnsalva").show();
+   $("#btnindietroB").show();
+   $("#ultimatbl").show();
+   
+   myScroll.scrollToElement("#ora_fine", "1s");
+   
+   myScroll.refresh();
+}
+
+
+
+function logout(){
+	localStorage.setItem("loginvera", "NO")
+	localStorage.setItem("Nome", "");
+	localStorage.setItem("Cognome", "");
+	
+	localStorage.setItem("email", "");
+	localStorage.setItem("idoperatore", "");
+	
+	
+	window.location.href = "index.html";
+}
+
+//PRENDI COORDINATE GPS
+function prendicoordinate(){
+	
+var geocoder = new google.maps.Geocoder();
+	geocoder.geocode({
+	"address": "Via Emilio Malerba,16A, 00125, Roma"
+	}, function(results) {
+	
+	alert(results[0].geometry.location); //LatLng
+});
+}
+
+
 
 
 
