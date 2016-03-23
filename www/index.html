@@ -52,8 +52,8 @@
 		function cattura() {
 			navigator.camera.getPicture(Successo, onFail, { 
 							quality: 30,
-							destinationType: Camera.DestinationType.DATA_URL,
-							sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+							destinationType: Camera.DestinationType.FILE_URI,
+							sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
 							encodingType: Camera.EncodingType.PNG,
 							targetWidth: 200,
 							targetHeight: 200
