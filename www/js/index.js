@@ -37,8 +37,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-		//document.addEventListener("pause", onPause, false);
-		StatusBar.styleDefault();
 		
 		//PUSH
 
