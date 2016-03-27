@@ -11,16 +11,27 @@
 
 </head>
 <body>
-<br><br><br><br>
-    <div id="dMessage">
-        <input type="text" id="txtMessage" style="width: 100%" />
-        <input type="button" id="btnSendMessage" value="Send Message" onclick="javascript:send();" />
-    </div>
-    <div>
-        <textarea id="taLog" rows="2" cols="20" readonly="readonly" style="height: 300px; width: 100%"></textarea>
-    </div>
-	<br>
-	<a href="javascript:cattura()">Cattura</a><br>
-	<img src="img/vol1.png" id="myImageVol" height="90px">
+<br><br><center>
+		<img src="img/logo.png" width="80"><br>
+			
+            <h1>Mirage</h1>
+			
+			<div id="distanza">1</div>
+			<div id="distanza2"></div>
+			<div id="distanza3"></div>
+			
+			<img id="foto" src="">
+			
+			<br><a href="javascript:scatta()">SCATTA</a><br><br>
+			<br> <a href="javascript:getFoto()">SCATTA</a><br>
+			
+			
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        
+        <script type="text/javascript">
+            app.initialize();
+        </script>
 </body>
 </html>
